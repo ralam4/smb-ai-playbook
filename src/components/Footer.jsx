@@ -3,14 +3,9 @@ export default function Footer() {
     <footer className="border-t border-border mt-20 bg-surface-warm">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-3">
-            <div className="w-7 h-7 rounded-md bg-accent/10 flex items-center justify-center">
-              <span className="text-accent font-[--font-display] text-xs">AI</span>
-            </div>
-            <p className="text-sm text-text-secondary">
-              AI Playbook for Small Business <span className="text-border mx-1.5">|</span> Free forever
-            </p>
-          </div>
+          <p className="text-sm text-text-secondary">
+            AI Playbook for Small Business <span className="text-border mx-1.5">|</span> Free forever
+          </p>
           <div className="flex items-center gap-2">
             <span className="text-sm text-text-secondary">Built by</span>
             <a

@@ -4,18 +4,13 @@ export default function Nav() {
   return (
     <nav className="w-full border-b border-border bg-surface/80 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2.5 no-underline group">
-          <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center">
-            <span className="text-white font-[--font-display] text-sm leading-none">AI</span>
-          </div>
-          <div className="flex items-baseline gap-1.5">
-            <span className="font-[--font-display] text-lg text-text-primary tracking-tight group-hover:text-accent transition-colors">
-              AI Playbook
-            </span>
-            <span className="hidden sm:inline text-[11px] text-text-secondary font-medium tracking-wide uppercase">
-              for Small Business
-            </span>
-          </div>
+        <Link to="/" className="flex items-baseline gap-1.5 no-underline group">
+          <span className="font-[--font-display] text-lg text-text-primary tracking-tight group-hover:text-accent transition-colors">
+            AI Playbook
+          </span>
+          <span className="hidden sm:inline text-[11px] text-text-secondary font-medium tracking-wide uppercase">
+            for Small Business
+          </span>
         </Link>
         <a
           href="https://www.linkedin.com/in/rafeeulalam"
