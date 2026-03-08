@@ -322,6 +322,77 @@ Please create:
     },
     downloadFile: 'doctor-referral-system.md',
   },
+  {
+    slug: 'pharmacist-taper-calculator',
+    tag: 'Pharmacy',
+    tagColor: '#1A7F8A',
+    title: 'Build Taper Schedules in Minutes, Not Manual Math',
+    description: 'Use AI to calculate step-down medication schedules, generate patient-friendly handouts, and build a reusable taper prompt template for any drug.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude \u00B7 Current medication details (drug, dose, frequency, target)',
+    intro: 'Taper calculations are time-consuming and error-prone when done by hand. Whether it\u2019s a prednisone step-down, a benzo taper, or an SSRI discontinuation, you have to factor in current dose, target dose, timeline, available tablet strengths, and splitting logistics \u2014 then explain it all clearly to the patient. One miscalculation or confusing instruction and the patient tapers too fast or skips steps. This guide walks you through using AI to generate accurate taper schedules, patient handouts, and a reusable system you can use for any medication going forward.',
+    outcomes: [
+      'A complete taper schedule with exact doses, dates, and step-down increments',
+      'A patient-friendly counseling handout explaining what to expect at each phase',
+      'A reusable prompt template you can use for any future taper request',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Gather the taper details',
+        description: 'Before prompting AI, collect the key inputs: current medication, current dose and frequency, target dose (or full discontinuation), desired timeline, and available tablet or capsule strengths. This is the data the AI needs to calculate accurately.',
+        dataNote: 'You need: drug name, current dose, how often the patient takes it, the goal (reduce to X mg or stop completely), any timeline preferences from the prescriber, and what tablet strengths are available at your pharmacy.',
+      },
+      {
+        number: 2,
+        title: 'Generate the taper schedule',
+        description: 'Paste the details into AI and get a structured step-down schedule. The prompt is written to be medication-agnostic \u2014 it works for prednisone, SSRIs, benzos, opioids, or anything else.',
+        prompt: `I'm a pharmacist and I need to calculate a taper schedule for a patient.
+
+Here are the details:
+- Medication: [DRUG NAME]
+- Current dose: [DOSE + FREQUENCY, e.g. "20mg once daily"]
+- Target: [TARGET DOSE or "full discontinuation"]
+- Timeline preference: [e.g. "over 4 weeks" / "as gradual as possible" / "per prescriber: 6 weeks"]
+- Available tablet strengths: [e.g. "5mg, 10mg, 20mg tablets \u2014 can be split"]
+- Relevant context: [e.g. "patient has been on this dose for 3 months" / "history of withdrawal symptoms" / "elderly patient"]
+
+Please generate:
+1. A step-by-step taper schedule in table format with: week/phase, daily dose, tablet instructions (which tablets to take), and duration of each step
+2. Flag any steps where tablet splitting or alternating doses is needed
+3. Note any steps where the reduction exceeds 25% of the previous dose (a common caution threshold)
+4. Suggest monitoring checkpoints \u2014 when the pharmacist or prescriber should check in with the patient`,
+      },
+      {
+        number: 3,
+        title: 'Create the patient counseling handout',
+        description: 'Now turn that clinical schedule into something the patient can actually follow. Plain language, clear formatting, and expectations for how they might feel at each step.',
+        prompt: `Using the taper schedule above, create a patient-friendly handout that includes:
+1. A simple version of the schedule \u2014 dates, what to take each day, in plain language (no medical jargon)
+2. What the patient might experience at each step (e.g. "You may feel mild headaches in week 2 \u2014 this is normal and usually passes in a few days")
+3. Clear "call your pharmacist/doctor if..." warning signs for each phase
+4. A section at the top with: patient name (blank), medication name, start date, prescriber name, and pharmacy contact info
+
+Format this so it can be printed on a single page, front and back.`,
+      },
+      {
+        number: 4,
+        title: 'Save your reusable taper prompt template',
+        description: 'You\u2019ve now built one taper schedule from scratch. This step turns that work into a reusable system \u2014 a saved prompt template you can pull up for any future taper request, swap in the new drug details, and generate a schedule in under 2 minutes.',
+        prompt: `Based on the taper workflow we just completed, please create:
+1. A reusable prompt template with clear [BLANKS] I can fill in for any medication \u2014 I want to copy-paste this and swap in new details each time
+2. A short checklist of information I need to collect before running the prompt (so I don't forget anything)
+3. A "taper notes" template where I can log each taper I've generated \u2014 patient initials, drug, date, prescriber, and any special notes \u2014 so I have a record for my pharmacy`,
+      },
+    ],
+    expectations: {
+      good: 'The first taper schedule takes about 25 minutes to build. After that, using your saved template, future tapers take under 2 minutes \u2014 just fill in the blanks and generate.',
+      ifBad: 'AI may suggest dose steps that don\u2019t align with available tablet strengths. Always verify the math and adjust for what you can actually dispense. You\u2019re the pharmacist \u2014 the AI does the arithmetic, you do the clinical judgment.',
+      time: 'The reusable template from Step 4 is the real payoff. Instead of recalculating from scratch every time, you have a system that works for any drug, any patient.',
+    },
+    downloadFile: 'pharmacist-taper-calculator.md',
+  },
 
   // ── NEW GUIDES ──
 
