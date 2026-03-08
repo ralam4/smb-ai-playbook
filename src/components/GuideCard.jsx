@@ -5,6 +5,10 @@ const hueMap = {
   '#2D6A4F': 145,
   '#1D3557': 215,
   '#C4622D': 25,
+  '#7C3AED': 270,
+  '#92400E': 30,
+  '#0D9488': 170,
+  '#4338CA': 240,
 }
 
 export default function GuideCard({ guide, className = '' }) {

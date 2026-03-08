@@ -230,6 +230,377 @@ how to handle same-day cancellations, etc.)`,
     },
     downloadFile: 'doctor-noshow-flow.md',
   },
+
+  // ── NEW GUIDES ──
+
+  {
+    slug: 'photographer-pricing',
+    tag: 'Photographer',
+    tagColor: '#7C3AED',
+    title: 'Price Your Work Without Losing Clients',
+    description: 'Build a pricing strategy that reflects your value, covers your real costs, and doesn\u2019t scare away clients.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude \u00B7 Your cost estimates',
+    intro: 'Pricing is the single biggest anxiety for independent photographers. Charge too little and you\u2019re working for free after expenses. Charge too much without framing and clients ghost. The problem isn\u2019t your talent \u2014 it\u2019s that most photographers have never calculated their true cost per shoot or structured their packages to guide clients toward the right tier. This guide walks you through using AI to build a pricing strategy grounded in your actual numbers.',
+    outcomes: [
+      'Your true cost per shoot and effective hourly rate',
+      'A 3-tier package structure you can put on your website today',
+      'A price increase email you can send with confidence',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Calculate your true cost per shoot',
+        description: 'Before you can price correctly, you need to know what a shoot actually costs you \u2014 including the hours you don\u2019t bill for (editing, travel, admin). Most photographers are shocked by this number.',
+        dataNote: 'Gather your monthly fixed costs (insurance, software, cloud storage, website), average hours per shoot including editing, and number of shoots per month. Rough estimates are fine.',
+        prompt: `I'm a [type: wedding / portrait / commercial / event] photographer based in [CITY].
+I want to understand my true cost per shoot so I can price profitably.
+
+Here are my approximate costs:
+- Monthly fixed costs (insurance, software, website, storage): $[AMOUNT]
+- Average gear depreciation per month: $[AMOUNT]
+- Hours I spend per shoot (including editing, travel, delivery): [HOURS]
+- Number of shoots I do per month on average: [NUMBER]
+
+Please help me:
+1. Calculate my true cost per shoot (fixed + variable)
+2. Determine my effective hourly rate at my current pricing
+3. Suggest a minimum price floor I should never go below
+4. Show me what I'd need to charge to hit $[TARGET] annual income`,
+      },
+      {
+        number: 2,
+        title: 'Research your local market positioning',
+        description: 'Now that you know your costs, figure out where you sit in your local market. This prompt helps you understand the tiers and choose where to compete.',
+        prompt: `I'm a [type] photographer in [CITY/REGION].
+My current pricing is approximately [CURRENT PRICES \u2014 e.g. "$2,500 for wedding coverage, $300 for portrait sessions"].
+
+Please help me:
+1. Outline what photographers at 3 tiers (budget, mid-range, premium) typically charge in a market like mine
+2. Identify what differentiates each tier beyond just price
+3. Suggest which tier I should position in based on my experience level: [YEARS] years
+4. List 3-5 value-adds I could offer to justify premium pricing without adding much cost`,
+      },
+      {
+        number: 3,
+        title: 'Build your package structure',
+        description: 'A good package structure does the selling for you. The middle tier should be the one most people pick. The top tier makes the middle look reasonable. The bottom tier exists so nobody feels stuck.',
+        prompt: `Based on my cost analysis and market positioning, please help me create a 3-tier package structure for my [type] photography business.
+
+My target tier is [budget/mid-range/premium].
+My most popular service is [SERVICE].
+My average client books [WHAT THEY USUALLY WANT].
+
+For each tier (Good, Better, Best), please include:
+- Package name (something memorable, not just "Basic/Standard/Premium")
+- What's included (hours, deliverables, extras)
+- Price point
+- Why a client would choose this tier
+
+Also write a short paragraph I can use on my website explaining my pricing philosophy.`,
+      },
+      {
+        number: 4,
+        title: 'Write the price increase announcement',
+        description: 'If you\u2019re raising prices (and after this guide, you probably should be), this prompt helps you communicate it confidently. Frame it as growth, not an apology.',
+        prompt: `I need to raise my prices by approximately [PERCENTAGE OR AMOUNT].
+My current clients know me as [DESCRIBE YOUR BRAND/STYLE].
+The increase takes effect [DATE].
+
+Please write:
+1. An email to past clients announcing the new pricing (warm, grateful, not apologetic)
+2. A shorter version for Instagram stories or posts
+3. A FAQ section I can add to my website addressing "why did prices go up?"
+
+Tone: confident and professional. I want to frame this as growth, not a burden.`,
+      },
+    ],
+    expectations: {
+      good: 'The cost analysis often reveals you\u2019re earning less per hour than you thought. That\u2019s the point \u2014 it makes the pricing conversation with yourself much easier.',
+      ifBad: 'If the package structure feels off, add more detail about your ideal client and what they typically ask for. The AI needs context to calibrate.',
+      time: 'Most photographers implement their new packages within a week and send the price increase email within two.',
+    },
+    downloadFile: 'photographer-pricing.md',
+  },
+  {
+    slug: 'coffee-menu-pricing',
+    tag: 'Coffee Shop',
+    tagColor: '#92400E',
+    title: 'Fix Your Menu Pricing',
+    description: 'Analyze your menu margins, find hidden profit leaks, and adjust prices without alienating your regulars.',
+    difficulty: 'Beginner',
+    time: '~20 min',
+    tools: 'ChatGPT or Claude \u00B7 Your menu + cost data',
+    intro: 'With Arabica prices up nearly 80% year-over-year and customers noticing every quarter added to a latte, menu pricing has become a high-wire act for coffee shop owners. Most shops haven\u2019t done a real margin analysis in months \u2014 they\u2019re guessing. This guide helps you use AI to audit every item on your menu, find the hidden profit leaks, and make smart adjustments your regulars won\u2019t revolt over.',
+    outcomes: [
+      'A full margin breakdown of every menu item',
+      'Specific pricing adjustments with projected revenue impact',
+      'Upsell combos that boost your average ticket naturally',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Audit your menu margins',
+        description: 'List every item on your menu with its selling price and approximate ingredient cost. Don\u2019t worry about being exact \u2014 ballpark costs are enough to surface the big problems.',
+        dataNote: 'You need: each menu item name, its current selling price, and your rough ingredient cost per unit. If you\u2019re not sure on costs, estimate based on your last supply order.',
+        prompt: `I run a coffee shop called [SHOP NAME] in [CITY].
+I'm going to share my menu items with approximate ingredient costs and current prices.
+
+For each item, please:
+1. Calculate the food/beverage cost percentage
+2. Flag any items below 65% gross margin (these are likely underpriced)
+3. Flag any items above 85% gross margin (these are high-margin stars to promote)
+4. Rank my menu from most to least profitable
+
+Here are my items:
+[LIST ITEMS: name, selling price, approximate ingredient cost per unit]`,
+      },
+      {
+        number: 2,
+        title: 'Find your pricing sweet spots',
+        description: 'Now use the margin data to make specific, defensible pricing decisions. The goal is small, strategic adjustments \u2014 not a full menu overhaul.',
+        prompt: `Based on the menu analysis, I want to optimize my pricing.
+
+My shop serves approximately [NUMBER] customers per day.
+My top 5 sellers are: [LIST THEM].
+My rent is $[AMOUNT]/month and labor is approximately $[AMOUNT]/month.
+Customers in my area are [price-sensitive / moderate / willing to pay premium].
+
+Please:
+1. Suggest specific price adjustments for my underperforming items (keep increases under $0.50 where possible)
+2. Identify 2-3 items I should actively promote because they're high-margin
+3. Suggest 1-2 items I should consider removing or reformulating
+4. Calculate the monthly revenue impact if I implement your top 3 pricing suggestions`,
+      },
+      {
+        number: 3,
+        title: 'Create upsell combos',
+        description: 'Combos are the easiest way to increase average ticket without raising prices. The trick is pairing a high-margin item with a popular one so the customer feels like they\u2019re getting a deal.',
+        prompt: `I want to create 2-3 combo deals that feel like a good value to customers but actually improve my average ticket.
+
+My average transaction is $[AMOUNT].
+My highest-margin items are: [LIST FROM PREVIOUS ANALYSIS].
+My most popular items are: [LIST].
+
+Please design:
+1. A "morning combo" (drink + food item)
+2. A "grab and go" combo
+3. An "upgrade" prompt script my baristas can use naturally (not pushy)
+
+For each combo, show me the individual prices vs. combo price and my margin on each.`,
+      },
+      {
+        number: 4,
+        title: 'Communicate the changes',
+        description: 'Price changes land better when you\u2019re upfront about them. This prompt helps you write honest, human messaging for your regulars.',
+        prompt: `I'm adjusting prices on [NUMBER] menu items, with increases averaging $[AMOUNT].
+My shop is known for [DESCRIBE YOUR VIBE \u2014 community focused, specialty coffee, cozy neighborhood spot, etc.].
+
+Please write:
+1. A small in-store sign explaining the change (3-4 sentences, warm tone)
+2. A social media post that frames it positively
+3. A talking point my staff can use if a regular asks about the price change
+
+Keep it honest and human. No corporate speak.`,
+      },
+    ],
+    expectations: {
+      good: 'You\u2019ll likely find 2\u20133 items that are significantly underpriced and 1\u20132 that aren\u2019t worth keeping. That alone can shift your monthly margin.',
+      ifBad: 'If the margin numbers look off, double-check your ingredient costs. Even small errors in cost-per-ounce estimates can skew the analysis.',
+      time: 'Most shop owners implement price adjustments within a week. The upsell combos can go live same-day.',
+    },
+    downloadFile: 'coffee-menu-pricing.md',
+  },
+  {
+    slug: 'designer-scope-creep',
+    tag: 'Graphic Designer',
+    tagColor: '#0D9488',
+    title: 'Stop Scope Creep Before It Starts',
+    description: 'Set clear boundaries, write better proposals, and handle revision requests professionally.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude \u00B7 Your past project notes',
+    intro: 'Scope creep is the freelance designer\u2019s silent income killer. Nearly half of designers underestimate project scope, and by the time you realize you\u2019re doing twice the work for the same fee, it\u2019s too awkward to bring up. This guide helps you use AI to audit where you\u2019re bleeding time, build scope-proof proposals, and write professional responses for when clients push boundaries.',
+    outcomes: [
+      'A clear picture of how much scope creep is actually costing you',
+      'A reusable proposal template with built-in scope protection',
+      'Ready-to-send email templates for every common scope creep scenario',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Audit your last 3 projects',
+        description: 'Look back at your recent projects honestly. Where did the scope expand? What did you do for free that you should have charged for? This step turns gut feelings into numbers.',
+        dataNote: 'For each of your last 3 projects, note: the client type, what you quoted, your actual hours, what was in the original scope, and what extras got added along the way.',
+        prompt: `I'm a freelance graphic designer specializing in [SPECIALTIES \u2014 e.g. brand identity, web design, social media, packaging].
+
+I want to identify where scope creep is costing me money. Here are my last 3 projects:
+
+Project 1: [CLIENT TYPE], quoted $[AMOUNT], actual hours [HOURS], included [DELIVERABLES], extra requests: [WHAT THEY ASKED FOR BEYOND SCOPE]
+Project 2: [same format]
+Project 3: [same format]
+
+Please help me:
+1. Calculate my effective hourly rate on each project
+2. Identify the specific moments where scope expanded
+3. Find patterns in the type of extras clients request
+4. Estimate how much revenue I lost to unpriced work`,
+      },
+      {
+        number: 2,
+        title: 'Build your scope-proof proposal template',
+        description: 'The best time to prevent scope creep is before the project starts. This prompt creates a proposal template with clear boundaries baked in \u2014 so you never have to have an awkward conversation later.',
+        prompt: `Based on the patterns we identified, please help me create a proposal template that prevents scope creep.
+
+My typical project is [DESCRIBE \u2014 e.g. "brand identity package including logo, color palette, and business card design"].
+My target price range is $[RANGE].
+The most common scope creep I experience is [PATTERN FROM STEP 1].
+
+Please create:
+1. A proposal template with clearly defined deliverables, revision limits, and exclusions
+2. A "What's Included / What's Not Included" section I can customize per project
+3. A revision policy paragraph (suggest how many rounds to include)
+4. An "Additional Work" rate card for common add-on requests
+
+Write it in a professional but friendly tone \u2014 I want clients to feel informed, not intimidated.`,
+      },
+      {
+        number: 3,
+        title: 'Write your boundary response templates',
+        description: 'When scope creep happens (and it will), you need professional responses ready to go. These templates keep the relationship warm while protecting your time.',
+        prompt: `I need professional response templates for common scope creep situations.
+
+Please write templates for:
+1. Client asks for "one more small change" beyond included revisions
+2. Client wants to add a new deliverable mid-project (e.g. "can you also do our social media templates?")
+3. Client provides feedback that fundamentally changes the creative direction
+4. Client ghosts for weeks then returns with urgent changes
+
+For each, write:
+- A short email response (warm but firm)
+- The key phrase to use
+- What NOT to say
+
+Tone: collaborative, not confrontational. I want to keep the relationship while protecting my time.`,
+      },
+      {
+        number: 4,
+        title: 'Create your client onboarding doc',
+        description: 'The final step is building an onboarding document that sets expectations from day one. When clients know the rules upfront, scope creep drops dramatically.',
+        prompt: `I want to create a client onboarding document that sets expectations from day one and prevents most scope issues before they start.
+
+My process usually takes [TIMELINE] from kickoff to final delivery.
+I typically do [NUMBER] revision rounds.
+My communication style is [casual / professional / mixed].
+
+Please create:
+1. A "Welcome to Your Project" one-pager I can send after booking
+2. A creative brief questionnaire (10-12 questions) that gets me everything I need upfront
+3. A simple timeline/milestone template I can customize per project
+4. A "How We Work Together" section covering communication, feedback, and revisions`,
+      },
+    ],
+    expectations: {
+      good: 'The project audit in Step 1 usually reveals you\u2019re losing 20\u201340% of your effective rate to unpriced work. That clarity alone changes how you approach new projects.',
+      ifBad: 'If the proposal template feels too rigid, adjust the tone. The structure matters more than the exact wording \u2014 you can soften it for your brand voice.',
+      time: 'Most designers start using the new proposal template on their very next inquiry. The change order templates pay for themselves immediately.',
+    },
+    downloadFile: 'designer-scope-creep.md',
+  },
+  {
+    slug: 'google-reviews',
+    tag: 'All Businesses',
+    tagColor: '#4338CA',
+    title: 'Get More Google Reviews (Without Being Annoying)',
+    description: 'Build a simple review generation system that runs on autopilot and brings in new customers.',
+    difficulty: 'Beginner',
+    time: '~20 min',
+    tools: 'ChatGPT or Claude \u00B7 Your Google Business Profile',
+    intro: 'Google reviews are the single most important trust signal for local businesses. Customers check them before they call, before they book, before they walk in. But most business owners either don\u2019t ask for reviews, or ask awkwardly once and give up. This guide helps you build a simple, repeatable system that generates reviews consistently \u2014 without being pushy or violating Google\u2019s policies.',
+    outcomes: [
+      'A clear review strategy with a realistic monthly target',
+      'Ready-to-send review request messages (text, email, and in-person scripts)',
+      'Professional response templates for every type of review',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Audit your current review situation',
+        description: 'Before building a system, understand where you stand. How do your reviews compare to competitors? How many do you need to catch up or pull ahead?',
+        dataNote: 'Check your Google Business Profile for your current review count and average rating. Search for 2\u20133 direct competitors and note their numbers too.',
+        prompt: `I run a [BUSINESS TYPE] called [BUSINESS NAME] in [CITY].
+I currently have [NUMBER] Google reviews with an average rating of [RATING].
+My closest competitors have approximately [COMPETITOR REVIEW COUNTS].
+
+Please help me:
+1. Assess how my review count and rating compare to competitors
+2. Calculate how many new reviews I'd need per month to match or overtake the top competitor within 6 months
+3. Identify which types of reviews matter most for my business type
+4. Suggest a realistic monthly review target based on my customer volume of approximately [NUMBER] customers per month`,
+      },
+      {
+        number: 2,
+        title: 'Build your review request system',
+        description: 'The key to getting reviews is making it easy and asking at the right moment \u2014 when the customer is happiest. This prompt creates messages for every channel.',
+        prompt: `I want to create a simple system for asking customers for Google reviews.
+
+My business type: [BUSINESS TYPE]
+How customers interact with me: [in-person / online / phone / mix]
+My customer touchpoints are: [e.g. "after their appointment", "after delivery", "at checkout"]
+My team size: [just me / small team of X]
+
+Please create:
+1. A review request message I can send via text (under 160 characters) with my Google review link placeholder
+2. A slightly longer email version
+3. A verbal script I (or my staff) can use in person at the right moment
+4. A follow-up message for customers who didn't respond to the first ask (send 3-5 days later)
+
+Rules: Never offer incentives for reviews (violates Google policy). Keep it genuine.`,
+      },
+      {
+        number: 3,
+        title: 'Write responses for every type of review',
+        description: 'Responding to reviews matters as much as getting them. It shows potential customers you care, and it can turn a negative experience into a recovery story.',
+        prompt: `I need response templates for my Google reviews.
+
+My business name: [NAME]
+My brand voice is: [warm / professional / casual / funny / etc.]
+
+Please write response templates for:
+1. A 5-star review with specific praise
+2. A 5-star review that's generic ("Great place!")
+3. A 4-star review with mild criticism
+4. A 3-star review with constructive feedback
+5. A 1-2 star review with a legitimate complaint
+6. A 1-star review that seems fake or unfair
+
+For each: keep it under 3 sentences, mention the reviewer by name placeholder, and show I'm a real person \u2014 not copy-pasting.`,
+      },
+      {
+        number: 4,
+        title: 'Set up your monthly routine',
+        description: 'Reviews are a habit, not a campaign. This prompt creates a simple weekly routine so you never fall behind.',
+        prompt: `I want a simple monthly routine to keep reviews coming in consistently.
+
+My monthly customer volume: approximately [NUMBER]
+My current review request method: [describe or "none"]
+I have [TIME AVAILABLE] per week to spend on this.
+
+Please create:
+1. A weekly 15-minute checklist for review management
+2. A monthly review report template I can fill in to track progress
+3. 3 creative ideas for naturally encouraging reviews that fit my business type
+4. A plan for what to do when I hit a dry spell (no new reviews in 2+ weeks)`,
+      },
+    ],
+    expectations: {
+      good: 'Most businesses see a significant uptick in reviews within the first 2 weeks of consistently asking. The response templates save hours of staring at a blank reply box.',
+      ifBad: 'If customers aren\u2019t responding to review requests, try changing the timing \u2014 ask closer to the moment of delight, not hours later.',
+      time: 'The weekly routine takes about 15 minutes. Most of that is responding to new reviews, which gets faster once you have templates.',
+    },
+    downloadFile: 'google-reviews.md',
+  },
 ]
 
 export default guides

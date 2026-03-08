@@ -1,12 +1,19 @@
+import { useState } from 'react'
 import GuideCard from '../components/GuideCard'
+import BusinessFilter from '../components/BusinessFilter'
 import guides from '../data/guides'
 
 export default function Home() {
+  const [filter, setFilter] = useState('all')
+
+  const filteredGuides = filter === 'all'
+    ? guides
+    : guides.filter((g) => g.tag === filter)
+
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden grain">
-        {/* Warm radial gradient behind hero */}
         <div className="absolute inset-0 bg-gradient-to-br from-accent-light/30 via-transparent to-transparent pointer-events-none" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-16 sm:pb-20">
@@ -38,7 +45,7 @@ export default function Home() {
               {[
                 { num: '01', text: 'Browse real problems', desc: 'Find the one that matches your business' },
                 { num: '02', text: 'Follow the guide', desc: 'Step-by-step, with prompts you can copy' },
-                { num: '03', text: 'Use tools you have', desc: 'ChatGPT, Claude — no special software' },
+                { num: '03', text: 'Use tools you have', desc: 'ChatGPT, Claude \u2014 no special software' },
               ].map((step, i) => (
                 <div key={step.num} className="flex items-start sm:items-center">
                   {i > 0 && (
@@ -63,7 +70,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Bottom edge decoration */}
         <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
@@ -78,25 +84,33 @@ export default function Home() {
         <h2 className="animate-fade-up delay-1 font-[--font-display] text-3xl sm:text-4xl text-text-primary mb-3">
           Find your situation.
         </h2>
-        <p className="animate-fade-up delay-2 text-text-secondary max-w-lg mb-10 sm:mb-14 leading-relaxed">
+        <p className="animate-fade-up delay-2 text-text-secondary max-w-lg mb-8 leading-relaxed">
           Each guide is built around a specific problem in a specific type of business.
-          Click the one that matches yours.
+          Pick yours to filter, or browse them all.
         </p>
 
+        {/* Business type filter */}
+        <div className="animate-fade-up delay-3 mb-10">
+          <BusinessFilter activeFilter={filter} onFilterChange={setFilter} />
+        </div>
+
+        {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          {guides.map((guide, i) => (
-            <GuideCard
-              key={guide.slug}
-              guide={guide}
-              className={`animate-fade-up delay-${i + 3}`}
-            />
+          {filteredGuides.map((guide) => (
+            <GuideCard key={guide.slug} guide={guide} />
           ))}
         </div>
+
+        {filteredGuides.length === 0 && (
+          <div className="text-center py-16">
+            <p className="text-text-secondary">No guides for this category yet. More coming soon.</p>
+          </div>
+        )}
       </section>
 
-      {/* Social proof / trust strip */}
+      {/* Trust strip */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
-        <div className="animate-fade-up delay-6 rounded-2xl bg-surface border border-border p-6 sm:p-8 text-center">
+        <div className="rounded-2xl bg-surface border border-border p-6 sm:p-8 text-center">
           <p className="font-[--font-display] text-xl sm:text-2xl text-text-primary mb-2">
             No signup. No paywall. No &ldquo;schedule a demo.&rdquo;
           </p>
