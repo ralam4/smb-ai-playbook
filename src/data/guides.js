@@ -230,6 +230,98 @@ how to handle same-day cancellations, etc.)`,
     },
     downloadFile: 'doctor-noshow-flow.md',
   },
+  {
+    slug: 'doctor-referral-system',
+    tag: 'Medical Practice',
+    tagColor: '#C4622D',
+    title: 'Streamline Referrals So Patients Don\u2019t Fall Through the Cracks',
+    description: 'Build an organized referral directory by specialty and insurance so you can match patients to the right specialist in seconds.',
+    difficulty: 'Beginner',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude \u00B7 Your referral contacts + insurance list',
+    intro: 'When a patient needs a specialist, the referral process becomes a bottleneck that frustrates everyone. Your front desk is calling around to find a dermatologist who takes the patient\u2019s insurance, has availability this month, and is actually accepting new patients. Meanwhile the patient leaves without a clear next step and may never follow through. This guide helps you use AI to build a structured, searchable referral directory your staff can use in real time \u2014 organized by specialty, insurance, and your practice\u2019s preferences.',
+    outcomes: [
+      'A structured referral directory organized by specialty and insurance accepted',
+      'A quick-lookup system your front desk can use during the visit',
+      'A patient handoff template so referrals actually get completed',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Map your most common referral needs',
+        description: 'Start by identifying which specialties you refer to most often, and which insurance plans your patients carry. This tells you exactly what your directory needs to cover first.',
+        dataNote: 'Think through your last 30\u201360 days of referrals. Which specialties came up most? What are the top 5\u201310 insurance plans your patients carry? You don\u2019t need exact numbers \u2014 your best estimate works.',
+        prompt: `I run a [specialty, e.g. "family medicine / internal medicine / pediatrics"] practice in [CITY/REGION].
+
+I want to build a referral directory so my staff can quickly find the right specialist for any patient.
+
+Here are the details:
+- Specialties I refer to most often: [LIST \u2014 e.g. dermatology, cardiology, orthopedics, ENT, gastroenterology, mental health/psychiatry]
+- The top insurance plans my patients carry: [LIST \u2014 e.g. Blue Cross Blue Shield, Aetna, UnitedHealthcare, Cigna, Medicare, Medicaid]
+- My practice is located in [CITY], and patients prefer specialists within [RADIUS \u2014 e.g. 15 miles]
+
+Please help me:
+1. Create a template for organizing referral contacts that includes: specialist name, practice name, specialty, phone/fax, address, insurances accepted, whether accepting new patients, average wait time, and any notes
+2. Suggest which specialty + insurance combinations I should prioritize filling first based on typical primary care referral volume
+3. Recommend a format (spreadsheet, document, or other) that would be easiest for front desk staff to search quickly`,
+      },
+      {
+        number: 2,
+        title: 'Build your referral directory',
+        description: 'Now populate the directory with the specialists you already know and trust. Start with the ones your practice has sent patients to before \u2014 even if the info is scattered across sticky notes, EHR notes, and your own memory.',
+        dataNote: 'Gather any specialist contacts you currently use \u2014 names, phone numbers, which insurances they take. Even a partial list is a great starting point. You can fill gaps in the next step.',
+        prompt: `I'm building a referral directory for my medical practice. Here are the specialists I currently refer to or have worked with:
+
+[PASTE YOUR LIST \u2014 even partial info is fine. Example:
+- Dr. Smith, dermatology, takes BCBS and Aetna, (555) 123-4567
+- City Orthopedics, Dr. Patel, not sure on insurance, long wait times
+- Dr. Lee, psychiatry, takes Medicare, very responsive]
+
+Please:
+1. Organize these into the directory template from Step 1
+2. Flag any entries where I\u2019m missing critical information (insurance, phone, accepting new patients)
+3. Identify gaps \u2014 which of my top referral specialties have no contacts listed yet?
+4. For each gap, suggest what to search for to find providers (e.g. "[specialty] accepting [insurance] in [city] new patients")`,
+      },
+      {
+        number: 3,
+        title: 'Create quick-lookup sheets by insurance',
+        description: 'The real time-saver is being able to search by insurance first. When a patient with Aetna needs a dermatologist, your staff shouldn\u2019t have to scan the whole directory \u2014 they should go straight to "Aetna \u2192 Dermatology" and see 2\u20133 options.',
+        prompt: `Using my referral directory, please create quick-lookup sheets organized by insurance plan.
+
+My top insurance plans are: [LIST YOUR TOP 5-8 PLANS]
+
+For each insurance plan, create a section that lists:
+- Available specialists grouped by specialty
+- For each specialist: name, practice, phone, and a one-line note (e.g. "fast appointments", "great with elderly patients", "long wait \u2014 book early")
+- Flag any specialties where I have NO in-network option for that plan
+
+Format this so it can be printed as a 1-2 page quick-reference sheet per insurance plan.
+Also create a "cheat sheet" version \u2014 a single page with the top 3 most-referred specialties across all insurance plans, so my staff can handle 80% of referrals at a glance.`,
+      },
+      {
+        number: 4,
+        title: 'Build your patient handoff template',
+        description: 'A referral isn\u2019t complete when you pick a specialist \u2014 it\u2019s complete when the patient actually books and shows up. This step creates a handoff process so patients leave with everything they need and your staff can follow up if needed.',
+        prompt: `I want to create a simple referral handoff process for my practice so patients actually follow through on referrals.
+
+Currently, the biggest problems with our referral process are:
+- [DESCRIBE \u2014 e.g. "patients leave without calling the specialist", "we don't track if they followed through", "the specialist's office never gets the records in time", "patients call back confused about who to see"]
+
+Please create:
+1. A patient referral handout template my front desk can fill in and hand to the patient before they leave \u2014 including: specialist name, phone, address, what the appointment is for, what to bring, and whether pre-authorization is needed
+2. A brief script my front desk can use when handing off the referral ("Here\u2019s who we\u2019re sending you to and here\u2019s what to expect...")
+3. A follow-up workflow: when to check if the patient booked, what to do if they haven\u2019t, and how to close the loop with the specialist
+4. A simple tracking method we can use to make sure no referral falls through the cracks (something a small practice can actually maintain)`,
+      },
+    ],
+    expectations: {
+      good: 'Building the initial directory takes about 30 minutes. Once it\u2019s built, your front desk can match a patient to a specialist in under 60 seconds instead of 10+ minutes of phone calls.',
+      ifBad: 'The directory is only as good as the data in it. Block 30 minutes once a quarter to call your top specialists and confirm they\u2019re still accepting the same plans.',
+      time: 'The patient handoff template from Step 4 is what turns a "we gave them a name" into a completed referral. Practices that use a structured handoff see significantly higher follow-through rates.',
+    },
+    downloadFile: 'doctor-referral-system.md',
+  },
 
   // ── NEW GUIDES ──
 
