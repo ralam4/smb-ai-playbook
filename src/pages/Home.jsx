@@ -1,20 +1,48 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import GuideCard from '../components/GuideCard'
 import BusinessFilter from '../components/BusinessFilter'
+import GridPattern from '../components/GridPattern'
 import guides from '../data/guides'
 
 export default function Home() {
   const [filter, setFilter] = useState('all')
+  const [filterMode, setFilterMode] = useState('business')
+  const guidesRef = useRef(null)
 
   const filteredGuides = filter === 'all'
     ? guides
-    : guides.filter((g) => g.tag === filter)
+    : filterMode === 'business'
+      ? guides.filter((g) => g.tag === filter)
+      : guides.filter((g) => g.problems && g.problems.includes(filter))
+
+  const handleModeChange = (mode) => {
+    setFilterMode(mode)
+    setFilter('all')
+  }
+
+  const scrollToGuides = () => {
+    guidesRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
     <>
       {/* Hero */}
       <section className="relative overflow-hidden grain">
         <div className="absolute inset-0 bg-gradient-to-br from-accent-light/30 via-transparent to-transparent pointer-events-none" />
+
+        {/* Grid pattern background */}
+        <GridPattern
+          width={48}
+          height={48}
+          x={-1}
+          y={-1}
+          className="fill-accent/[0.03] stroke-border-strong/40 [mask-image:radial-gradient(ellipse_80%_70%_at_30%_40%,black_20%,transparent_80%)]"
+          squares={[
+            [2, 3], [5, 1], [8, 5], [3, 7], [12, 2],
+            [7, 8], [15, 4], [10, 6], [4, 10], [13, 8],
+            [1, 5], [9, 2], [6, 9], [11, 3], [14, 7],
+          ]}
+        />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-16 sm:pb-20">
           <div className="animate-fade-up flex items-center gap-2 mb-8">
@@ -68,13 +96,26 @@ export default function Home() {
               ))}
             </div>
           </div>
+
+          {/* Hero CTA */}
+          <div className="animate-fade-up delay-4 mt-10 sm:mt-12">
+            <button
+              onClick={scrollToGuides}
+              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+            >
+              Explore the Guides
+              <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
       {/* Problem Library */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-16">
+      <section ref={guidesRef} id="guides" className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-16">
         <div className="flex items-center gap-2 mb-3">
           <div className="h-px w-6 bg-accent" />
           <p className="animate-fade-up text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
@@ -91,7 +132,12 @@ export default function Home() {
 
         {/* Business type filter */}
         <div className="animate-fade-up delay-3 mb-10">
-          <BusinessFilter activeFilter={filter} onFilterChange={setFilter} />
+          <BusinessFilter
+            activeFilter={filter}
+            onFilterChange={setFilter}
+            filterMode={filterMode}
+            onModeChange={handleModeChange}
+          />
         </div>
 
         {/* Cards grid */}

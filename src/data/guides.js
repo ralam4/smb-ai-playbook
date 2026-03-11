@@ -68,6 +68,7 @@ Keep it warm and personal \u2014 like it's coming from the barber, not a marketi
       time: 'Most shop owners who run this see a 10\u201320% response rate on direct outreach to lapsed clients.',
     },
     downloadFile: 'barber-chair-utilization.md',
+    problems: ['get-customers'],
   },
   {
     slug: 'bakery-waste-reduction',
@@ -141,6 +142,7 @@ My upcoming week has the following notes: [ADD ANY CONTEXT \u2014 holiday weeken
       time: 'Most operators see meaningful waste reduction within 2\u20133 weeks of following adjusted prep targets consistently.',
     },
     downloadFile: 'bakery-waste-reduction.md',
+    problems: ['fix-profits'],
   },
   {
     slug: 'doctor-noshow-flow',
@@ -229,6 +231,7 @@ how to handle same-day cancellations, etc.)`,
       time: 'The SOP document from Step 4 is the most valuable long-term output \u2014 it means the system runs without you.',
     },
     downloadFile: 'doctor-noshow-flow.md',
+    problems: ['fix-operations'],
   },
   {
     slug: 'doctor-referral-system',
@@ -321,6 +324,7 @@ Please create:
       time: 'The patient handoff template from Step 4 is what turns a "we gave them a name" into a completed referral. Practices that use a structured handoff see significantly higher follow-through rates.',
     },
     downloadFile: 'doctor-referral-system.md',
+    problems: ['fix-operations'],
   },
   {
     slug: 'pharmacist-taper-calculator',
@@ -392,6 +396,7 @@ Format this so it can be printed on a single page, front and back.`,
       time: 'The reusable template from Step 4 is the real payoff. Instead of recalculating from scratch every time, you have a system that works for any drug, any patient.',
     },
     downloadFile: 'pharmacist-taper-calculator.md',
+    problems: ['fix-operations'],
   },
 
   // ── NEW GUIDES ──
@@ -485,6 +490,7 @@ Tone: confident and professional. I want to frame this as growth, not a burden.`
       time: 'Most photographers implement their new packages within a week and send the price increase email within two.',
     },
     downloadFile: 'photographer-pricing.md',
+    problems: ['fix-profits'],
   },
   {
     slug: 'coffee-menu-pricing',
@@ -574,6 +580,7 @@ Keep it honest and human. No corporate speak.`,
       time: 'Most shop owners implement price adjustments within a week. The upsell combos can go live same-day.',
     },
     downloadFile: 'coffee-menu-pricing.md',
+    problems: ['fix-profits'],
   },
   {
     slug: 'designer-scope-creep',
@@ -670,6 +677,7 @@ Please create:
       time: 'Most designers start using the new proposal template on their very next inquiry. The change order templates pay for themselves immediately.',
     },
     downloadFile: 'designer-scope-creep.md',
+    problems: ['fix-operations'],
   },
   {
     slug: 'google-reviews',
@@ -763,6 +771,7 @@ Please create:
       time: 'The weekly routine takes about 15 minutes. Most of that is responding to new reviews, which gets faster once you have templates.',
     },
     downloadFile: 'google-reviews.md',
+    problems: ['get-customers'],
   },
 
   // ── PHASE 2: NEW VERTICALS ──
@@ -834,6 +843,7 @@ Here is my data:
       time: 'The promo plan from Step 4 gives you ready-to-use copy. Test one slow-day promotion this week and measure the result.',
     },
     downloadFile: 'carwash-capacity-beginner.md',
+    problems: ['fix-profits', 'scale-up'],
   },
   {
     slug: 'carwash-membership-intermediate',
@@ -906,6 +916,7 @@ Please help me:
       time: 'The financial model from Step 3 is the key decision-making tool \u2014 it tells you exactly how many members you need to cover your overhead.',
     },
     downloadFile: 'carwash-membership-intermediate.md',
+    problems: ['scale-up'],
   },
   {
     slug: 'architecture-code-compliance-beginner',
@@ -992,6 +1003,7 @@ Format as a printable checklist with checkboxes, organized by submission order.`
       time: 'The plan check response templates from Step 3 are the biggest time-saver for most small firms \u2014 they eliminate the blank-page problem on every resubmittal.',
     },
     downloadFile: 'architecture-code-compliance-beginner.md',
+    problems: ['fix-operations'],
   },
   {
     slug: 'architecture-profitability-intermediate',
@@ -1074,6 +1086,7 @@ Please create:
       time: 'The CA scope management system from Step 4 is where most small firms lose money without realizing it. Having a tracker and a template for scope conversations changes the dynamic.',
     },
     downloadFile: 'architecture-profitability-intermediate.md',
+    problems: ['fix-profits'],
   },
   {
     slug: 'autorepair-estimates-trust-beginner',
@@ -1163,6 +1176,7 @@ Please create:
       time: 'The follow-up sequence from Step 3 recovers revenue you\u2019re currently leaving on the table. Even a 10% conversion rate on declined repairs adds up fast.',
     },
     downloadFile: 'autorepair-estimates-trust-beginner.md',
+    problems: ['fix-operations'],
   },
   {
     slug: 'autorepair-capacity-pricing-intermediate',
@@ -1262,6 +1276,7 @@ Please help me:
       time: 'The shop rate review from Step 4 is the hardest conversation but the most important one. Most independent shops are underpriced relative to their costs.',
     },
     downloadFile: 'autorepair-capacity-pricing-intermediate.md',
+    problems: ['fix-profits'],
   },
   {
     slug: 'realestate-listings-leads-beginner',
@@ -1368,6 +1383,7 @@ Please create:
       time: 'The lead nurture sequence from Step 3 is the highest-ROI output \u2014 consistent follow-up is the #1 differentiator between agents who convert and those who don\u2019t.',
     },
     downloadFile: 'realestate-listings-leads-beginner.md',
+    problems: ['get-customers'],
   },
   {
     slug: 'realestate-market-authority-intermediate',
@@ -1459,6 +1475,7 @@ Please create:
       time: 'The 12-month business plan from Step 4 is what separates agents who grow year-over-year from those who stay flat. Most agents never do this \u2014 which is your advantage.',
     },
     downloadFile: 'realestate-market-authority-intermediate.md',
+    problems: ['scale-up'],
   },
 
   // ── PHASE 2: UNIVERSAL GUIDES ──
@@ -1553,6 +1570,7 @@ Please create:
       time: 'The batch production workflow from Step 4 is what makes this sustainable. Without a system, even great content plans die after week 2.',
     },
     downloadFile: 'social-media-content-calendar.md',
+    problems: ['get-customers', 'scale-up'],
   },
   {
     slug: 'cash-flow-management',
@@ -1639,6 +1657,7 @@ Please create:
       time: 'The monthly review routine from Step 4 takes 30 minutes and prevents the panicked "can I make payroll?" moments. It\u2019s the single most valuable habit a business owner can build.',
     },
     downloadFile: 'cash-flow-management.md',
+    problems: ['fix-profits', 'scale-up'],
   },
   {
     slug: 'hiring-and-onboarding',
@@ -1729,6 +1748,7 @@ Please create:
       time: 'The 30-day onboarding plan from Step 4 is what most small businesses skip. It\u2019s the difference between a new hire who\u2019s contributing in week 3 vs. one who\u2019s still asking basic questions in month 2.',
     },
     downloadFile: 'hiring-and-onboarding.md',
+    problems: ['fix-operations', 'scale-up'],
   },
   {
     slug: 'competitive-differentiation',
@@ -1817,6 +1837,7 @@ Please:
       time: 'The staff talking points from Step 3 have an immediate impact. When every employee can articulate why you\u2019re different, every customer interaction reinforces your brand.',
     },
     downloadFile: 'competitive-differentiation.md',
+    problems: ['get-customers'],
   },
 ]
 
