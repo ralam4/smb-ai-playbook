@@ -764,6 +764,1060 @@ Please create:
     },
     downloadFile: 'google-reviews.md',
   },
+
+  // ── PHASE 2: NEW VERTICALS ──
+
+  {
+    slug: 'carwash-capacity-beginner',
+    tag: 'Car Wash',
+    tagColor: '#B45309',
+    title: 'Find Out Why Your Wash Is Half Empty',
+    description: 'Diagnose capacity gaps, revenue leaks, and slow days so you can fill your empty bays.',
+    difficulty: 'Beginner',
+    time: '~20 min',
+    tools: 'ChatGPT or Claude \u00B7 Your POS/transaction data',
+    intro: 'Every car wash owner knows some days are slow \u2014 but not exactly which hours, which wash packages, or which weather patterns drive volume. Revenue leaks from unused capacity are invisible without data. This guide walks you through using AI to analyze your transaction data, find your dead zones, diagnose revenue leaks, and build targeted promotions to fill them.',
+    outcomes: [
+      'A clear breakdown of your slowest time slots by day and hour',
+      'Revenue-per-bay analysis showing where you\u2019re leaving money on the table',
+      'A ready-to-launch slow-day promotion plan with copy and messaging',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Pull your transaction data',
+        description: 'Export the last 90 days of transactions from your POS system: date, time, wash type, and revenue per ticket. If your POS doesn\u2019t export, manually count cars by hour for one week \u2014 that\u2019s enough to find your dead zones.',
+        dataNote: 'You need: date, time of day, wash package selected, and ticket amount. Even a rough count of cars per hour for one week will reveal patterns.',
+      },
+      {
+        number: 2,
+        title: 'Find your dead zones',
+        description: 'Paste your data into AI and identify which time slots are consistently underperforming. You\u2019re looking for specific days and hours where you\u2019re running well below peak capacity.',
+        prompt: `I run a car wash in [CITY/REGION]. I'm going to share my transaction data from the last 90 days.
+
+Please help me:
+1. Break down wash volume by day of the week and by hour \u2014 show me which time slots are consistently underperforming
+2. Identify which wash packages (e.g. basic, deluxe, premium) are most and least popular by time of day
+3. Flag any days or time slots where I'm running below 40% of my peak capacity
+4. Compare weekday vs. weekend volume and revenue patterns
+5. Summarize the top 3 patterns I should act on first
+
+Here is my data:
+[PASTE YOUR POS EXPORT OR MANUAL COUNT DATA]`,
+      },
+      {
+        number: 3,
+        title: 'Diagnose revenue leaks',
+        description: 'Now look at revenue efficiency \u2014 not just how many cars, but how much revenue you\u2019re generating per bay per hour, and where upselling opportunities exist.',
+        prompt: `Using the same data, please help me analyze revenue efficiency:
+1. Calculate my average revenue per bay per hour across different time slots
+2. Identify which wash packages have the highest and lowest revenue per transaction
+3. Find peak hours where I could be upselling higher-tier washes but customers are choosing basic
+4. Calculate what my revenue would be if I converted just 10% of basic washes to the next tier up during peak hours
+5. Flag any pricing anomalies \u2014 times where discounts or promotions might be cannibalizing full-price sales`,
+      },
+      {
+        number: 4,
+        title: 'Build a slow-day promo plan',
+        description: 'Turn your dead zones into targeted promotions with specific offers, messaging, and a test plan to measure results.',
+        prompt: `Based on my dead zones and revenue analysis, please create:
+1. Three targeted promotions \u2014 one for each of my slowest time slots \u2014 with specific offers (e.g. "$2 off premium wash before 10am on Tuesdays")
+2. A text message or SMS blast template for each promotion (under 160 characters each)
+3. Signage copy I can print and display at the wash entrance to drive traffic to slow hours
+4. A simple loyalty or punch-card concept that incentivizes visits during off-peak times
+5. A 30-day test plan: which promo to run first, how to measure if it's working, and when to adjust`,
+      },
+    ],
+    expectations: {
+      good: 'Most car wash owners discover 2\u20133 specific time slots where simple signage or a text blast could increase volume 15\u201320%.',
+      ifBad: 'If your POS doesn\u2019t export data, manually track car counts by hour for one week \u2014 that\u2019s enough to find your dead zones.',
+      time: 'The promo plan from Step 4 gives you ready-to-use copy. Test one slow-day promotion this week and measure the result.',
+    },
+    downloadFile: 'carwash-capacity-beginner.md',
+  },
+  {
+    slug: 'carwash-membership-intermediate',
+    tag: 'Car Wash',
+    tagColor: '#B45309',
+    title: 'Build a Membership Program That Prints Recurring Revenue',
+    description: 'Design, price, and launch an unlimited wash membership that creates predictable monthly revenue.',
+    difficulty: 'Intermediate',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude \u00B7 Your wash volume + pricing data',
+    intro: 'Single-wash revenue is unpredictable and weather-dependent. A rainy week can wipe out your numbers. An unlimited membership program creates predictable recurring revenue that shows up rain or shine \u2014 but most car wash owners don\u2019t know how to price it, structure tiers, or calculate breakeven. This guide walks you through designing, modeling, and launching a membership program using AI.',
+    outcomes: [
+      'A 3-tier membership structure with pricing based on your actual costs',
+      'A financial model showing breakeven points and projected recurring revenue',
+      'A complete launch plan with messaging, signage, and staff scripts',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Audit your current revenue mix',
+        description: 'Before designing membership tiers, understand your current economics: what customers pay, how often they come back, and what your fixed costs look like.',
+        dataNote: 'Gather: average ticket price by wash type, monthly wash volume, percentage of repeat customers (if known), current pricing for each wash tier, and your monthly fixed costs (rent, utilities, labor, chemicals, equipment).',
+      },
+      {
+        number: 2,
+        title: 'Design your membership tiers',
+        description: 'Use AI to create a tiered membership structure anchored to your existing wash packages, with pricing that\u2019s attractive to frequent customers but profitable for you.',
+        prompt: `I run a car wash in [CITY/REGION] and I want to create an unlimited wash membership program.
+
+Here are my current details:
+- Wash packages and prices: [LIST \u2014 e.g. Basic $8, Deluxe $14, Premium $20, Ultimate $28]
+- Average monthly wash volume: [NUMBER] cars
+- Estimated percentage of repeat customers (weekly or biweekly): [ESTIMATE]
+- Monthly fixed costs (rent, utilities, labor, chemicals): approximately $[AMOUNT]
+- My biggest competitor's membership pricing (if known): [DETAILS or "not sure"]
+
+Please help me:
+1. Design a 3-tier membership structure (e.g. Basic Unlimited, Plus, Premium) \u2014 what's included in each, and recommended monthly pricing
+2. For each tier, calculate the breakeven wash frequency \u2014 how many times per month would a member need to wash before I start losing money on them
+3. Recommend which of my current wash packages to anchor each membership tier to
+4. Suggest a sign-up incentive (first month pricing, free upgrade, etc.) that drives trial without destroying margins
+5. Compare my proposed pricing to industry benchmarks for my region`,
+      },
+      {
+        number: 3,
+        title: 'Build the financial model',
+        description: 'Model the economics at different adoption rates so you know exactly how many members you need to cover costs \u2014 and what happens in the worst case.',
+        prompt: `Using the membership tiers we designed, help me model the financials:
+1. If I convert [5% / 10% / 15% / 20%] of my current monthly customers to members, what's my projected monthly recurring revenue for each scenario?
+2. Model the "heavy user" scenario \u2014 if the average member washes 8-10 times per month, am I still profitable at each tier?
+3. Calculate my monthly breakeven: how many members do I need at each tier to cover my fixed costs with membership revenue alone?
+4. Project Year 1 revenue assuming I add [X] new members per month with [Y]% monthly churn
+5. What's the worst case \u2014 if every member washes every single day, what does that cost me? At what point does that scenario become unsustainable?`,
+      },
+      {
+        number: 4,
+        title: 'Create the launch plan',
+        description: 'Build everything you need to launch: customer messaging, signage, staff scripts, and a 90-day review plan.',
+        prompt: `I'm ready to launch my car wash membership program. Please create:
+1. An email/text announcement to send to my existing customer list \u2014 emphasize the value proposition and include a limited-time launch offer
+2. Signage copy for 3 locations: entrance sign, pay station, and exit sign \u2014 each should highlight a different benefit (savings, convenience, unlimited)
+3. A staff script for upselling membership at the register \u2014 including how to handle the "let me think about it" objection
+4. A social media launch sequence: 3 posts over 1 week (teaser, launch day, last-chance for launch pricing)
+5. A 90-day post-launch review checklist: what metrics to track (sign-ups, churn, average washes per member, revenue per member) and how to know if adjustments are needed`,
+      },
+    ],
+    expectations: {
+      good: 'A well-priced membership program can convert 10\u201315% of regular customers within the first month, creating predictable revenue even on rainy weeks.',
+      ifBad: 'Start with a simple single-tier unlimited plan if three tiers feels like too much. You can always add tiers later.',
+      time: 'The financial model from Step 3 is the key decision-making tool \u2014 it tells you exactly how many members you need to cover your overhead.',
+    },
+    downloadFile: 'carwash-membership-intermediate.md',
+  },
+  {
+    slug: 'architecture-code-compliance-beginner',
+    tag: 'Architecture Firm',
+    tagColor: '#4A5568',
+    title: 'Stop Losing Hours on Code Research and Plan Check Responses',
+    description: 'Use AI to speed up code compliance research, plan check responses, and permit submittal checklists.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude \u00B7 Your project details + applicable codes',
+    intro: 'Small architecture firms spend hours digging through building codes, writing plan check responses, and assembling permit submittal checklists. It\u2019s tedious, repetitive, and pulls architects away from design work. This guide shows you how to use AI to speed up code research, draft plan check responses, and build submittal checklists \u2014 so you can spend more time designing and less time on paperwork.\n\n\u26A0\uFE0F **Important:** AI is a research assistant, not a licensed professional. All code interpretations, compliance decisions, and permit submittals must be verified by a licensed architect. Use these outputs as a starting point, not a final answer.',
+    outcomes: [
+      'A structured code compliance checklist organized by discipline',
+      'Draft plan check responses with code references you can refine and submit',
+      'A permit submittal checklist tailored to your jurisdiction',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Define your project parameters',
+        description: 'Before prompting AI, gather the key project details: type, occupancy, construction type, jurisdiction, and applicable codes.',
+        dataNote: 'You need: project type (e.g. mixed-use, single-family, TI), occupancy classification, construction type, building area and stories, jurisdiction, applicable codes (IBC edition, local amendments, energy code, accessibility standards).',
+      },
+      {
+        number: 2,
+        title: 'Generate a code compliance checklist',
+        description: 'Use AI to create a structured checklist of applicable code sections, organized by discipline. This replaces the hours of manual code research at the start of every project.',
+        prompt: `I'm an architect working on a [PROJECT TYPE] project in [CITY/JURISDICTION].
+
+Project details:
+- Occupancy classification: [e.g. B, A-2, R-2, mixed-use B/R-2]
+- Construction type: [e.g. Type V-A, Type III-B]
+- Building area: [SQUARE FOOTAGE]
+- Number of stories: [NUMBER]
+- Applicable codes: [e.g. 2021 IBC, 2022 California Building Code, IECC 2021, ADA/ANSI A117.1]
+- Jurisdiction-specific requirements: [e.g. "City requires enhanced accessibility beyond ADA", "fire department has specific access road requirements"]
+
+Please generate a code compliance checklist organized by discipline:
+1. Structural/Building \u2014 allowable area, height, fire-resistance ratings, structural requirements
+2. Fire and Life Safety \u2014 sprinkler requirements, egress, fire separation, occupancy separation
+3. Accessibility \u2014 accessible routes, restroom requirements, parking, signage
+4. Energy Code \u2014 envelope requirements, mechanical, lighting, compliance path
+5. Plumbing \u2014 fixture counts based on occupancy load
+6. Any jurisdiction-specific items based on the location I provided
+
+For each item, include: the applicable code section number, the requirement summary, and a checkbox placeholder for tracking compliance.`,
+      },
+      {
+        number: 3,
+        title: 'Draft plan check responses',
+        description: 'Paste your plan check comments from the jurisdiction and get point-by-point draft responses with code references.',
+        prompt: `I received plan check comments from [JURISDICTION] on my [PROJECT TYPE] project. I need to draft point-by-point responses.
+
+Here are the plan check comments:
+[PASTE THE FULL LIST OF PLAN CHECK COMMENTS]
+
+For each comment, please:
+1. Draft a professional response that addresses the comment directly
+2. Reference the applicable code section that supports the response
+3. Indicate whether the response requires: (a) a narrative response only, (b) a drawing revision, or (c) a calculation submittal
+4. Flag any comments where the jurisdiction's interpretation may differ from the code text \u2014 so I can review those carefully
+5. Format as a numbered response sheet I can submit back to the plan checker`,
+      },
+      {
+        number: 4,
+        title: 'Build a permit submittal checklist',
+        description: 'Generate a comprehensive, jurisdiction-specific checklist of everything needed for your permit submittal package.',
+        prompt: `I'm preparing a permit submittal package for [JURISDICTION] for a [PROJECT TYPE] project.
+
+Please create a comprehensive submittal checklist that includes:
+1. Required drawing sheets (site plan, floor plans, elevations, sections, details, structural, MEP) with notes on what each sheet must show per typical jurisdiction requirements
+2. Required calculations (structural, energy, Title 24, plumbing fixture count, occupant load/egress)
+3. Required forms (permit application, contractor info, special inspection requirements, environmental forms if applicable)
+4. Required supporting documents (soils report, survey, HOA approval, school district fees, utility will-serve letters)
+5. Fees typically required at submittal
+6. Any pre-submittal requirements (pre-application meeting, design review, environmental review)
+
+Format as a printable checklist with checkboxes, organized by submission order.`,
+      },
+    ],
+    expectations: {
+      good: 'A code checklist that took 2 hours to compile manually can be drafted in 10 minutes. You\u2019ll still need to verify every item, but the starting point saves significant time.',
+      ifBad: 'AI may reference outdated code editions or miss local amendments. Always verify the applicable code year and jurisdiction-specific requirements.',
+      time: 'The plan check response templates from Step 3 are the biggest time-saver for most small firms \u2014 they eliminate the blank-page problem on every resubmittal.',
+    },
+    downloadFile: 'architecture-code-compliance-beginner.md',
+  },
+  {
+    slug: 'architecture-profitability-intermediate',
+    tag: 'Architecture Firm',
+    tagColor: '#4A5568',
+    title: 'Find Out Which Projects Are Actually Making You Money',
+    description: 'Run a profit audit on your projects and build systems to prevent scope creep from eating your margins.',
+    difficulty: 'Intermediate',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude \u00B7 Your project hours + fee data',
+    intro: 'Most small architecture firms don\u2019t track profitability per project. They know their overall revenue but not which project types, phases, or clients are profitable vs. money-losers. Scope creep during Construction Administration quietly erodes margins until the project that looked profitable on paper turns into a loss. This guide walks you through auditing your project profitability, building scope-proof proposals, and creating a CA management system.',
+    outcomes: [
+      'A profit audit showing your effective hourly rate per project and phase',
+      'A scope-proof proposal template with clear boundaries and change order language',
+      'A CA scope management system to prevent margin erosion during construction',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Pull your project financials',
+        description: 'Gather data for your last 5\u201310 projects so you can see which are actually profitable.',
+        dataNote: 'For each project, collect: project name/type, contracted fee, hours spent by phase (SD, DD, CD, CA), hourly rate of each staff member who worked on it, any additional services billed, and any scope changes or extras that were done for free.',
+      },
+      {
+        number: 2,
+        title: 'Run a project profit audit',
+        description: 'Paste your project data and let AI calculate your real profitability \u2014 by project, by phase, and by project type.',
+        prompt: `I run a small architecture firm and I want to understand which projects are actually profitable.
+
+Here is my project data:
+[PASTE YOUR PROJECT DATA \u2014 for each project include: project name, type, fee, hours by phase (SD, DD, CD, CA), staff involved and their hourly rates, additional services billed if any]
+
+Please analyze:
+1. Calculate the effective hourly rate for each project (total fee \u00F7 total hours)
+2. Break down profitability by phase \u2014 which phases (SD, DD, CD, CA) consistently run over budget?
+3. Compare profitability across project types \u2014 are certain types (residential, commercial, TI) more profitable than others?
+4. Flag any projects where CA hours alone exceeded more than 25% of the total fee
+5. Calculate what my average project profit margin is, and what it would be if I eliminated the worst-performing phase overruns
+6. Identify the top 2\u20133 patterns that are costing me the most money`,
+      },
+      {
+        number: 3,
+        title: 'Build scope-proof proposals',
+        description: 'Create a proposal template that explicitly defines what\u2019s included and what\u2019s not, so scope creep can\u2019t happen silently.',
+        prompt: `Based on my profitability analysis, help me create a proposal template that prevents scope creep.
+
+My firm's details:
+- Firm name: [NAME]
+- Typical project types: [LIST]
+- Standard hourly rates: [Principal: $X, Project Architect: $X, Designer: $X, Drafter: $X]
+- Phases I typically include in base fee: [e.g. SD through CD, or SD through CA]
+
+Please create:
+1. A proposal template with explicit scope boundaries for each phase \u2014 exactly what's included (number of design iterations, meetings, drawing sets) and what's not
+2. An "Additional Services" schedule with hourly rates and common add-on services (additional meetings, redesigns beyond X rounds, expedited schedules, owner-requested changes after DD approval)
+3. Clear "Not Included" language that prevents scope assumptions \u2014 list the most common things clients assume are included but shouldn't be
+4. A fee structure recommendation: should I use fixed fee, hourly with a cap, or phased billing? Based on my data, which approach protects my margins best?
+5. A change order template for when scope changes occur mid-project`,
+      },
+      {
+        number: 4,
+        title: 'Create a CA scope management system',
+        description: 'Construction Administration is where most firms\u2019 profitability breaks down. Build a system to track scope consumption and communicate when limits are reached.',
+        prompt: `Construction Administration is where my firm's profitability usually breaks down. Help me create a system to manage CA scope.
+
+My typical CA challenges:
+- [DESCRIBE \u2014 e.g. "unlimited RFIs", "too many site visits", "submittal reviews dragging on", "contractor calls my cell directly", "owner changes during construction"]
+
+Please create:
+1. A CA scope tracker template \u2014 columns for: RFI count (vs. allowance), site visit count (vs. allowance), submittal review rounds (vs. allowance), and change order requests
+2. Standard CA scope limits I should include in every contract \u2014 recommended allowances for RFIs, site visits, and submittal review rounds based on project size
+3. A client email template for when CA scope is being exceeded \u2014 professional but firm, with a reference to the contract terms and a quote for additional services
+4. A weekly CA status report template I can send to the owner showing scope consumption (e.g. "12 of 15 allocated RFIs used, 3 of 6 site visits completed")
+5. A change order request template for additional CA services with clear justification language`,
+      },
+    ],
+    expectations: {
+      good: 'Most firms discover that 1\u20132 project types or phases are significantly less profitable than they assumed. The proposal template from Step 3 prevents this on future projects.',
+      ifBad: 'If you don\u2019t track hours by phase, estimate them for your last 3 projects. Even rough numbers reveal patterns.',
+      time: 'The CA scope management system from Step 4 is where most small firms lose money without realizing it. Having a tracker and a template for scope conversations changes the dynamic.',
+    },
+    downloadFile: 'architecture-profitability-intermediate.md',
+  },
+  {
+    slug: 'autorepair-estimates-trust-beginner',
+    tag: 'Auto Repair',
+    tagColor: '#DC2626',
+    title: 'Write Estimates Customers Actually Understand and Trust',
+    description: 'Create plain-English estimates, declined repair follow-ups, and vehicle health reports that build customer trust.',
+    difficulty: 'Beginner',
+    time: '~20 min',
+    tools: 'ChatGPT or Claude \u00B7 Your common repair types + pricing',
+    intro: 'Customers distrust auto repair shops because estimates feel opaque \u2014 unfamiliar parts, unexplained labor line items, and no explanation of what\u2019s actually wrong or why it costs what it does. Declined repairs don\u2019t get followed up on, and trust \u2014 the #1 barrier to revenue \u2014 never gets built. This guide helps you use AI to rewrite your estimates in plain English, create follow-up sequences for declined repairs, and build vehicle health reports that turn one-time customers into regulars.',
+    outcomes: [
+      'Plain-English estimate templates for your most common repairs',
+      'A 3-message follow-up sequence for declined repairs',
+      'A vehicle health report template you can hand to every customer',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'List your top 10 most common repairs',
+        description: 'Before prompting AI, list the repairs you do most often with your current pricing.',
+        dataNote: 'Gather: repair name, typical parts cost, labor time (hours), total estimate range, and how you currently explain it to the customer. Think: oil changes, brake pads, timing belts, alternators, AC recharge, tire rotations, check engine diagnostics.',
+      },
+      {
+        number: 2,
+        title: 'Create plain-English estimate templates',
+        description: 'Rewrite your most common repair estimates so customers understand what\u2019s wrong, why it matters, and exactly what they\u2019re paying for.',
+        prompt: `I run an auto repair shop and I want to rewrite my most common repair estimates so customers actually understand them and trust my pricing.
+
+Here are my top 10 most common repairs with current pricing:
+[PASTE YOUR LIST \u2014 e.g.
+- Brake pad replacement (front): Parts $45-80, Labor 1.5 hrs, Total $180-280
+- Alternator replacement: Parts $200-350, Labor 2 hrs, Total $400-550
+- AC recharge and leak check: Parts $30-60, Labor 1 hr, Total $130-200]
+
+For each repair, please rewrite the estimate in customer-friendly language that includes:
+1. What's wrong \u2014 a plain-English explanation of the problem (no jargon)
+2. Why it matters \u2014 what happens if they don't fix it (safety, further damage, cost)
+3. What we'll do \u2014 the actual repair described simply
+4. Cost breakdown \u2014 parts, labor, and total, with a brief explanation of why each costs what it does
+5. How long it takes \u2014 so they can plan their day
+6. Warranty \u2014 what's covered after the repair
+
+Format each as a template my service advisor can fill in and print or email to the customer.`,
+      },
+      {
+        number: 3,
+        title: 'Build a declined repair follow-up system',
+        description: 'Create a follow-up sequence that brings back customers who declined recommended repairs \u2014 without being pushy.',
+        prompt: `Many customers decline recommended repairs at my shop. I want a follow-up system that brings them back without being pushy.
+
+My shop details:
+- Shop name: [NAME]
+- Most commonly declined repairs: [LIST \u2014 e.g. "brake pads when they're at 3mm", "recommended fluid flushes", "suspension components", "timing belt at mileage interval"]
+- How I currently follow up: [DESCRIBE or "I don't"]
+
+Please create:
+1. A same-day follow-up message (text/email) \u2014 thank them for their visit, briefly restate what was recommended and why, no pressure
+2. A 2-week follow-up \u2014 add a bit more urgency with an educational angle ("Here's what can happen if brake pads wear below 2mm...")
+3. A 6-week follow-up \u2014 a friendly check-in with a soft offer ("We saved your inspection notes \u2014 come back this month and we'll waive the re-inspection fee")
+4. For each message: keep it under 3 sentences for text, under 5 for email
+5. A simple tracking method \u2014 how to note which customers declined what, and when each follow-up should be sent`,
+      },
+      {
+        number: 4,
+        title: 'Design a vehicle health report',
+        description: 'Create a one-page report you hand to every customer after service \u2014 showing what was done, what\u2019s in good shape, and what to watch for next.',
+        prompt: `I want to give every customer a simple vehicle health report after their service \u2014 something that builds trust and gives them a reason to come back.
+
+My shop name: [NAME]
+Services I typically inspect during any visit: [LIST \u2014 e.g. brakes, tires, fluids, belts, battery, lights, wipers, suspension]
+
+Please create:
+1. A one-page vehicle health report template with sections for:
+   - What was done today (the service they paid for)
+   - Vehicle vitals check (green/yellow/red status for each inspected system)
+   - What to watch for next (upcoming maintenance based on mileage/age)
+   - Recommended next visit and what it should include
+2. A color-coding system: Green = good, Yellow = monitor/plan for soon, Red = needs attention now
+3. A brief explanation script my tech or service advisor can use when handing it to the customer
+4. Make it professional enough to build trust but simple enough that a non-car-person understands it immediately`,
+      },
+    ],
+    expectations: {
+      good: 'Shops that switch to plain-English estimates typically see declined repair rates drop. The vehicle health report becomes a trust-building tool customers actually keep.',
+      ifBad: 'Have your front desk person review the AI-generated language \u2014 they know which words confuse customers most.',
+      time: 'The follow-up sequence from Step 3 recovers revenue you\u2019re currently leaving on the table. Even a 10% conversion rate on declined repairs adds up fast.',
+    },
+    downloadFile: 'autorepair-estimates-trust-beginner.md',
+  },
+  {
+    slug: 'autorepair-capacity-pricing-intermediate',
+    tag: 'Auto Repair',
+    tagColor: '#DC2626',
+    title: 'Maximize Every Bay and Every Hour in Your Shop',
+    description: 'Analyze labor efficiency, find your most profitable services, and set a shop rate that actually covers your costs.',
+    difficulty: 'Intermediate',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude \u00B7 Your shop rate, labor hours, and ticket data',
+    intro: 'Most shop owners don\u2019t know their true labor efficiency rate, which services generate the most profit per bay-hour, or whether their shop rate actually covers overhead. They\u2019re busy but not necessarily profitable. This guide walks you through calculating your real efficiency, finding your most profitable services, and reviewing whether your pricing actually supports the business you want to run.',
+    outcomes: [
+      'Your real labor efficiency rate and effective shop rate after overhead',
+      'A service mix analysis showing which repairs to promote and which to reprice',
+      'A shop rate review with a pricing adjustment plan if needed',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Gather your shop metrics',
+        description: 'Collect the numbers you need to understand your shop\u2019s real economics.',
+        dataNote: 'Collect: number of bays, number of techs, posted shop rate per hour, average hours billed per tech per day (flagged hours), average repair order/ticket size, monthly gross revenue, and monthly overhead (rent, utilities, insurance, supplies, equipment payments, admin staff).',
+      },
+      {
+        number: 2,
+        title: 'Calculate your real efficiency',
+        description: 'Find out how efficiently your shop is converting available hours into billed revenue.',
+        prompt: `I run an auto repair shop and I want to understand my real labor efficiency and profitability.
+
+Here are my shop metrics:
+- Number of bays: [NUMBER]
+- Number of techs: [NUMBER]
+- Shop hours: [e.g. 8am-5pm, Monday-Friday = 45 hrs/week available per tech]
+- Posted shop rate: $[RATE]/hour
+- Average hours billed (flagged) per tech per day: [NUMBER]
+- Average repair order size: $[AMOUNT]
+- Monthly gross revenue: $[AMOUNT]
+- Monthly overhead: $[AMOUNT] (break down if possible: rent, utilities, insurance, supplies, equipment, admin/staff)
+
+Please calculate:
+1. My labor efficiency rate \u2014 hours billed vs. hours available (industry benchmark: 85-100%+)
+2. My effective shop rate \u2014 actual revenue per billed hour after overhead
+3. Revenue per bay per day \u2014 and how it compares to industry benchmarks
+4. My breakeven point \u2014 how many billed hours per day do I need to cover overhead?
+5. Where my biggest efficiency gaps are \u2014 is it utilization (not enough cars), productivity (slow techs), or pricing (rate too low)?
+6. What a 10% improvement in my weakest metric would mean in monthly revenue`,
+      },
+      {
+        number: 3,
+        title: 'Find your most profitable services',
+        description: 'Analyze which services generate the most profit per bay-hour and which ones are tying up bays for low return.',
+        prompt: `Using my shop data, help me analyze which services are most and least profitable.
+
+My service mix (estimate percentages of revenue):
+[LIST \u2014 e.g.
+- Oil changes / basic maintenance: 20%
+- Brake work: 15%
+- Engine diagnostics and repair: 25%
+- AC/heating: 10%
+- Tires: 10%
+- Suspension/steering: 10%
+- Electrical: 5%
+- Other: 5%]
+
+For each service category, please analyze:
+1. Estimated profit per bay-hour \u2014 factoring in typical parts markup, labor time, and my shop rate
+2. Which services generate the most profit per hour of bay time?
+3. Which services tie up bays the longest for the least return?
+4. What should I promote more aggressively based on profitability?
+5. Are there services I should consider repricing, referring out, or repositioning?
+6. Suggest a "service mix optimization" \u2014 what would my ideal revenue split look like to maximize profit?`,
+      },
+      {
+        number: 4,
+        title: 'Build a shop rate and pricing review',
+        description: 'Determine if your current shop rate and service pricing are actually covering your costs and generating the profit margin you need.',
+        prompt: `I need to review whether my shop rate and service pricing are actually covering my costs and generating profit.
+
+My current details:
+- Posted shop rate: $[RATE]/hour
+- Target profit margin: [e.g. 20%, 25%, 30%]
+- Last time I raised my rate: [DATE or "I don't remember"]
+- My closest competitors' posted rates (if known): [LIST or "not sure"]
+- Parts markup: [e.g. "cost + 40%", "list price", "varies"]
+
+Please help me:
+1. Calculate what my shop rate needs to be to hit my target profit margin based on my overhead and efficiency numbers
+2. If I need a rate increase, create a phased plan \u2014 how much, when, and how to communicate it
+3. Review my parts markup strategy \u2014 am I leaving money on the table or pricing myself out?
+4. Draft a customer communication for a rate increase \u2014 brief, professional, emphasizing value and investment in quality
+5. Create a quarterly pricing review checklist I can follow to make sure my rates stay aligned with my costs`,
+      },
+    ],
+    expectations: {
+      good: 'Most shops discover their effective hourly rate is significantly lower than their posted rate once overhead is factored in. The service mix analysis often reveals 2\u20133 high-value services to promote more aggressively.',
+      ifBad: 'If you don\u2019t track hours billed per tech, start with one week of tracking \u2014 it reveals efficiency gaps immediately.',
+      time: 'The shop rate review from Step 4 is the hardest conversation but the most important one. Most independent shops are underpriced relative to their costs.',
+    },
+    downloadFile: 'autorepair-capacity-pricing-intermediate.md',
+  },
+  {
+    slug: 'realestate-listings-leads-beginner',
+    tag: 'Real Estate Agent',
+    tagColor: '#16A34A',
+    title: 'Write Listings That Sell and Leads That Convert',
+    description: 'Generate standout listing descriptions, build a lead nurture sequence, and create a listing presentation that wins clients.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude \u00B7 Your listing details + lead sources',
+    intro: 'Most agents spend hours writing listing descriptions that sound like every other listing on the MLS. Lead follow-up is inconsistent \u2014 hot leads go cold because there\u2019s no system. Seller listing presentations are cobbled together last-minute. This guide helps you use AI to generate compelling listing copy, build automated lead nurture sequences, and create a listing presentation framework you can customize for every appointment.',
+    outcomes: [
+      'Standout listing descriptions in multiple formats (MLS, social, email)',
+      'A 5-touch lead nurture sequence for both buyers and sellers',
+      'A listing presentation outline with pricing conversation scripts',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Gather your listing details',
+        description: 'Before prompting AI, collect everything that makes this property worth buying.',
+        dataNote: 'For a current or upcoming listing, collect: full property details (beds, baths, sqft, lot size, year built, upgrades), neighborhood highlights (schools, dining, commute), unique selling points, target buyer profile, and 3\u20135 comparable recent sales.',
+      },
+      {
+        number: 2,
+        title: 'Generate standout listing descriptions',
+        description: 'Create compelling listing copy in multiple formats \u2014 MLS, social media, and email \u2014 that actually differentiates the property.',
+        prompt: `I'm a real estate agent and I need compelling listing descriptions for a property.
+
+Property details:
+- Address: [ADDRESS or general area]
+- Type: [single-family, condo, townhouse, etc.]
+- Beds/Baths: [NUMBER]
+- Square footage: [NUMBER]
+- Lot size: [SIZE]
+- Year built: [YEAR]
+- Recent upgrades: [LIST \u2014 e.g. "new kitchen 2024", "updated HVAC", "fresh landscaping"]
+- Unique features: [LIST \u2014 e.g. "corner lot", "mountain views", "original hardwood floors", "ADU potential"]
+- Neighborhood highlights: [LIST \u2014 e.g. "walkable to downtown", "top-rated school district", "10 min to freeway"]
+- Target buyer: [e.g. "young families", "remote workers wanting space", "investors"]
+- List price: $[PRICE]
+
+Please create:
+1. A full MLS description (250-300 words) \u2014 compelling, specific, avoids clich\u00E9s like "charming" or "won't last long"
+2. A luxury/elevated version of the same listing (if applicable)
+3. Three social media captions \u2014 one for Instagram (with hashtag suggestions), one for Facebook, one for LinkedIn
+4. An email announcement I can send to my database with subject line
+5. A one-line "hook" I can use in ads or flyers`,
+      },
+      {
+        number: 3,
+        title: 'Build a lead nurture sequence',
+        description: 'Create follow-up sequences for both buyer and seller leads so no one falls through the cracks.',
+        prompt: `I want to create a follow-up sequence for new buyer and seller leads so no one falls through the cracks.
+
+My details:
+- My name: [NAME]
+- My brokerage: [BROKERAGE]
+- My target area: [CITY/NEIGHBORHOOD]
+- Where my leads come from: [e.g. "Zillow, open houses, referrals, social media, website"]
+- My typical response time currently: [e.g. "same day" or "whenever I remember"]
+
+Please create two sequences:
+
+BUYER LEAD SEQUENCE (5 touches):
+1. Initial response (send within 5 minutes of inquiry) \u2014 acknowledge, ask one qualifying question
+2. Value-add follow-up (Day 2) \u2014 share a relevant listing or market insight, no pressure
+3. Market insight (Week 1) \u2014 brief market update for their target area, position yourself as the expert
+4. Soft check-in (Week 3) \u2014 "still looking?" with a helpful resource attached
+5. Re-engagement (Month 2) \u2014 if no response, a final friendly touchpoint with an easy reply option
+
+SELLER LEAD SEQUENCE (5 touches):
+1. Initial response \u2014 acknowledge interest, offer a free home value estimate
+2. Value-add (Day 3) \u2014 share a recent comparable sale in their area with brief analysis
+3. Market positioning (Week 1) \u2014 "here's what's happening in your neighborhood" with data
+4. Soft ask (Week 3) \u2014 offer a no-obligation listing consultation
+5. Re-engagement (Month 2) \u2014 seasonal or market-triggered check-in
+
+For each message: provide text/SMS version (under 160 chars) and email version.`,
+      },
+      {
+        number: 4,
+        title: 'Create a seller listing presentation outline',
+        description: 'Build a listing presentation framework you can customize for each seller appointment.',
+        prompt: `I need a listing presentation framework I can customize for each potential seller.
+
+My details:
+- My name and brokerage: [NAME, BROKERAGE]
+- My experience: [YEARS in business, transactions closed, areas of specialty]
+- My marketing approach: [e.g. "professional photography, social media, open houses, broker tours, targeted digital ads"]
+- What makes me different: [LIST 2-3 differentiators]
+
+Please create:
+1. A listing presentation outline (8-10 slides/sections) covering: why me, my marketing plan, pricing strategy, timeline and process, and what sellers can expect
+2. A pricing conversation script \u2014 how to handle "I want to list higher than comps suggest" professionally
+3. Three "closing" questions I can ask at the end of the presentation to move toward signing
+4. A follow-up email template to send after the listing appointment if they didn't sign on the spot
+5. A one-page "leave behind" summary I can print \u2014 highlights of my marketing plan and recent results`,
+      },
+    ],
+    expectations: {
+      good: 'Listing descriptions that took 30 minutes to write can be drafted in 2 minutes. The lead nurture sequence ensures no lead goes more than 48 hours without a touchpoint.',
+      ifBad: 'AI-generated listing copy needs your local knowledge. Always add neighborhood-specific details the AI can\u2019t know.',
+      time: 'The lead nurture sequence from Step 3 is the highest-ROI output \u2014 consistent follow-up is the #1 differentiator between agents who convert and those who don\u2019t.',
+    },
+    downloadFile: 'realestate-listings-leads-beginner.md',
+  },
+  {
+    slug: 'realestate-market-authority-intermediate',
+    tag: 'Real Estate Agent',
+    tagColor: '#16A34A',
+    title: 'Become the Market Expert Everyone Calls First',
+    description: 'Create market reports, build CMA presentations, and plan your business so you grow year-over-year.',
+    difficulty: 'Intermediate',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude \u00B7 Your MLS data + market stats',
+    intro: 'The best agents don\u2019t just compete on relationships \u2014 they compete on knowledge. But creating market reports, building polished CMA presentations, and planning your business year takes time most agents don\u2019t have. This guide helps you use AI to turn raw MLS data into professional market reports, build a CMA template that elevates your listing presentations, and create an annual business plan that drives growth.',
+    outcomes: [
+      'A professional monthly market report you can email and post on social media',
+      'A CMA presentation template with plain-English adjustments explanations',
+      'A 12-month business plan with lead targets and a quarterly scorecard',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Gather your market data',
+        description: 'Pull the key market stats from your MLS for your target area(s).',
+        dataNote: 'Pull from MLS: median sale price, average days on market, active inventory count, months of supply, price per square foot, list-to-sale price ratio, and month-over-month trends \u2014 all for your target area(s) over the last 6\u201312 months. Also note any major local developments.',
+      },
+      {
+        number: 2,
+        title: 'Create a monthly market report',
+        description: 'Turn raw stats into a professional, branded market report that positions you as the local expert.',
+        prompt: `I'm a real estate agent and I want to create a professional monthly market report I can email to my database and post on social media.
+
+My market data for [MONTH, YEAR] in [CITY/NEIGHBORHOOD]:
+- Median sale price: $[AMOUNT] (last month: $[AMOUNT])
+- Average days on market: [NUMBER] (last month: [NUMBER])
+- Active listings: [NUMBER] (last month: [NUMBER])
+- Months of supply: [NUMBER]
+- List-to-sale price ratio: [PERCENTAGE]
+- Price per square foot: $[AMOUNT]
+- Notable trends: [e.g. "inventory up 15%", "multiple offers returning", "luxury segment slowing"]
+
+Please create:
+1. A 1-page market report with: headline takeaway, 3-4 key stats with brief explanations, a "What This Means for Buyers" section, a "What This Means for Sellers" section, and a brief market outlook
+2. A social media caption version (Instagram/Facebook) summarizing the report in 3-4 sentences with a call to action
+3. An email version I can send to my database \u2014 brief intro, key stats, and "want to know what this means for your home? Let's talk."
+4. Format the report so it looks professional when shared as an image or PDF`,
+      },
+      {
+        number: 3,
+        title: 'Build a CMA presentation template',
+        description: 'Create a comparative market analysis presentation that\u2019s data-driven but seller-friendly.',
+        prompt: `I need a comparative market analysis presentation template I can customize for each seller consultation.
+
+My details:
+- My target area: [CITY/NEIGHBORHOODS]
+- Typical property types I work with: [e.g. single-family, condos, townhouses]
+- My approach to pricing: [e.g. "data-driven, competitive pricing to maximize offers" or "strategic positioning based on condition and market timing"]
+
+Please create a CMA presentation structure with:
+1. An opening section explaining what a CMA is and why it matters (in plain language, not agent jargon)
+2. A comp selection section \u2014 how I chose the comparables (proximity, recency, similarity) with placeholders for 3-5 comps showing: address, sale price, beds/baths/sqft, price per sqft, days on market, and condition notes
+3. An adjustments section \u2014 explain in plain English why adjustments are made (e.g. "your home has a pool and Comp 1 doesn't, so we adjust upward") with a simple adjustment table
+4. A pricing recommendation section \u2014 suggested list price with a price range and reasoning
+5. A "what happens if we price too high" section showing average DOM and price reduction data for overpriced listings in my market
+6. A visual summary page: recommended price, expected DOM, estimated net proceeds after commissions and typical closing costs`,
+      },
+      {
+        number: 4,
+        title: 'Draft your 12-month business plan',
+        description: 'Create an annual plan with reverse-engineered goals, lead targets, and a quarterly review framework.',
+        prompt: `I want to create an annual business plan for my real estate practice.
+
+My current situation:
+- Last year's transactions: [NUMBER] (volume: $[AMOUNT])
+- This year's goal: [NUMBER] transactions / $[AMOUNT] volume
+- Average commission: [PERCENTAGE or $AMOUNT]
+- My lead sources: [LIST with approximate percentage \u2014 e.g. "Referrals 40%, Zillow 20%, Open Houses 15%, Social Media 10%, Sphere 15%"]
+- My biggest challenge: [DESCRIBE \u2014 e.g. "inconsistent lead gen", "too many leads not enough conversions", "can't break into luxury", "no systems"]
+- Monthly business expenses: $[AMOUNT]
+
+Please create:
+1. A reverse-engineered goal calculator \u2014 how many leads, appointments, and listings I need per month to hit my transaction goal (with conversion rate assumptions)
+2. A lead generation plan by source \u2014 specific monthly targets for each lead source, with action items
+3. A quarterly marketing calendar \u2014 what to focus on each quarter (spring market prep, summer listings, fall buyers, winter planning)
+4. A monthly scorecard template \u2014 key metrics to track (leads, appointments, listings taken, closings, revenue) with space for actual vs. goal
+5. A quarterly review framework \u2014 questions to ask myself every 90 days to course-correct`,
+      },
+    ],
+    expectations: {
+      good: 'Agents who send monthly market reports consistently become the first call when someone\u2019s thinking about buying or selling. The CMA template elevates your listing presentations above the competition.',
+      ifBad: 'Market data goes stale fast. Set a calendar reminder to update your report on the 1st of each month.',
+      time: 'The 12-month business plan from Step 4 is what separates agents who grow year-over-year from those who stay flat. Most agents never do this \u2014 which is your advantage.',
+    },
+    downloadFile: 'realestate-market-authority-intermediate.md',
+  },
+
+  // ── PHASE 2: UNIVERSAL GUIDES ──
+
+  {
+    slug: 'social-media-content-calendar',
+    tag: 'All Businesses',
+    tagColor: '#4338CA',
+    title: 'Build a 30-Day Content Calendar Without the Burnout',
+    description: 'Create a content system with pillars, a full month of posts, and a batch production workflow so you never stare at a blank screen again.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude \u00B7 Your business details + social platforms',
+    intro: 'Every small business owner knows they "should be posting" but can\u2019t stay consistent. They post in bursts, run out of ideas, and go silent for weeks. There\u2019s no system \u2014 just guilt. This guide helps you use AI to define your content pillars, generate a full month of posts with captions and visuals, and set up a batch production workflow so you can knock out all your content in one sitting.',
+    outcomes: [
+      'Content pillars and a weekly posting rhythm tailored to your business',
+      'A complete 30-day content calendar with captions, formats, and hashtags',
+      'A monthly batch production workflow so you create everything in 2\u20133 hours',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Define your content foundations',
+        description: 'Before generating content, clarify who you\u2019re talking to, where, and what you can authentically speak about.',
+        dataNote: 'Identify: your business type, who your ideal customer is (age, interests, what they care about), which platforms you\u2019re active on (or want to be), how often you currently post, and 3\u20135 topics you could talk about authentically.',
+      },
+      {
+        number: 2,
+        title: 'Generate your content pillars and post types',
+        description: 'Use AI to create a structured content strategy with pillars, post types, and a posting rhythm.',
+        prompt: `I run a [BUSINESS TYPE] in [CITY].
+
+My ideal customer is: [DESCRIBE \u2014 e.g. "busy parents aged 30-45 who want convenience", "homeowners looking for reliable service", "young professionals who care about quality"]
+
+I'm active on: [PLATFORMS \u2014 e.g. Instagram, Facebook, TikTok, LinkedIn]
+
+Topics I can speak to authentically:
+- [TOPIC 1 \u2014 e.g. "behind-the-scenes of how we work"]
+- [TOPIC 2 \u2014 e.g. "tips and education for customers"]
+- [TOPIC 3 \u2014 e.g. "customer transformations or success stories"]
+- [TOPIC 4 \u2014 e.g. "local community involvement"]
+- [TOPIC 5 \u2014 e.g. "my journey as a business owner"]
+
+Please create:
+1. 4-5 content pillars for my business \u2014 each with a name, description, and why it resonates with my audience
+2. For each pillar, suggest 3 specific post types (e.g. educational tip, behind-the-scenes video, customer spotlight, before/after, poll/question)
+3. A recommended weekly posting rhythm \u2014 how many times per week to post on each platform, and which pillars to rotate through
+4. A list of 10 "evergreen" post ideas I can recycle every few months`,
+      },
+      {
+        number: 3,
+        title: 'Build the 30-day calendar',
+        description: 'Generate a full month of post ideas with draft captions, visual formats, and posting times.',
+        prompt: `Using the content pillars we created, please generate a full 30-day content calendar.
+
+For each day, include:
+1. The content pillar it falls under
+2. Post topic/idea (specific, not vague)
+3. A draft caption (ready to edit and post)
+4. Suggested visual format: photo, carousel, short video/reel, story, or text post
+5. Best time to post based on general engagement data for [MY PLATFORMS]
+6. Any relevant hashtags (5-10 per post, mix of broad and niche)
+
+Organize by week (Week 1-4) and include a mix of pillars each week.
+For promotional posts, keep them to no more than 20% of total content.`,
+      },
+      {
+        number: 4,
+        title: 'Create a batch production workflow',
+        description: 'Set up a system to produce all your content in one 2\u20133 hour session per month instead of scrambling every day.',
+        prompt: `I want to produce all my content in one 2-3 hour session per month instead of scrambling every day.
+
+My situation:
+- I [do/don't] have someone to help with content
+- I'm comfortable with: [photo / video / both / neither \u2014 I need to start simple]
+- Tools I currently use or am willing to try: [e.g. "Canva, my phone camera, CapCut" or "nothing yet"]
+
+Please create:
+1. A step-by-step monthly batching workflow:
+   - How to plan the shoot/content gathering (30 min)
+   - How to capture all photos and videos in one session (60 min)
+   - How to write all captions in one sitting (45 min)
+   - How to schedule everything using a free tool (30 min)
+2. A shot list template I can use each month \u2014 based on my content pillars, what specific photos/videos do I need?
+3. A recommended scheduling tool (free) and how to set it up
+4. A monthly content batching checklist I can print and follow every month`,
+      },
+    ],
+    expectations: {
+      good: 'Having 30 days of content pre-planned eliminates the "what should I post?" paralysis. Most owners find they can batch-produce a month of content in 2\u20133 hours.',
+      ifBad: 'Don\u2019t try to be on every platform. Pick 1\u20132 where your customers actually are and focus there.',
+      time: 'The batch production workflow from Step 4 is what makes this sustainable. Without a system, even great content plans die after week 2.',
+    },
+    downloadFile: 'social-media-content-calendar.md',
+  },
+  {
+    slug: 'cash-flow-management',
+    tag: 'All Businesses',
+    tagColor: '#4338CA',
+    title: 'Stop Running Out of Cash Before the Month Runs Out',
+    description: 'Build a cash flow forecast, plan for slow seasons, and create a monthly financial review routine.',
+    difficulty: 'Intermediate',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude \u00B7 Your revenue + expense data (last 6\u201312 months)',
+    intro: 'Most small business owners manage cash flow by checking their bank balance. They don\u2019t forecast, don\u2019t plan for slow seasons, and get blindsided by tax payments, equipment repairs, or payroll gaps. Running out of cash is the #1 reason small businesses fail \u2014 and it\u2019s almost always preventable with basic forecasting. This guide walks you through building a 90-day cash flow forecast, planning for seasonal dips, and setting up a monthly financial review routine.',
+    outcomes: [
+      'A week-by-week 90-day cash flow forecast with danger zone alerts',
+      'A slow-season survival plan with cash reserve targets and revenue-smoothing strategies',
+      'A 30-minute monthly cash flow review routine',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Gather your financial snapshot',
+        description: 'Collect the financial data you need for an accurate forecast.',
+        dataNote: 'Collect: monthly revenue for the last 6\u201312 months, fixed monthly expenses (rent, insurance, loans, subscriptions), variable monthly expenses (supplies, inventory, contractors), upcoming known large expenses (taxes, insurance renewals, equipment), and your current cash reserve.',
+      },
+      {
+        number: 2,
+        title: 'Build a 90-day cash flow forecast',
+        description: 'Create a week-by-week projection of cash in, cash out, and your net position \u2014 so you can see problems before they hit.',
+        prompt: `I run a [BUSINESS TYPE] and I need to understand my cash flow for the next 90 days.
+
+Here is my financial data:
+- Monthly revenue (last 6-12 months): [LIST BY MONTH \u2014 e.g. Jan: $18k, Feb: $15k, Mar: $22k...]
+- Fixed monthly expenses: $[AMOUNT] (breakdown: rent $X, insurance $X, loan payments $X, subscriptions $X, other $X)
+- Variable monthly expenses (average): $[AMOUNT] (breakdown: supplies $X, inventory $X, contractors $X, other $X)
+- Upcoming known large expenses: [LIST with dates \u2014 e.g. "quarterly taxes $4,500 due April 15", "insurance renewal $2,800 due May 1", "equipment repair $1,200 estimated"]
+- Current cash reserve: $[AMOUNT]
+- Outstanding receivables (money owed to me): $[AMOUNT] expected by [DATES]
+
+Please create:
+1. A week-by-week cash flow projection for the next 90 days \u2014 showing expected cash in, committed cash out, and net cash position at the end of each week
+2. Flag any weeks where my cash position drops below $[MINIMUM COMFORTABLE AMOUNT]
+3. Identify my "danger zone" \u2014 the minimum cash I need on hand to cover 2 weeks of operations
+4. Suggest 3 specific actions I can take now if any weeks look tight (delay a payment, accelerate a receivable, cut a discretionary expense)`,
+      },
+      {
+        number: 3,
+        title: 'Identify and plan for slow seasons',
+        description: 'Analyze your revenue patterns for seasonality and build a plan to survive \u2014 and smooth \u2014 the dips.',
+        prompt: `Using my revenue data, help me understand and prepare for my slow periods.
+
+My monthly revenue history:
+[PASTE 12+ MONTHS OF REVENUE DATA]
+
+My business type: [TYPE]
+My busiest months are typically: [LIST]
+My slowest months are typically: [LIST]
+
+Please analyze:
+1. Confirm my seasonal pattern \u2014 show me the revenue curve across the year and identify my slow season precisely (which months, how much of a dip)
+2. Calculate how much cash reserve I need to survive my slowest period without cutting staff or quality
+3. Suggest 3-5 strategies to smooth seasonal revenue dips \u2014 specific to my business type (e.g. prepaid packages, off-season services, retainer agreements, seasonal promotions)
+4. Create a "slow season prep checklist" \u2014 what to do 60, 30, and 7 days before my slow season starts
+5. Calculate: if I set aside $X per month during peak season, will I have enough to cover the slow period gap?`,
+      },
+      {
+        number: 4,
+        title: 'Create a monthly cash flow review routine',
+        description: 'Set up a simple 30-minute monthly check-in so you always know where your cash stands.',
+        prompt: `I need a simple monthly routine to stay on top of my cash flow \u2014 something I can do in 30 minutes.
+
+My comfort level with finances: [e.g. "I know the basics", "I have a bookkeeper", "I just look at my bank balance"]
+My accounting tool: [e.g. QuickBooks, Wave, spreadsheet, nothing]
+
+Please create:
+1. A 30-minute monthly cash flow review checklist \u2014 step by step, what to look at and in what order
+2. A simple template to compare actual vs. projected revenue and expenses (forecast vs. reality)
+3. Three key numbers I should know at all times \u2014 and what each one tells me about the health of my business
+4. Warning signs that mean I need to take action NOW (not next month)
+5. A quarterly "bigger picture" review \u2014 questions to ask myself every 90 days about pricing, expenses, and growth`,
+      },
+    ],
+    expectations: {
+      good: 'Most owners are surprised by how predictable their cash flow patterns actually are once they see 6 months of data laid out. The 90-day forecast eliminates most cash surprises.',
+      ifBad: 'If you don\u2019t have clean financial data, start with bank statements. Categorize deposits and withdrawals for the last 3 months \u2014 that\u2019s enough to spot patterns.',
+      time: 'The monthly review routine from Step 4 takes 30 minutes and prevents the panicked "can I make payroll?" moments. It\u2019s the single most valuable habit a business owner can build.',
+    },
+    downloadFile: 'cash-flow-management.md',
+  },
+  {
+    slug: 'hiring-and-onboarding',
+    tag: 'All Businesses',
+    tagColor: '#4338CA',
+    title: 'Hire Smarter and Get New Staff Productive in 30 Days',
+    description: 'Write job posts that attract the right people, interview with a scorecard, and onboard new hires with a structured 30-day plan.',
+    difficulty: 'Intermediate',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude \u00B7 Your role requirements + current processes',
+    intro: 'Small business owners write vague job posts, interview by gut feel, and onboard by throwing new hires into the deep end. The result: bad hires, slow ramp-up, and turnover that costs more than the salary itself. This guide helps you use AI to write job posts that attract the right candidates, build a structured interview scorecard, and create a 30-day onboarding plan that gets new staff productive fast.',
+    outcomes: [
+      'A job post that leads with what makes your workplace different',
+      'A structured interview scorecard with questions mapped to must-have skills',
+      'A day-by-day first week and week-by-week first month onboarding plan',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Define the role clearly',
+        description: 'Before writing a job post, get clear on what you actually need.',
+        dataNote: 'Identify: job title, key responsibilities (what they\u2019ll actually do daily), must-have vs. nice-to-have skills, pay range, schedule, what success looks like at 30/60/90 days, and why someone would want to work for you specifically.',
+      },
+      {
+        number: 2,
+        title: 'Write a job post that attracts the right people',
+        description: 'Create a job post that stands out from the generic "must be a team player" listings.',
+        prompt: `I run a [BUSINESS TYPE] called [BUSINESS NAME] in [CITY] and I need to hire a [JOB TITLE].
+
+Role details:
+- What they'll actually do daily: [DESCRIBE in plain language \u2014 e.g. "greet customers, manage the schedule, handle phone calls, process payments, keep the front area clean"]
+- Must-have skills: [LIST \u2014 e.g. "reliable, good with people, comfortable with computers, can work Saturdays"]
+- Nice-to-have: [LIST \u2014 e.g. "experience in [industry]", "bilingual", "social media savvy"]
+- Pay: $[RANGE] per [hour/year]
+- Schedule: [DETAILS \u2014 e.g. "Tuesday-Saturday, 9am-5pm"]
+- Benefits: [LIST what you offer \u2014 e.g. "flexible scheduling, employee discount, tips, PTO after 90 days"]
+- What makes this a good place to work: [BE HONEST \u2014 e.g. "small team, casual environment, owner is hands-on and supportive", "room to grow"]
+
+Please create:
+1. A job post that leads with what makes working here different (not a boring requirements list)
+2. Describe the actual daily work so applicants can picture themselves doing it
+3. Include pay range and real schedule (transparency attracts better candidates)
+4. End with 1-2 application screening questions that filter out low-effort applicants (e.g. "What's one thing you'd do to make a customer's day better?")
+5. Write a version for Indeed/LinkedIn AND a shorter version for Instagram/social media`,
+      },
+      {
+        number: 3,
+        title: 'Build an interview scorecard',
+        description: 'Create a structured interview with questions mapped to your must-have skills and a scoring rubric.',
+        prompt: `I need a structured interview process so I stop hiring based on gut feeling.
+
+The role: [JOB TITLE]
+Must-have skills: [LIST from Step 1]
+The biggest reasons past hires didn't work out: [DESCRIBE \u2014 e.g. "unreliable attendance", "poor attitude with customers", "couldn't handle multitasking", "quit after 2 weeks"]
+
+Please create:
+1. 6-8 interview questions \u2014 each mapped to a specific must-have skill or trait
+2. For each question: what a great answer sounds like vs. a red flag answer
+3. A scoring rubric: 1-5 scale for each question with descriptions of what each score means
+4. One practical scenario or role-play question (e.g. "A customer is upset because they've been waiting 20 minutes. What do you do?")
+5. A section for "gut check" notes \u2014 things to observe during the interview (body language, enthusiasm, punctuality)
+6. Red flags that should be automatic disqualifiers (regardless of scores)
+7. Format as a printable one-page scorecard I can use during the interview`,
+      },
+      {
+        number: 4,
+        title: 'Create a 30-day onboarding plan',
+        description: 'Build a structured plan so new hires know exactly what to learn and when, instead of figuring it out on their own.',
+        prompt: `I need a structured onboarding plan so new hires actually succeed instead of being thrown into the deep end.
+
+My business: [BUSINESS TYPE]
+The role: [JOB TITLE]
+Who currently trains new hires: [e.g. "me (the owner)", "a senior employee", "nobody \u2014 they figure it out"]
+The biggest things a new hire needs to learn: [LIST \u2014 e.g. "our POS system, how we greet customers, our booking process, where supplies are, how to close up"]
+
+Please create:
+1. A Day 1 checklist \u2014 everything that should happen on their first day (paperwork, tour, introductions, first task, lunch plan)
+2. A Week 1 plan (day by day) \u2014 what they learn each day, who teaches them, what they should be able to do independently by Friday
+3. Weeks 2-4 plan (week by week) \u2014 gradual increase in responsibility, with specific milestones
+4. Check-in schedule \u2014 when to have a 1-on-1 conversation (Day 3, Week 1, Week 2, Week 4) with suggested questions for each
+5. A "30-Day Success Checklist" \u2014 a clear list of things the new hire should be able to do independently by Day 30
+6. A simple "new hire feedback form" they can fill out at Day 30 \u2014 what's going well, what's confusing, what would help them do their job better`,
+      },
+    ],
+    expectations: {
+      good: 'A structured interview process dramatically reduces bad hires. The onboarding plan ensures new staff become productive in weeks instead of months.',
+      ifBad: 'If you\u2019re hiring for a role you\u2019ve never had before, describe what you\u2019re currently doing yourself that you want to hand off \u2014 that becomes the job description.',
+      time: 'The 30-day onboarding plan from Step 4 is what most small businesses skip. It\u2019s the difference between a new hire who\u2019s contributing in week 3 vs. one who\u2019s still asking basic questions in month 2.',
+    },
+    downloadFile: 'hiring-and-onboarding.md',
+  },
+  {
+    slug: 'competitive-differentiation',
+    tag: 'All Businesses',
+    tagColor: '#4338CA',
+    title: 'Figure Out What Makes You Different (and Make Sure Customers Know It)',
+    description: 'Map your competition, find your real differentiators, write your positioning, and embed it across your marketing.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude \u00B7 Your business details + competitor awareness',
+    intro: 'When customers compare you to competitors, they see the same services at similar prices. Without a clear differentiator, you compete on price \u2014 which is a race to the bottom. Most small business owners know they\u2019re different but can\u2019t articulate it in a way that makes customers choose them. This guide helps you use AI to analyze your competitive landscape, find your real differentiators, write a positioning statement, and embed it across your marketing.',
+    outcomes: [
+      'A competitive analysis showing where you stand vs. your closest competitors',
+      'A positioning statement, elevator pitch, and staff talking points',
+      'Rewritten marketing copy that actually communicates what makes you different',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Map your competitive landscape',
+        description: 'Before you can differentiate, understand who you\u2019re being compared to and what they\u2019re saying.',
+        dataNote: 'Identify: your 3\u20135 closest competitors, what they charge, what they emphasize in their marketing, what their Google reviews say (positive and negative), and what your own customers have told you about why they chose you.',
+      },
+      {
+        number: 2,
+        title: 'Find your actual differentiators',
+        description: 'Analyze your business vs. competitors across multiple dimensions to find where you truly stand out.',
+        prompt: `I run a [BUSINESS TYPE] called [BUSINESS NAME] in [CITY].
+
+Here's my competitive landscape:
+- Competitor 1: [NAME] \u2014 [what they charge, what they emphasize, their review highlights/complaints]
+- Competitor 2: [NAME] \u2014 [same info]
+- Competitor 3: [NAME] \u2014 [same info]
+(add more if relevant)
+
+About my business:
+- What I charge: [PRICING]
+- What I think I do well: [LIST]
+- What customers have told me they like: [LIST \u2014 from reviews, conversations, or feedback]
+- What I'd like to be known for: [DESCRIBE]
+
+Please analyze:
+1. Compare me vs. each competitor across: service quality, pricing, convenience, specialization, customer experience, brand personality, and online presence
+2. Identify my 2-3 strongest differentiators \u2014 things I do that competitors can't easily copy
+3. Identify any "table stakes" I'm missing \u2014 things competitors offer that I don't, which might be costing me customers
+4. Suggest one untapped positioning opportunity \u2014 a gap in the market none of my competitors are filling
+5. Be honest: if a customer is comparing us side by side, what's the reason they'd choose me? What's the reason they'd choose someone else?`,
+      },
+      {
+        number: 3,
+        title: 'Write your positioning statement',
+        description: 'Turn your differentiators into clear, memorable language you and your staff can use everywhere.',
+        prompt: `Based on the competitive analysis, help me articulate what makes my business different in a way customers immediately understand.
+
+Please create:
+1. A positioning statement (1-2 sentences) \u2014 the core of what makes me different and who I'm for
+2. An elevator pitch (30 seconds / 3-4 sentences) \u2014 for networking events, casual conversations, or when someone asks "what do you do?"
+3. A "Why Us" section for my website (150-200 words) \u2014 compelling, specific, not generic
+4. 3 talking points my staff can use when customers ask "why should I choose you?" \u2014 natural language, not salesy
+5. A tagline or slogan option (5-8 words) that captures my positioning
+6. A "we're NOT for everyone" statement \u2014 who is NOT my ideal customer (this actually attracts the right people)`,
+      },
+      {
+        number: 4,
+        title: 'Embed differentiation in your marketing',
+        description: 'Audit your current marketing for generic language and replace it with your positioning.',
+        prompt: `Now help me make sure my positioning actually shows up in my marketing \u2014 not just in my head.
+
+My current marketing:
+- Website: [URL or describe what's on it]
+- Social media: [which platforms, how often I post, what I post about]
+- Google Business Profile: [describe current description]
+- Other marketing: [signage, flyers, email, referral program, etc.]
+
+Please:
+1. Audit my current marketing for generic language \u2014 flag any phrases that could describe ANY business in my industry (e.g. "quality service", "customer satisfaction", "years of experience")
+2. Rewrite my homepage headline and description around my differentiators
+3. Rewrite my Google Business Profile description (750 characters max) with positioning language
+4. Create 5 social media posts that reinforce my positioning \u2014 each highlighting a different differentiator with a specific story or proof point
+5. Suggest one "signature experience" or touchpoint I could add to my customer journey that reinforces what makes me different`,
+      },
+    ],
+    expectations: {
+      good: 'Most owners discover their real differentiator isn\u2019t what they expected. The positioning statement gives you \u2014 and your staff \u2014 a clear answer to "why us?" that isn\u2019t "we\u2019re the best."',
+      ifBad: 'If you can\u2019t find a differentiator, that\u2019s a business strategy problem, not a marketing problem. The exercise itself reveals where you need to invest.',
+      time: 'The staff talking points from Step 3 have an immediate impact. When every employee can articulate why you\u2019re different, every customer interaction reinforces your brand.',
+    },
+    downloadFile: 'competitive-differentiation.md',
+  },
 ]
 
 export default guides

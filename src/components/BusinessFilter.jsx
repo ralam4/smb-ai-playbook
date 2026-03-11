@@ -9,6 +9,10 @@ const businesses = [
   { id: 'Photographer', label: 'Photographer', icon: '\uD83D\uDCF7' },
   { id: 'Coffee Shop', label: 'Coffee Shop', icon: '\u2615' },
   { id: 'Graphic Designer', label: 'Designer', icon: '\uD83C\uDFA8' },
+  { id: 'Car Wash', label: 'Car Wash', icon: '\uD83D\uDE97' },
+  { id: 'Architecture Firm', label: 'Architecture', icon: '\uD83D\uDCD0' },
+  { id: 'Auto Repair', label: 'Auto Repair', icon: '\uD83D\uDD27' },
+  { id: 'Real Estate Agent', label: 'Real Estate', icon: '\uD83C\uDFE0' },
   { id: 'All Businesses', label: 'Universal', icon: '\u2B50' },
 ]
 
