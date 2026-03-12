@@ -6,6 +6,7 @@ import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import GuidePage from './pages/GuidePage'
+import ArchetypePage from './pages/ArchetypePage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -24,6 +25,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/guide/:slug" element={<GuidePage />} />
+          <Route path="/archetype" element={<ArchetypePage />} />
         </Routes>
       </main>
       <Footer />
