@@ -50,7 +50,7 @@ export default async function handler(req, res) {
       email,
       subscribedAt: new Date().toISOString(),
     }), {
-      access: 'public',
+      access: 'private',
       addRandomSuffix: false,
       contentType: 'application/json',
     });
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
     return res.status(201).json({ message: "You're in! We'll keep you posted." });
 
   } catch (err) {
-    console.error('Subscribe error:', err);
+    console.error('Subscribe error:', err.message, err.stack);
     return res.status(500).json({ error: 'Something went wrong. Please try again.' });
   }
 }
