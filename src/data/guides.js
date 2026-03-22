@@ -1839,6 +1839,373 @@ Please:
     downloadFile: 'competitive-differentiation.md',
     problems: ['get-customers'],
   },
+  {
+    slug: 'medical-billing-efficiency',
+    tag: 'Medical Practice',
+    tagColor: '#C4622D',
+    title: 'Make Your Medical Billing More Efficient',
+    description: 'Map your billing workflow, find where time and money leak, and build a streamlined process your team can follow.',
+    difficulty: 'Beginner',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude · Your billing process knowledge',
+    intro: 'Most small practices lose money on billing not because the claims are wrong, but because the process is slow, inconsistent, and full of manual handoffs nobody has mapped out. Before you can improve billing — with AI or anything else — you need to see where the bottlenecks actually are. This guide walks you through mapping your current billing workflow, identifying the biggest time and money leaks, and building a cleaner process your front desk and billing staff can follow.',
+    outcomes: [
+      'A clear map of your current billing workflow from patient check-in to payment collected',
+      'A ranked list of your biggest billing bottlenecks and where money is leaking',
+      'A streamlined billing process checklist your team can start using this week',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Map your current billing workflow',
+        description: 'Before you can fix anything, you need to see the full picture. Most practice owners have never written down every step between "patient walks in" and "payment hits the bank account." This prompt helps you do that.',
+        dataNote: 'Think through who does what at each stage: front desk, provider, billing staff, clearinghouse, payer. Even rough descriptions are useful.',
+        prompt: `I run a small [SPECIALTY, e.g. "family medicine" / "orthopedics" / "dermatology"] practice with [NUMBER] providers and [NUMBER] support staff.
+
+Here is how our billing process currently works, step by step (as best as I can describe it):
+
+[DESCRIBE YOUR PROCESS — e.g. "Patient checks in, front desk verifies insurance manually, provider sees patient and documents in [EMR NAME], coder reviews notes next day, claims go to clearinghouse, we check for rejections weekly..."]
+
+Please help me:
+1. Organize this into a clear step-by-step workflow diagram (numbered steps, who does each step, what tool or system they use)
+2. Identify any steps that seem redundant, manual, or likely to cause delays
+3. Flag where handoffs between people happen — these are where things typically fall through the cracks
+4. Estimate where the biggest time sinks are based on what I've described`,
+      },
+      {
+        number: 2,
+        title: 'Find your biggest billing leaks',
+        description: 'Now that you can see the full workflow, this prompt helps you identify where you\'re losing the most money — whether it\'s claim denials, slow follow-up, coding errors, or patients who owe but never pay.',
+        dataNote: 'If you have any of these numbers, include them: denial rate, average days to payment, percentage of claims that need rework, patient collections rate. Estimates are fine.',
+        prompt: `Here is my practice's billing workflow:
+[PASTE THE WORKFLOW FROM STEP 1]
+
+Here are some numbers I have (estimates are fine):
+- Our approximate claim denial rate: [X% or "I don't know"]
+- Average days from service to payment: [X days or "I don't know"]
+- Percentage of claims that need rework or resubmission: [X% or "I don't know"]
+- What percentage of patient balances we actually collect: [X% or "I don't know"]
+- Our biggest frustration with billing right now: [DESCRIBE]
+
+Please help me:
+1. Identify the top 3 places where we're most likely losing money in this workflow
+2. For each one, estimate the potential impact (in time, money, or both)
+3. Rank them by which would give us the biggest return if we fixed it first
+4. For each leak, suggest one simple fix we could implement this week without buying new software`,
+      },
+      {
+        number: 3,
+        title: 'Build a streamlined billing checklist',
+        description: 'Take the improved workflow and turn it into a daily/weekly checklist your team can actually follow. This is the most valuable output — a process that runs consistently without you having to manage every step.',
+        prompt: `Based on the billing workflow and leaks we identified:
+
+[PASTE WORKFLOW FROM STEP 1]
+[PASTE TOP LEAKS FROM STEP 2]
+
+Please create two checklists for my billing team:
+
+1. A DAILY billing checklist — the 5-8 things that must happen every day to keep claims moving (e.g. verify insurance for tomorrow's patients, submit today's claims, check for rejections)
+
+2. A WEEKLY billing review checklist — the things we should check once a week to catch problems early (e.g. review aging A/R, follow up on denied claims older than 7 days, check patient balance collections)
+
+For each item, include:
+- Who is responsible (front desk, biller, provider, etc.)
+- When it should be done (morning, end of day, specific day of week)
+- What "done" looks like (so there's no ambiguity)
+
+Keep it to one page. If it's longer than that, my staff won't use it.`,
+      },
+      {
+        number: 4,
+        title: 'Set up your billing health baseline',
+        description: 'You can\'t improve what you don\'t measure. This prompt helps you identify the 5 key numbers to track monthly so you can see whether your billing is getting better or worse over time.',
+        prompt: `I run a small [SPECIALTY] practice. I want to start tracking my billing performance monthly but I don't know what to measure or where to find the data.
+
+My EMR/practice management system is: [SYSTEM NAME, e.g. "athenahealth" / "AdvancedMD" / "DrChrono" / "I'm not sure"]
+
+Please help me:
+1. Give me the 5 most important billing KPIs I should track monthly, with a simple definition of each
+2. For each KPI, tell me what "good" looks like for a small [SPECIALTY] practice
+3. For each KPI, tell me where I can probably find this number in my system (or how to calculate it manually)
+4. Create a simple monthly tracking template I can fill in — just a table with the KPI, this month's number, last month's number, and whether it's trending up or down
+
+Keep it simple. I don't have a data analyst — this needs to be something I or my office manager can do in 15 minutes at the end of each month.`,
+      },
+    ],
+    expectations: {
+      good: 'The workflow map from Step 1 is often an eye-opener — most owners haven\'t seen their billing process written out end-to-end before. The daily checklist from Step 3 has the most immediate impact.',
+      ifBad: 'If the output feels too generic, add more specifics about your EMR system, staff size, and the exact frustrations you deal with. The more specific your input, the more actionable the output.',
+      time: 'The daily checklist can be implemented immediately. Track your baseline KPIs for 2-3 months before making big changes so you can actually measure the impact.',
+    },
+    downloadFile: 'medical-billing-efficiency.md',
+    problems: ['fix-operations'],
+  },
+  {
+    slug: 'medical-billing-ai-measurement',
+    tag: 'Medical Practice',
+    tagColor: '#C4622D',
+    title: 'Track What Your AI Billing System Is Actually Doing',
+    description: 'Build a monthly scorecard to measure whether the AI tools in your EMR are actually improving your billing performance.',
+    difficulty: 'Intermediate',
+    time: '~25 min',
+    tools: 'ChatGPT or Claude · Your billing KPIs and EMR data',
+    intro: 'You\'re already paying for AI features in your EMR or billing system — maybe claim scrubbing, auto-coding, denial prediction, or eligibility checks. But can you actually point to what it\'s doing for you? Most practices can\'t. They turned it on, they\'re paying the monthly cost, and they have a vague sense it\'s "probably helping." This guide helps you build a simple scorecard so you can see exactly where AI is making a difference and where it isn\'t.',
+    outcomes: [
+      'A clear picture of which AI features in your billing stack are active and what they claim to do',
+      'A monthly scorecard comparing your AI-assisted billing performance to your pre-AI baseline',
+      'A "shadow audit" template to verify whether AI is catching what it says it\'s catching',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Inventory your AI billing features',
+        description: 'Most practice owners don\'t know exactly which AI features they\'re paying for or which ones are actually turned on. This prompt helps you take stock of what\'s running in your system.',
+        dataNote: 'Check your EMR or billing system\'s settings, your subscription invoice, or ask your vendor rep. Common AI features: claim scrubbing, auto-coding suggestions, eligibility verification, denial prediction, payment posting.',
+        prompt: `I run a small [SPECIALTY] practice using [EMR/BILLING SYSTEM NAME] for billing.
+
+Here is what I know about the AI or automation features in my billing system:
+- Features I know are turned on: [LIST THEM, or "I'm not sure"]
+- Features I think might be running: [LIST THEM]
+- What I'm paying monthly for AI/automation add-ons: [$X or "it's bundled, I don't know"]
+- What my vendor says these features do: [DESCRIBE or "I haven't asked"]
+
+Please help me:
+1. Organize these into a simple inventory table: feature name, what it claims to do, whether it's confirmed active, and estimated monthly cost
+2. Identify any common AI billing features I might have but don't know about — suggest which ones I should check in my system settings
+3. For each active feature, define one specific metric I could track to measure whether it's actually working (e.g. "if AI claim scrubbing is working, your clean claim rate should be above 95%")
+4. Flag any features where I'm likely paying but not getting value — either because they overlap with something else or because I'd need to configure them properly`,
+      },
+      {
+        number: 2,
+        title: 'Build your before-and-after comparison',
+        description: 'The key question is: are things actually better since you turned on AI? This prompt helps you pull the numbers that answer that question, even if you didn\'t track a formal baseline.',
+        dataNote: 'Pull what you can: denial rates, days in A/R, clean claim rate, collection rate, staff hours on billing. If you don\'t have pre-AI numbers, your EMR may have historical reports, or you can estimate based on what you remember.',
+        prompt: `I want to compare my billing performance before and after implementing AI features in my billing system.
+
+My AI features were turned on approximately: [DATE or "about X months ago"]
+
+Here are my current billing metrics (best estimates are fine):
+- Clean claim rate (claims accepted on first submission): [X%]
+- Denial rate: [X%]
+- Average days from service to payment: [X days]
+- Claim rework rate (claims that need correction and resubmission): [X%]
+- Staff hours spent on billing per week: [X hours]
+- Patient balance collection rate: [X%]
+
+Here is what I remember about these numbers BEFORE the AI features:
+[SHARE WHAT YOU KNOW — even "denials felt higher" or "it used to take about X days" helps]
+
+Please help me:
+1. Build a side-by-side comparison table: metric, pre-AI estimate, current number, change, and whether that change is meaningful
+2. For any metrics where I don't have a pre-AI number, suggest how I might reconstruct a rough baseline (e.g. pulling old reports, asking my clearinghouse)
+3. Highlight which metrics show the AI is clearly helping, which show no change, and which might actually be worse
+4. Calculate a rough dollar impact where possible — e.g. "if your denial rate dropped 3%, that's approximately $X per month in recovered revenue based on your claim volume"`,
+      },
+      {
+        number: 3,
+        title: 'Run a shadow audit',
+        description: 'Numbers don\'t tell the whole story. A "shadow audit" means manually checking a small sample of what the AI handled to see if it\'s actually doing what it claims. This is how you find out if the AI is genuinely helping or just creating a false sense of security.',
+        prompt: `I want to run a one-week shadow audit of my AI billing features to verify they're working correctly.
+
+My active AI features are:
+[PASTE YOUR INVENTORY FROM STEP 1]
+
+Please create a shadow audit plan for me:
+
+1. For each AI feature, define:
+   - What to sample (e.g. "pull 10 claims the AI scrubbed this week")
+   - What to check manually (e.g. "were there errors the AI missed? Did it flag anything that wasn't actually wrong?")
+   - How to score it (e.g. "X out of 10 claims had no issues the AI missed = X% accuracy")
+
+2. Create a simple tracking sheet I can use for one week with columns for: date, claim/task reviewed, what the AI did, whether the AI was correct, and notes
+
+3. Tell me what to look for that would indicate:
+   - The AI is working well and worth the cost
+   - The AI is partially working but needs configuration changes
+   - The AI isn't doing much and I should reconsider paying for it
+
+Keep the audit manageable — no more than 15 minutes per day for one week.`,
+      },
+      {
+        number: 4,
+        title: 'Create your monthly AI billing scorecard',
+        description: 'Turn everything you\'ve learned into a simple one-page scorecard you review monthly. This is how you keep visibility on whether your AI investment is paying off over time.',
+        prompt: `Based on the analysis we've done:
+
+AI Features Inventory: [PASTE FROM STEP 1]
+Before/After Comparison: [PASTE KEY FINDINGS FROM STEP 2]
+Shadow Audit Results: [PASTE KEY FINDINGS FROM STEP 3]
+
+Please create a monthly AI billing scorecard for my practice:
+
+1. List the 5-6 most important metrics to track monthly, based on what we've found matters most for my practice
+2. For each metric, include: the metric name, where to find the number, what "good" looks like, and a red/yellow/green threshold
+3. Include a section for "AI feature status" — a quick check that each feature is still active and configured correctly
+4. Add a "cost vs. value" line: total monthly AI cost vs. estimated monthly value delivered (based on our calculations)
+5. Include a quarterly decision prompt: "Based on 3 months of data, should we keep, adjust, or cancel each AI feature?"
+
+Format this as a clean one-page template I can print or save as a PDF. My office manager should be able to fill it in in 20 minutes.`,
+      },
+    ],
+    expectations: {
+      good: 'The inventory in Step 1 often reveals features you didn\'t know you were paying for. The shadow audit in Step 3 is where most practices have their "aha moment" — either confirming the AI works or discovering it\'s not configured properly.',
+      ifBad: 'If you can\'t find your billing metrics, ask your clearinghouse or billing system vendor for a standard performance report. Most systems have this built in but practices never pull it.',
+      time: 'The shadow audit takes one week. After that, the monthly scorecard takes 20 minutes. Most practices know within 2-3 months whether their AI investment is paying off.',
+    },
+    downloadFile: 'medical-billing-ai-measurement.md',
+    problems: ['fix-profits'],
+  },
+  {
+    slug: 'medical-billing-ai-roi',
+    tag: 'Medical Practice',
+    tagColor: '#C4622D',
+    title: 'Calculate the True ROI of Your AI Billing Investment',
+    description: 'Build a complete cost-benefit analysis to decide whether your AI billing tools are worth keeping, adjusting, or replacing.',
+    difficulty: 'Advanced',
+    time: '~30 min',
+    tools: 'ChatGPT or Claude · Your billing costs, AI invoices, and performance data',
+    intro: 'You know what you\'re paying for AI in your billing workflow. You may even be tracking some metrics. But the real question is harder: when you add up everything — the subscription cost, the staff time to manage it, the training, the errors it misses — is the AI actually saving you money compared to the alternatives? This guide helps you build a true cost-benefit analysis so you can make a clear-eyed decision about your AI billing investment.',
+    outcomes: [
+      'A total cost of ownership analysis for your AI billing tools — not just the subscription, but everything',
+      'A side-by-side comparison of your current AI cost vs. alternatives (in-house, outsourced, hybrid)',
+      'A data-backed recommendation on whether to keep, adjust, or replace your AI billing setup',
+    ],
+    steps: [
+      {
+        number: 1,
+        title: 'Calculate your true AI billing cost',
+        description: 'The subscription fee is just the starting point. The real cost includes staff time managing the system, training, workarounds for things the AI doesn\'t handle, and opportunity cost. This prompt helps you capture the full picture.',
+        dataNote: 'Gather: your AI/EMR billing subscription invoices, staff hours spent on billing (including managing the AI), any clearinghouse fees, and costs of any manual processes that supplement the AI.',
+        prompt: `I want to calculate the TRUE total cost of using AI in my billing workflow — not just the software subscription.
+
+Here is my current setup:
+- Practice size: [NUMBER] providers, [NUMBER] support/billing staff
+- EMR/billing system: [SYSTEM NAME]
+- Monthly AI/automation subscription cost: [$X]
+- Monthly clearinghouse fees: [$X]
+- Other billing-related software costs: [$X]
+
+Staff time spent on billing-related tasks per week:
+- Front desk (insurance verification, data entry): [X hours/week]
+- Billing staff (claim submission, follow-up, denials): [X hours/week]
+- Provider time on documentation for billing: [X hours/week]
+- Office manager oversight of billing: [X hours/week]
+
+Average hourly cost of each role (salary + benefits, roughly):
+- Front desk: [$X/hr]
+- Billing staff: [$X/hr]
+- Provider: [$X/hr]
+- Office manager: [$X/hr]
+
+Please calculate:
+1. My total monthly billing cost (software + staff time + overhead), broken into categories
+2. My cost per claim processed (total monthly billing cost ÷ total monthly claims)
+3. What percentage of my practice revenue goes to billing (use [MONTHLY REVENUE] as my approximate monthly revenue)
+4. A breakdown showing: how much is the AI subscription specifically, vs. staff time, vs. other costs — so I can see the full picture
+5. Flag any costs that seem unusually high or low for a practice my size`,
+      },
+      {
+        number: 2,
+        title: 'Compare against your alternatives',
+        description: 'Now that you know your true cost, compare it to the realistic alternatives: fully outsourced billing, fully in-house with no AI, or a hybrid model. This isn\'t hypothetical — it\'s the actual decision you need to make.',
+        prompt: `Here is my current total billing cost analysis:
+[PASTE YOUR RESULTS FROM STEP 1]
+
+My practice does approximately [NUMBER] claims per month.
+My average claim value is approximately [$X].
+My current collection rate is approximately [X%].
+
+I want to compare my current AI-assisted billing setup against three alternatives:
+
+Option A: Fully outsourced billing company
+- Typical industry rate: 4-9% of collections (or $X per claim)
+- I had a previous outsourced billing company that cost: [$X/month or X% — if applicable]
+
+Option B: Fully in-house, no AI tools
+- What it would cost to hire a dedicated biller: [$X/year or "I don't know — please estimate for my area"]
+- What my billing looked like before AI: [DESCRIBE — e.g. "slower but we had fewer errors" or "we had more denials"]
+
+Option C: Hybrid (keep some AI, outsource some, in-house some)
+- Which billing tasks the AI handles well: [LIST]
+- Which tasks still require heavy staff involvement: [LIST]
+
+Please:
+1. Build a side-by-side cost comparison table for all four options (current + A, B, C)
+2. For each option, estimate: monthly cost, cost per claim, cost as % of revenue
+3. Factor in non-cost considerations: control, speed, error rates, scalability, staff burden
+4. Highlight the break-even point — at what claim volume does each option make more sense?
+5. Give me your recommendation based on my numbers, with clear reasoning`,
+      },
+      {
+        number: 3,
+        title: 'Quantify the value your AI is delivering',
+        description: 'Cost is only half the equation. This prompt helps you put a dollar value on what the AI is actually doing for you — claims it catches, time it saves, denials it prevents. This is the number you compare against the cost.',
+        dataNote: 'If you\'ve done the Intermediate billing guide, pull your scorecard data and shadow audit results. If not, use your best estimates.',
+        prompt: `I need to quantify the actual VALUE my AI billing tools deliver — not what they cost, but what they save or earn.
+
+Here is what I know about my AI billing performance:
+- Clean claim rate (with AI): [X%] — before AI it was approximately: [X%]
+- Denial rate (with AI): [X%] — before AI it was approximately: [X%]
+- Average days to payment (with AI): [X days] — before AI it was approximately: [X days]
+- Staff hours on billing per week (with AI): [X hours] — before AI it was approximately: [X hours]
+- Any other improvements I've noticed: [DESCRIBE]
+
+My practice numbers:
+- Average claims per month: [NUMBER]
+- Average claim value: [$X]
+- Monthly revenue: [$X]
+
+Please calculate:
+1. Revenue recovered from reduced denials: (denial rate improvement × claims per month × average claim value)
+2. Cash flow improvement from faster payments: (days saved × monthly revenue ÷ 30 = working capital freed)
+3. Staff time savings: (hours saved per week × hourly cost × 4.3 weeks)
+4. Error reduction value: (estimated claims that would have been rejected without AI scrubbing × average rework cost per claim)
+5. TOTAL MONTHLY VALUE delivered by AI
+
+Then compare:
+- Total monthly AI cost (from Step 1): $X
+- Total monthly AI value: $X
+- NET ROI: value minus cost
+- ROI ratio: for every $1 spent on AI, you get $X back
+
+If the ROI is negative, flag exactly where the gap is and what would need to change to make it positive.`,
+      },
+      {
+        number: 4,
+        title: 'Make your keep, adjust, or replace decision',
+        description: 'Put it all together into a clear recommendation you can act on. This isn\'t about gut feeling — it\'s about the numbers telling you what to do.',
+        prompt: `Here is my complete AI billing analysis:
+
+Total Cost Analysis: [PASTE FROM STEP 1]
+Alternatives Comparison: [PASTE FROM STEP 2]
+Value Delivered: [PASTE FROM STEP 3]
+
+Based on all of this, help me make a final decision:
+
+1. Summarize my situation in 3 sentences: what I'm paying, what I'm getting, and whether it's worth it
+
+2. Give me one of three recommendations:
+   - KEEP: The AI is delivering clear ROI. Here's what to monitor to make sure it stays that way.
+   - ADJUST: The AI has potential but isn't configured or used optimally. Here are the specific changes to make (and expected impact of each).
+   - REPLACE: The numbers don't support the current setup. Here's the specific alternative I should switch to, with a transition plan.
+
+3. If ADJUST: Create a 30-60-90 day optimization plan with specific actions and expected metric improvements
+
+4. If REPLACE: Create a transition timeline — what to do first, how to avoid disruption, and what the expected savings are
+
+5. Regardless of recommendation: give me 3 questions to ask my AI/EMR vendor at our next meeting, based on what the data shows
+
+Be direct. I need a clear answer, not a hedge.`,
+      },
+    ],
+    expectations: {
+      good: 'The total cost analysis in Step 1 is usually surprising — most practices underestimate their true billing cost by 30-50% because they don\'t count staff time. The ROI calculation in Step 3 gives you an actual number to make decisions with.',
+      ifBad: 'If you don\'t have enough data for a precise analysis, the estimates still help. A rough ROI calculation is infinitely better than "I think it\'s probably fine." Run the Intermediate guide first to build your baseline.',
+      time: 'This is a one-time analysis. Once you have the framework, updating it quarterly takes 30 minutes. Most practices make their keep/adjust/replace decision within one month of running this analysis.',
+    },
+    downloadFile: 'medical-billing-ai-roi.md',
+    problems: ['fix-profits'],
+  },
 ]
 
 export default guides
