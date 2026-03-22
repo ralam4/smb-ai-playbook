@@ -1,8 +1,112 @@
+import { useState } from 'react'
+
 export default function Footer() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | loading | success | error | duplicate
+  const [message, setMessage] = useState('')
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    const trimmed = email.trim().toLowerCase()
+
+    // Client-side validation
+    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setStatus('error')
+      setMessage('Please enter a valid email address.')
+      return
+    }
+
+    setStatus('loading')
+
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: trimmed }),
+      })
+
+      const data = await res.json()
+
+      if (res.status === 201) {
+        setStatus('success')
+        setMessage(data.message)
+        setEmail('')
+      } else if (res.status === 200) {
+        setStatus('duplicate')
+        setMessage(data.message)
+      } else {
+        setStatus('error')
+        setMessage(data.error || 'Something went wrong.')
+      }
+    } catch {
+      setStatus('error')
+      setMessage('Connection error. Please try again.')
+    }
+  }
+
+  const showForm = status !== 'success'
+
   return (
     <footer className="border-t border-border mt-20 bg-surface-warm">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Newsletter signup */}
+        <div className="text-center mb-8">
+          <h3 className="font-display text-lg text-text-primary mb-1">
+            Stay in the loop
+          </h3>
+          <p className="text-sm text-text-secondary max-w-md mx-auto">
+            New guides, templates & AI tips for small business — straight to your inbox. No spam, unsubscribe anytime.
+          </p>
+
+          {showForm ? (
+            <form
+              onSubmit={handleSubmit}
+              className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2 max-w-md mx-auto"
+              noValidate
+            >
+              <label htmlFor="footer-email" className="sr-only">Email address</label>
+              <input
+                id="footer-email"
+                type="email"
+                required
+                maxLength={254}
+                autoComplete="email"
+                placeholder="you@company.com"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value)
+                  if (status === 'error' || status === 'duplicate') setStatus('idle')
+                }}
+                disabled={status === 'loading'}
+                className="w-full sm:flex-1 px-4 py-2.5 rounded-lg border border-border bg-surface text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors disabled:opacity-60"
+              />
+              <button
+                type="submit"
+                disabled={status === 'loading'}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 transition-colors disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+              >
+                {status === 'loading' ? 'Joining...' : 'Join'}
+              </button>
+            </form>
+          ) : (
+            <div className="mt-4 flex items-center justify-center gap-2 text-sm text-tag-green font-medium">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              {message}
+            </div>
+          )}
+
+          {(status === 'error' || status === 'duplicate') && (
+            <p className={`mt-2 text-xs ${status === 'error' ? 'text-red-600' : 'text-text-secondary'}`}>
+              {message}
+            </p>
+          )}
+        </div>
+
+        {/* Existing footer content */}
+        <div className="border-t border-border/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-sm text-text-secondary">
             AI Playbook for Small Business <span className="text-border mx-1.5">|</span> Free forever
           </p>
@@ -20,11 +124,6 @@ export default function Footer() {
               </svg>
             </a>
           </div>
-        </div>
-        <div className="mt-6 pt-4 border-t border-border/50 text-center">
-          <p className="text-xs text-text-secondary/50">
-            More guides coming. Built in public. No signup, no paywall.
-          </p>
         </div>
       </div>
     </footer>

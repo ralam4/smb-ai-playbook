@@ -164,17 +164,6 @@ export default function Home() {
         )}
       </section>
 
-      {/* Trust strip */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 pb-12">
-        <div className="rounded-2xl bg-surface border border-border p-6 sm:p-8 text-center">
-          <p className="font-[--font-display] text-xl sm:text-2xl text-text-primary mb-2">
-            No signup. No paywall. No &ldquo;schedule a demo.&rdquo;
-          </p>
-          <p className="text-sm text-text-secondary max-w-md mx-auto">
-            Just open a guide, follow the steps, and solve a real problem in your business today.
-          </p>
-        </div>
-      </section>
     </>
   )
 }
