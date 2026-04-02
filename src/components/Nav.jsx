@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 
 export default function Nav() {
   return (
-    <nav className="w-full border-b border-border bg-surface/80 backdrop-blur-md sticky top-0 z-50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
+    <nav className="fixed top-4 left-4 right-4 z-50 glass glass-shadow rounded-2xl">
+      <div className="max-w-5xl mx-auto px-5 sm:px-6 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-baseline gap-1.5 no-underline group">
           <span className="font-[--font-display] text-lg text-text-primary tracking-tight group-hover:text-accent transition-colors">
             AI Playbook

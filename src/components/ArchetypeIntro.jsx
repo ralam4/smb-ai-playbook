@@ -21,7 +21,7 @@ export default function ArchetypeIntro({ onStart }) {
 
       <div className="relative z-10">
         {/* Hero text */}
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-20 sm:pt-28 pb-14 sm:pb-16 text-center">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-14 sm:pb-16 text-center">
           <div className="animate-fade-up flex items-center justify-center gap-2 mb-8">
             <div className="h-px w-8 bg-accent" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">

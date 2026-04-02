@@ -22,7 +22,7 @@ export default function GuidePage() {
   const otherGuides = guides.filter((g) => g.slug !== slug)
 
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+    <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-24 sm:pt-28 pb-8 sm:pb-12">
       {/* Breadcrumb */}
       <Link
         to="/"
