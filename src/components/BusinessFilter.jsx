@@ -28,7 +28,7 @@ export default function BusinessFilter({ activeFilter, onFilterChange, filterMod
   return (
     <div className="space-y-4">
       {/* Segmented mode toggle */}
-      <div className="inline-flex items-center rounded-lg bg-surface border border-border p-0.5">
+      <div className="inline-flex items-center rounded-xl glass glass-shadow p-0.5">
         <button
           onClick={() => onModeChange('business')}
           className={`
@@ -68,7 +68,7 @@ export default function BusinessFilter({ activeFilter, onFilterChange, filterMod
                 transition-all duration-200 cursor-pointer border
                 ${isActive
                   ? 'bg-accent text-white border-accent shadow-sm'
-                  : 'bg-surface text-text-secondary border-border hover:border-border-strong hover:text-text-primary hover:shadow-sm'
+                  : 'bg-white/40 backdrop-blur-sm border-white/30 text-text-secondary hover:bg-white/60 hover:text-text-primary hover:shadow-sm'
                 }
               `}
             >

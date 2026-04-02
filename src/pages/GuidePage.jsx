@@ -81,7 +81,7 @@ export default function GuidePage() {
             What You'll Get
           </h2>
         </div>
-        <div className="bg-accent-light/40 px-6 py-5">
+        <div className="bg-white/30 backdrop-blur-sm px-6 py-5">
           <ul className="space-y-3">
             {guide.outcomes.map((outcome, i) => (
               <li key={i} className="flex items-start gap-3 text-sm text-text-primary/85">
@@ -118,7 +118,7 @@ export default function GuidePage() {
 
       {/* What to Expect */}
       <div className="animate-fade-up delay-4 mt-12 sm:mt-14">
-        <div className="rounded-2xl bg-surface border border-border p-6 sm:p-8">
+        <div className="rounded-2xl glass glass-shadow p-6 sm:p-8">
           <h2 className="font-[--font-display] text-xl text-text-primary mb-4 flex items-center gap-2">
             <svg className="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

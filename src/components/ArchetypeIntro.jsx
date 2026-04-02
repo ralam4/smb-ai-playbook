@@ -62,7 +62,7 @@ export default function ArchetypeIntro({ onStart }) {
             ].map((item) => (
               <div
                 key={item.num}
-                className="rounded-2xl bg-surface/80 backdrop-blur-sm border border-border p-6 sm:p-7"
+                className="rounded-2xl glass glass-shadow p-6 sm:p-7"
               >
                 <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1">
                   {item.num}
@@ -80,7 +80,7 @@ export default function ArchetypeIntro({ onStart }) {
 
         {/* What you'll discover */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 pb-16 sm:pb-24">
-          <div className="animate-fade-up delay-4 rounded-2xl bg-surface/80 backdrop-blur-sm border border-border p-8 sm:p-10">
+          <div className="animate-fade-up delay-4 rounded-2xl glass glass-shadow-lg p-8 sm:p-10">
             <div className="max-w-2xl mx-auto text-center">
               <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-secondary/60 mb-4">
                 What you&rsquo;ll discover
