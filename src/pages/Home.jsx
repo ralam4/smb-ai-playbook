@@ -124,6 +124,56 @@ export default function Home() {
         <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
+      {/* Archetype Quiz Teaser */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <div className="glass glass-shadow-lg rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row items-center gap-8">
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-px w-6 bg-accent" />
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
+                2-Minute Assessment
+              </p>
+            </div>
+            <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mb-3 leading-snug">
+              Not sure where to start?
+            </h2>
+            <p className="text-text-secondary leading-relaxed text-[15px] mb-6 max-w-lg">
+              Every business owner uses AI differently. Some are natural strategists. Others are creative improvisers. Find your AI archetype and get guides matched to how you already think and work.
+            </p>
+            <Link
+              to="/archetype"
+              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+            >
+              Take the Quiz
+              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+          </div>
+          <div className="flex flex-wrap justify-center gap-2.5 md:max-w-[220px]">
+            {[
+              { name: 'Architect', color: '#8B6914', bg: '#F5EDD6' },
+              { name: 'Alchemist', color: '#5C4A7A', bg: '#EDE8F5' },
+              { name: 'Conductor', color: '#2D6A4F', bg: '#E8F5EE' },
+              { name: 'Oracle', color: '#1D3557', bg: '#E4EAF5' },
+            ].map((type) => (
+              <span
+                key={type.name}
+                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium border backdrop-blur-sm"
+                style={{
+                  borderColor: type.color + '30',
+                  backgroundColor: type.bg + 'cc',
+                  color: type.color,
+                }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: type.color }} />
+                {type.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Problem Library */}
       <section ref={guidesRef} id="guides" className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-16">
         <div className="flex items-center gap-2 mb-3">
