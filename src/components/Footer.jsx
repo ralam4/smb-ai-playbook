@@ -51,18 +51,18 @@ export default function Footer() {
     <footer className="border-t border-border mt-20 bg-surface-warm">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
         {/* Newsletter signup */}
-        <div className="text-center mb-8">
-          <h3 className="font-display text-lg text-text-primary mb-1">
+        <div className="glass glass-shadow-lg rounded-2xl p-8 sm:p-10 text-center mb-8">
+          <h3 className="font-[--font-display] text-xl sm:text-2xl text-text-primary mb-2">
             Stay in the loop
           </h3>
-          <p className="text-sm text-text-secondary max-w-md mx-auto">
+          <p className="text-sm text-text-secondary max-w-md mx-auto leading-relaxed">
             New guides, templates & AI tips for small business — straight to your inbox. No spam, unsubscribe anytime.
           </p>
 
           {showForm ? (
             <form
               onSubmit={handleSubmit}
-              className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-2 max-w-md mx-auto"
+              className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2.5 max-w-md mx-auto"
               noValidate
             >
               <label htmlFor="footer-email" className="sr-only">Email address</label>
@@ -79,18 +79,18 @@ export default function Footer() {
                   if (status === 'error' || status === 'duplicate') setStatus('idle')
                 }}
                 disabled={status === 'loading'}
-                className="w-full sm:flex-1 px-4 py-2.5 rounded-lg border border-border bg-surface text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors disabled:opacity-60"
+                className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40 text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-accent text-white text-sm font-semibold hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 transition-colors disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-accent text-white text-sm font-semibold hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 transition-colors disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
               >
                 {status === 'loading' ? 'Joining...' : 'Join'}
               </button>
             </form>
           ) : (
-            <div className="mt-4 flex items-center justify-center gap-2 text-sm text-tag-green font-medium">
+            <div className="mt-6 flex items-center justify-center gap-2 text-sm text-tag-green font-medium">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
