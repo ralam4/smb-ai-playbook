@@ -23,7 +23,7 @@ export default function GuideCard({ guide, className = '' }) {
     <GlowCard glowHue={glowHue} className={className}>
       <Link
         to={`/guide/${guide.slug}`}
-        className="group block bg-surface rounded-2xl border border-border/80 p-6 sm:p-7 no-underline transition-all duration-300 hover:shadow-xl hover:shadow-black/[0.06] hover:-translate-y-1.5 relative overflow-hidden h-full"
+        className="group block rounded-2xl p-6 sm:p-7 no-underline transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden h-full glass glass-shadow glass-card-hover"
       >
         {/* Subtle top accent line */}
         <div
