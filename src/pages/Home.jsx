@@ -1,29 +1,16 @@
-import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import GuideCard from '../components/GuideCard'
-import BusinessFilter from '../components/BusinessFilter'
 import GridPattern from '../components/GridPattern'
-import guides from '../data/guides'
+import useScrollReveal from '../hooks/useScrollReveal'
+
+const problemPreviews = [
+  { label: 'Get Customers', color: '#D97706', description: 'Fill your schedule and get noticed' },
+  { label: 'Fix Profits', color: '#059669', description: 'Cut waste and price smarter' },
+  { label: 'Fix Operations', color: '#4F6D7A', description: 'Streamline and stop drowning' },
+  { label: 'Scale Up', color: '#7C3AED', description: 'Grow without the chaos' },
+]
 
 export default function Home() {
-  const [filter, setFilter] = useState('all')
-  const [filterMode, setFilterMode] = useState('business')
-  const guidesRef = useRef(null)
-
-  const filteredGuides = filter === 'all'
-    ? guides
-    : filterMode === 'business'
-      ? guides.filter((g) => g.tag === filter)
-      : guides.filter((g) => g.problems && g.problems.includes(filter))
-
-  const handleModeChange = (mode) => {
-    setFilterMode(mode)
-    setFilter('all')
-  }
-
-  const scrollToGuides = () => {
-    guidesRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }
+  const problemsRef = useScrollReveal()
 
   return (
     <>
@@ -31,7 +18,6 @@ export default function Home() {
       <section className="relative overflow-hidden grain">
         <div className="absolute inset-0 bg-gradient-to-br from-accent-light/30 via-transparent to-transparent pointer-events-none" />
 
-        {/* Grid pattern background */}
         <GridPattern
           width={48}
           height={48}
@@ -45,7 +31,7 @@ export default function Home() {
           ]}
         />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-24 sm:pt-32 pb-16 sm:pb-20">
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-20 sm:pb-28">
           <div className="animate-fade-up flex items-center gap-2 mb-8">
             <div className="h-px w-8 bg-accent" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
@@ -53,24 +39,24 @@ export default function Home() {
             </p>
           </div>
 
-          <h1 className="animate-fade-up delay-1 font-[--font-display] text-[2.5rem] sm:text-5xl md:text-[3.75rem] lg:text-7xl text-text-primary leading-[1.08] max-w-2xl">
+          <h1 className="animate-fade-up delay-1 font-[--font-display] text-[2.75rem] sm:text-6xl md:text-7xl lg:text-8xl text-text-primary leading-[1.05] max-w-3xl">
             AI that{' '}
             <em className="font-[--font-display] italic text-accent">actually</em>{' '}
             helps your small business.
           </h1>
 
-          <p className="animate-fade-up delay-2 mt-6 sm:mt-8 text-base sm:text-lg text-text-secondary leading-relaxed max-w-lg">
+          <p className="animate-fade-up delay-2 mt-8 sm:mt-10 text-lg sm:text-xl text-text-secondary leading-relaxed max-w-xl">
             Most AI advice is written for companies with engineering teams.
             This is built for the owner who has <strong className="text-text-primary font-semibold">real problems to solve</strong> —
             and wants to know exactly what to do about them.
           </p>
 
           {/* How it works strip */}
-          <div className="animate-fade-up delay-3 mt-12 sm:mt-16">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-secondary/60 mb-4">
+          <div className="animate-fade-up delay-3 mt-14 sm:mt-18">
+            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-secondary/60 mb-5">
               How it works
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-0">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
               {[
                 { num: '01', text: 'Browse real problems', desc: 'Find the one that matches your business' },
                 { num: '02', text: 'Follow the guide', desc: 'Step-by-step, with prompts you can copy' },
@@ -99,19 +85,19 @@ export default function Home() {
           </div>
 
           {/* Hero CTAs */}
-          <div className="animate-fade-up delay-4 mt-10 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <button
-              onClick={scrollToGuides}
-              className="group inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+          <div className="animate-fade-up delay-4 mt-12 sm:mt-14 flex flex-col sm:flex-row gap-3 sm:gap-4">
+            <Link
+              to="/guides"
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
             >
               Explore the Guides
-              <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </button>
+            </Link>
             <Link
               to="/archetype"
-              className="group inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200 cursor-pointer"
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200 cursor-pointer"
             >
               Discover Your AI Archetype
               <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -124,25 +110,77 @@ export default function Home() {
         <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
+      {/* Problem Preview — Visual bridge to Guides page */}
+      <section ref={problemsRef} className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+        <div className="text-center mb-12 sm:mb-16">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent mb-4">
+            What are you dealing with?
+          </p>
+          <h2 className="font-[--font-display] text-3xl sm:text-5xl md:text-6xl text-text-primary leading-[1.1] mb-5">
+            Real problems. Real solutions.
+          </h2>
+          <p className="text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
+            25 step-by-step guides organized around the problems that keep small business owners up at night.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-2xl mx-auto mb-12">
+          {problemPreviews.map((problem) => (
+            <Link
+              key={problem.label}
+              to="/guides"
+              className="group glass glass-shadow rounded-2xl p-6 sm:p-7 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span
+                  className="w-3 h-3 rounded-full flex-shrink-0"
+                  style={{ backgroundColor: problem.color }}
+                />
+                <span className="font-semibold text-text-primary text-base sm:text-lg group-hover:text-accent transition-colors">
+                  {problem.label}
+                </span>
+              </div>
+              <p className="text-sm sm:text-[15px] text-text-secondary leading-relaxed">
+                {problem.description}
+              </p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <Link
+            to="/guides"
+            className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+          >
+            Browse All Guides
+            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </Link>
+        </div>
+      </section>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent max-w-5xl mx-auto" />
+
       {/* Archetype Quiz Teaser */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <div className="glass glass-shadow-lg rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row items-center gap-8">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+        <div className="glass glass-shadow-lg rounded-2xl p-8 sm:p-12 flex flex-col md:flex-row items-center gap-10">
           <div className="flex-1">
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-4">
               <div className="h-px w-6 bg-accent" />
               <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
                 2-Minute Assessment
               </p>
             </div>
-            <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mb-3 leading-snug">
+            <h2 className="font-[--font-display] text-3xl sm:text-4xl md:text-5xl text-text-primary mb-4 leading-snug">
               Not sure where to start?
             </h2>
-            <p className="text-text-secondary leading-relaxed text-[15px] mb-6 max-w-lg">
+            <p className="text-text-secondary leading-relaxed text-base sm:text-lg mb-8 max-w-lg">
               Every business owner uses AI differently. Some are natural strategists. Others are creative improvisers. Find your AI archetype and get guides matched to how you already think and work.
             </p>
             <Link
               to="/archetype"
-              className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
             >
               Take the Quiz
               <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -150,7 +188,7 @@ export default function Home() {
               </svg>
             </Link>
           </div>
-          <div className="flex flex-wrap justify-center gap-2.5 md:max-w-[220px]">
+          <div className="flex flex-wrap justify-center gap-3 md:max-w-[240px]">
             {[
               { name: 'Architect', color: '#8B6914', bg: '#F5EDD6' },
               { name: 'Alchemist', color: '#5C4A7A', bg: '#EDE8F5' },
@@ -159,7 +197,7 @@ export default function Home() {
             ].map((type) => (
               <span
                 key={type.name}
-                className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium border backdrop-blur-sm"
+                className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-medium border backdrop-blur-sm"
                 style={{
                   borderColor: type.color + '30',
                   backgroundColor: type.bg + 'cc',
@@ -173,47 +211,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Problem Library */}
-      <section ref={guidesRef} id="guides" className="relative max-w-5xl mx-auto px-4 sm:px-6 pt-16 sm:pt-24 pb-16">
-        <div className="flex items-center gap-2 mb-3">
-          <div className="h-px w-6 bg-accent" />
-          <p className="animate-fade-up text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
-            Problem Library
-          </p>
-        </div>
-        <h2 className="animate-fade-up delay-1 font-[--font-display] text-3xl sm:text-4xl text-text-primary mb-3">
-          Find your situation.
-        </h2>
-        <p className="animate-fade-up delay-2 text-text-secondary max-w-lg mb-8 leading-relaxed">
-          Each guide is built around a specific problem in a specific type of business.
-          Pick yours to filter, or browse them all.
-        </p>
-
-        {/* Business type filter */}
-        <div className="animate-fade-up delay-3 mb-10">
-          <BusinessFilter
-            activeFilter={filter}
-            onFilterChange={setFilter}
-            filterMode={filterMode}
-            onModeChange={handleModeChange}
-          />
-        </div>
-
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          {filteredGuides.map((guide) => (
-            <GuideCard key={guide.slug} guide={guide} />
-          ))}
-        </div>
-
-        {filteredGuides.length === 0 && (
-          <div className="text-center py-16">
-            <p className="text-text-secondary">No guides for this category yet. More coming soon.</p>
-          </div>
-        )}
-      </section>
-
     </>
   )
 }

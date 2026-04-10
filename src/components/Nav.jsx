@@ -1,21 +1,6 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function Nav() {
-  const location = useLocation()
-  const navigate = useNavigate()
-
-  const handleGuidesClick = (e) => {
-    e.preventDefault()
-    if (location.pathname === '/') {
-      document.getElementById('guides')?.scrollIntoView({ behavior: 'smooth' })
-    } else {
-      navigate('/')
-      setTimeout(() => {
-        document.getElementById('guides')?.scrollIntoView({ behavior: 'smooth' })
-      }, 100)
-    }
-  }
-
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl glass glass-shadow rounded-2xl">
       <div className="px-5 sm:px-6 py-3 flex items-center justify-between">
@@ -28,13 +13,12 @@ export default function Nav() {
           </span>
         </Link>
         <div className="flex items-center gap-1 sm:gap-5">
-          <a
-            href="#guides"
-            onClick={handleGuidesClick}
-            className="text-sm font-medium text-text-secondary hover:text-accent transition-colors cursor-pointer px-2 py-1"
+          <Link
+            to="/guides"
+            className="text-sm font-medium text-text-secondary hover:text-accent transition-colors px-2 py-1"
           >
             Guides
-          </a>
+          </Link>
           <Link
             to="/archetype"
             className="text-sm font-medium text-text-secondary hover:text-accent transition-colors px-2 py-1"

@@ -22,6 +22,20 @@
   --color-glass-border-strong: rgba(232, 226, 217, 0.5);
   --color-glass-shadow: rgba(0, 0, 0, 0.04);
   --color-glass-shadow-lg: rgba(0, 0, 0, 0.08);
+
+  /* Problem section accents */
+  --color-section-customers: #D97706;
+  --color-section-customers-light: #FEF3C7;
+  --color-section-customers-label: #92400E;
+  --color-section-profits: #059669;
+  --color-section-profits-light: #D1FAE5;
+  --color-section-profits-label: #065F46;
+  --color-section-operations: #4F6D7A;
+  --color-section-operations-light: #E2E8F0;
+  --color-section-operations-label: #334155;
+  --color-section-scale: #7C3AED;
+  --color-section-scale-light: #EDE9FE;
+  --color-section-scale-label: #5B21B6;
   --font-display: 'DM Serif Display', serif;
   --font-body: 'DM Sans', sans-serif;
   --font-mono: 'IBM Plex Mono', monospace;
@@ -59,6 +73,12 @@ body {
 @keyframes slideRight {
   from { opacity: 0; transform: translateX(-12px); }
   to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes upvotePop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }
 
 .animate-fade-up {
