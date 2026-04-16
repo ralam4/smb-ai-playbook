@@ -8,6 +8,11 @@ import Home from './pages/Home'
 import GuidesPage from './pages/GuidesPage'
 import GuidePage from './pages/GuidePage'
 import ArchetypePage from './pages/ArchetypePage'
+import ContactPage from './pages/ContactPage'
+import AboutPage from './pages/AboutPage'
+import TermsPage from './pages/TermsPage'
+import PrivacyPage from './pages/PrivacyPage'
+import RefundPolicyPage from './pages/RefundPolicyPage'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -28,6 +33,11 @@ export default function App() {
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/guide/:slug" element={<GuidePage />} />
           <Route path="/archetype" element={<ArchetypePage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/terms" element={<TermsPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+          <Route path="/refunds" element={<RefundPolicyPage />} />
         </Routes>
       </main>
       <Footer />
