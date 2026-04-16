@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -105,25 +106,110 @@ export default function Footer() {
           )}
         </div>
 
-        {/* Existing footer content */}
-        <div className="border-t border-border/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-sm text-text-secondary">
-            AI Playbook for Small Business <span className="text-border mx-1.5">|</span> Free forever
+        {/* Sitemap columns */}
+        <div className="border-t border-border/50 pt-10 grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+          <div>
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-primary mb-4">
+              Playbook
+            </h4>
+            <ul className="space-y-2.5">
+              <li>
+                <Link to="/guides" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Guides
+                </Link>
+              </li>
+              <li>
+                <Link to="/archetype" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Archetype Quiz
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-primary mb-4">
+              Company
+            </h4>
+            <ul className="space-y-2.5">
+              <li>
+                <Link to="/about" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-primary mb-4">
+              Legal
+            </h4>
+            <ul className="space-y-2.5">
+              <li>
+                <Link to="/terms" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Terms
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Privacy
+                </Link>
+              </li>
+              <li>
+                <Link to="/refunds" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Refund Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-primary mb-4">
+              Connect
+            </h4>
+            <ul className="space-y-2.5">
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/rafeeulalam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-text-secondary hover:text-accent transition-colors no-underline inline-flex items-center gap-1.5"
+                >
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:ralam70@gmail.com"
+                  className="text-sm text-text-secondary hover:text-accent transition-colors no-underline"
+                >
+                  Email
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom bar */}
+        <div className="border-t border-border/50 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-text-secondary">
+            &copy; {new Date().getFullYear()} SMB AI Playbook. All rights reserved.
           </p>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-text-secondary">Built by</span>
+          <p className="text-xs text-text-secondary">
+            Built by{' '}
             <a
               href="https://www.linkedin.com/in/rafeeulalam"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm font-semibold text-text-primary hover:text-accent transition-colors inline-flex items-center gap-1.5 no-underline"
+              className="font-semibold text-text-primary hover:text-accent transition-colors no-underline"
             >
               Rafee Alam
-              <svg className="w-4 h-4 text-[#0A66C2]" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
-              </svg>
             </a>
-          </div>
+          </p>
         </div>
       </div>
     </footer>

@@ -35,7 +35,7 @@ export default function Home() {
           <div className="animate-fade-up flex items-center gap-2 mb-8">
             <div className="h-px w-8 bg-accent" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
-              Free Resource &middot; Built in Public
+              The SMB AI Playbook
             </p>
           </div>
 
@@ -48,7 +48,7 @@ export default function Home() {
           <p className="animate-fade-up delay-2 mt-8 sm:mt-10 text-lg sm:text-xl text-text-secondary leading-relaxed max-w-xl">
             Most AI advice is written for companies with engineering teams.
             This is built for the owner who has <strong className="text-text-primary font-semibold">real problems to solve</strong> —
-            and wants to know exactly what to do about them.
+            free guides to start, and end-to-end consulting when the problem is bigger than a guide can solve.
           </p>
 
           {/* How it works strip */}
@@ -109,6 +109,78 @@ export default function Home() {
 
         <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
+
+      {/* Three ways to use this — Free / Pro / Consulting */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+        <div className="text-center mb-12 sm:mb-14">
+          <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-4">
+            Three ways to use this
+          </p>
+          <h2 className="font-[--font-display] text-3xl sm:text-5xl text-text-primary leading-[1.1] max-w-2xl mx-auto">
+            Free guides for everyone. Deeper help when you need it.
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <Link
+            to="/guides"
+            className="group glass glass-shadow rounded-2xl p-8 sm:p-10 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col"
+          >
+            <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 self-start mb-4">
+              01 &middot; Free
+            </span>
+            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug group-hover:text-accent transition-colors">
+              Beginner Playbook
+            </h3>
+            <p className="text-[15px] sm:text-base text-text-secondary leading-[1.7] mb-6 flex-1">
+              Step-by-step guides for the problems that keep small business owners up at night. Free, no signup required.
+            </p>
+            <span className="text-sm font-semibold text-accent inline-flex items-center gap-1.5">
+              Browse guides
+              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </Link>
+
+          <div className="glass glass-shadow rounded-2xl p-8 sm:p-10 flex flex-col">
+            <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 self-start mb-4">
+              02 &middot; Pro
+            </span>
+            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug">
+              Pro Guides
+            </h3>
+            <p className="text-[15px] sm:text-base text-text-secondary leading-[1.7] mb-6 flex-1">
+              Intermediate and advanced playbooks — multi-step frameworks, industry-specific prompt sequences, downloadable templates.
+            </p>
+            <span className="text-sm font-medium text-text-secondary/70 inline-flex items-center gap-1.5">
+              Coming soon
+            </span>
+          </div>
+
+          <Link
+            to="/contact"
+            className="group glass glass-shadow rounded-2xl p-8 sm:p-10 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col"
+          >
+            <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 self-start mb-4">
+              03 &middot; Consulting
+            </span>
+            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug group-hover:text-accent transition-colors">
+              Work with Rafee
+            </h3>
+            <p className="text-[15px] sm:text-base text-text-secondary leading-[1.7] mb-6 flex-1">
+              End-to-end AI consulting when the problem is bigger than a guide can solve. Scoping, implementation, ongoing support.
+            </p>
+            <span className="text-sm font-semibold text-accent inline-flex items-center gap-1.5">
+              Work with me
+              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent max-w-5xl mx-auto" />
 
       {/* Problem Preview — Visual bridge to Guides page */}
       <section ref={problemsRef} className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
