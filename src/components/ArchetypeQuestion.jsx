@@ -34,7 +34,7 @@ export default function ArchetypeQuestion({
           [7, 8], [15, 4], [10, 6], [4, 10], [13, 8],
         ]}
       />
-    <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-12 pb-16">
+    <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-16">
       {/* Progress bar */}
       <div>
         <p className="font-[--font-mono] text-xs text-text-secondary">
