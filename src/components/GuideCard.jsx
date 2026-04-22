@@ -1,6 +1,15 @@
 import { Link } from 'react-router-dom'
 import GlowCard from './GlowCard'
 import UpvoteButton from './UpvoteButton'
+import ProBadge from './ProBadge'
+import industries from '../data/industries'
+
+const PROBLEM_TAGS = {
+  'get-customers': { label: 'Get Customers', color: '#D97706' },
+  'fix-profits': { label: 'Fix Profits', color: '#059669' },
+  'fix-operations': { label: 'Fix Operations', color: '#4F6D7A' },
+  'scale-up': { label: 'Scale Up', color: '#7C3AED' },
+}
 
 const hueMap = {
   '#2D6A4F': 145,
@@ -15,17 +24,38 @@ const hueMap = {
   '#4A5568': 210,
   '#DC2626': 0,
   '#16A34A': 140,
+  '#D97706': 35,
+  '#059669': 155,
+  '#4F6D7A': 200,
+  '#1D4ED8': 220,
+  '#EA580C': 20,
+  '#0EA5E9': 200,
+}
+
+function getTagInfo(guide) {
+  if (guide.tier === 'pro' && guide.industry) {
+    const ind = industries.find((i) => i.slug === guide.industry)
+    return { label: ind ? ind.name : 'Pro', color: ind ? ind.color : '#C4622D' }
+  }
+  if (guide.problems && guide.problems.length > 0) {
+    const p = PROBLEM_TAGS[guide.problems[0]]
+    if (p) return p
+  }
+  if (guide.tag) return { label: guide.tag, color: guide.tagColor || '#C4622D' }
+  return { label: 'Guide', color: '#C4622D' }
 }
 
 export default function GuideCard({ guide, className = '', voteCount = 0, hasVoted = false, onToggleVote, sectionAccent }) {
-  const glowHue = hueMap[guide.tagColor] ?? 25
-  const accentColor = sectionAccent || guide.tagColor
+  const tagInfo = getTagInfo(guide)
+  const glowHue = hueMap[tagInfo.color] ?? 25
+  const accentColor = sectionAccent || tagInfo.color
+  const isPro = guide.tier === 'pro'
 
   return (
     <GlowCard glowHue={glowHue} className={className}>
       <Link
         to={`/guide/${guide.slug}`}
-        className="group flex flex-col rounded-2xl p-6 sm:p-7 no-underline transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden h-full glass glass-shadow glass-card-hover"
+        className={`group flex flex-col rounded-2xl p-6 sm:p-7 no-underline transition-all duration-300 hover:-translate-y-1.5 relative overflow-hidden h-full glass glass-shadow glass-card-hover ${isPro ? 'ring-1 ring-accent/20' : ''}`}
       >
         {/* Accent top bar on hover */}
         <div
@@ -34,13 +64,16 @@ export default function GuideCard({ guide, className = '', voteCount = 0, hasVot
         />
 
         {/* Tag row */}
-        <div className="flex items-center justify-between mb-5">
-          <span
-            className="inline-block text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-white"
-            style={{ backgroundColor: guide.tagColor }}
-          >
-            {guide.tag}
-          </span>
+        <div className="flex items-start justify-between gap-2 mb-5">
+          <div className="flex flex-wrap items-center gap-2">
+            <span
+              className="inline-block text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full text-white"
+              style={{ backgroundColor: tagInfo.color }}
+            >
+              {tagInfo.label}
+            </span>
+            {isPro && <ProBadge />}
+          </div>
           {onToggleVote && (
             <UpvoteButton
               count={voteCount}

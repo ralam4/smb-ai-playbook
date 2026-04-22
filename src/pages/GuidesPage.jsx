@@ -1,9 +1,10 @@
 import { useState, useRef, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import GuideCard from '../components/GuideCard'
 import GridPattern from '../components/GridPattern'
 import useUpvotes from '../hooks/useUpvotes'
 import useScrollReveal from '../hooks/useScrollReveal'
-import guides from '../data/guides'
+import { freeGuides } from '../data/guides'
 
 const categories = [
   {
@@ -54,7 +55,7 @@ export default function GuidesPage() {
   const active = categories.find(c => c.id === activeTab)
 
   const filteredGuides = sortByVotes(
-    guides.filter(g => g.problems && g.problems.includes(activeTab))
+    freeGuides.filter(g => g.problems && g.problems.includes(activeTab))
   )
 
   const switchTab = (id) => {
@@ -132,7 +133,14 @@ export default function GuidesPage() {
               Find your situation.
             </h1>
             <p className="text-text-secondary text-base sm:text-lg max-w-md mx-auto leading-relaxed">
-              25 step-by-step guides organized by the problem they solve.
+              Free guides for the problems that keep small business owners up at night.
+            </p>
+            <p className="mt-3 text-sm text-text-secondary/80">
+              Looking for industry-specific depth?{' '}
+              <Link to="/pro" className="text-accent hover:underline font-semibold">
+                Explore Pro libraries
+              </Link>
+              .
             </p>
           </div>
 

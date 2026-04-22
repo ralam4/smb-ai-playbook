@@ -142,20 +142,26 @@ export default function Home() {
             </span>
           </Link>
 
-          <div className="glass glass-shadow rounded-2xl p-8 sm:p-10 flex flex-col">
+          <Link
+            to="/pro"
+            className="group glass glass-shadow rounded-2xl p-8 sm:p-10 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col"
+          >
             <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 self-start mb-4">
               02 &middot; Pro
             </span>
-            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug">
+            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug group-hover:text-accent transition-colors">
               Pro Guides
             </h3>
             <p className="text-[15px] sm:text-base text-text-secondary leading-[1.7] mb-6 flex-1">
-              Intermediate and advanced playbooks — multi-step frameworks, industry-specific prompt sequences, downloadable templates.
+              Industry-specific playbooks — multi-step frameworks, prompts, and templates built for your business type. $5 per guide.
             </p>
-            <span className="text-sm font-medium text-text-secondary/70 inline-flex items-center gap-1.5">
-              Coming soon
+            <span className="text-sm font-semibold text-accent inline-flex items-center gap-1.5">
+              Browse libraries
+              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </span>
-          </div>
+          </Link>
 
           <Link
             to="/contact"

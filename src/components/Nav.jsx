@@ -21,7 +21,10 @@ export default function Nav() {
           <NavLink to="/guides" className={navLinkClass}>
             Guides
           </NavLink>
-          <NavLink to="/archetype" className={navLinkClass}>
+          <NavLink to="/pro" className={navLinkClass}>
+            Pro
+          </NavLink>
+          <NavLink to="/archetype" className={({ isActive }) => `${navLinkClass({ isActive })} hidden sm:block`}>
             Quiz
           </NavLink>
           <NavLink to="/about" className={({ isActive }) => `${navLinkClass({ isActive })} hidden sm:block`}>

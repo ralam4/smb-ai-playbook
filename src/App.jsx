@@ -7,6 +7,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import GuidesPage from './pages/GuidesPage'
 import GuidePage from './pages/GuidePage'
+import ProPage from './pages/ProPage'
+import ProIndustryPage from './pages/ProIndustryPage'
+import SuccessPage from './pages/SuccessPage'
 import ArchetypePage from './pages/ArchetypePage'
 import ContactPage from './pages/ContactPage'
 import AboutPage from './pages/AboutPage'
@@ -32,6 +35,9 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/guides" element={<GuidesPage />} />
           <Route path="/guide/:slug" element={<GuidePage />} />
+          <Route path="/pro" element={<ProPage />} />
+          <Route path="/pro/:slug" element={<ProIndustryPage />} />
+          <Route path="/success" element={<SuccessPage />} />
           <Route path="/archetype" element={<ArchetypePage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />

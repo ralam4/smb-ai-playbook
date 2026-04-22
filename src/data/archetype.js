@@ -131,7 +131,7 @@ export const resultTypes = {
     watchOut: 'Moving so fast you skip the thinking that would have saved you time',
     colors: { primary: '#8B6914', wash: '#F5EDD6', anchor: '#4A3508', gradient: ['#F5EDD6', '#E8C97A'] },
     linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Architect. I build toward clear goals and AI's biggest value for me is as a force multiplier on execution. What's yours? smbaiplaybook.xyz/archetype",
-    recommendedGuides: ['cash-flow-management', 'hiring-and-onboarding', 'carwash-capacity-beginner'],
+    recommendedGuides: ['project-profitability', 'build-recurring-revenue', 'autorepair-bay-efficiency'],
   },
   alchemist: {
     id: 'alchemist',
@@ -142,7 +142,7 @@ export const resultTypes = {
     watchOut: 'Exploring so long that the window to act closes',
     colors: { primary: '#5C4A7A', wash: '#EDE8F5', anchor: '#2E2040', gradient: ['#EDE8F5', '#F5D6F0'] },
     linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Alchemist. I explore before I decide and AI works best for me as a thinking partner, not just an output machine. What's yours? smbaiplaybook.xyz/archetype",
-    recommendedGuides: ['competitive-differentiation', 'architecture-profitability-intermediate', 'coffee-menu-pricing'],
+    recommendedGuides: ['fix-your-pricing', 'photographer-pricing', 'architecture-client-proposals'],
   },
   conductor: {
     id: 'conductor',
@@ -153,7 +153,7 @@ export const resultTypes = {
     watchOut: 'Over-communicating when the moment calls for a decision',
     colors: { primary: '#2D6A4F', wash: '#E8F5EE', anchor: '#1A3D2E', gradient: ['#E8F5EE', '#F5EDE8'] },
     linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Conductor. I synthesize complexity into clarity and AI handles the compression so I can focus on judgment. What's yours? smbaiplaybook.xyz/archetype",
-    recommendedGuides: ['google-reviews', 'hiring-and-onboarding', 'doctor-referral-system'],
+    recommendedGuides: ['google-reviews', 'write-clear-quotes', 'medical-patient-communication'],
   },
   oracle: {
     id: 'oracle',
@@ -164,7 +164,7 @@ export const resultTypes = {
     watchOut: 'Trusting your read so much that you stop pressure-testing it',
     colors: { primary: '#1D3557', wash: '#E4EAF5', anchor: '#0D1B2E', gradient: ['#E4EAF5', '#F5E4EE'] },
     linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Oracle. I act on instinct and AI sharpens the signal I'm already reading. What's yours? smbaiplaybook.xyz/archetype",
-    recommendedGuides: ['social-media-content-calendar', 'cash-flow-management', 'realestate-market-authority-intermediate'],
+    recommendedGuides: ['find-dead-zones', 'cut-no-shows', 'carwash-capacity-leaks'],
   },
 }
 

@@ -115,7 +115,12 @@ export default function Footer() {
             <ul className="space-y-2.5">
               <li>
                 <Link to="/guides" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
-                  Guides
+                  Free Guides
+                </Link>
+              </li>
+              <li>
+                <Link to="/pro" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Pro Libraries
                 </Link>
               </li>
               <li>
