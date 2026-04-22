@@ -6,6 +6,7 @@ import GuideCard from '../components/GuideCard'
 import DownloadButton from '../components/DownloadButton'
 import PaywallGate from '../components/PaywallGate'
 import ProBadge from '../components/ProBadge'
+import PdfDownloadButton from '../components/PdfDownloadButton'
 import useProAccess from '../hooks/useProAccess'
 
 // Problem category display info for free guide tag rendering
@@ -190,10 +191,28 @@ export default function GuidePage() {
         </div>
       )}
 
-      {/* Download — only if present and unlocked */}
-      {!locked && guide.downloadFile && (
-        <div className="animate-fade-up delay-5 mt-10 flex justify-center sm:justify-start">
-          <DownloadButton filename={guide.downloadFile} />
+      {/* Download section — legacy markdown (free guides w/ downloadFile) + PDF (Pro, unlocked) */}
+      {!locked && (guide.downloadFile || isPro) && (
+        <div className="animate-fade-up delay-5 mt-10">
+          {isPro && (
+            <div className="mb-6">
+              <div className="flex items-center gap-2 mb-3">
+                <div className="h-px w-6 bg-accent" />
+                <h2 className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
+                  Take it with you
+                </h2>
+              </div>
+              <p className="text-sm text-text-secondary mb-4 max-w-md leading-relaxed">
+                Download this guide as a PDF for offline reading, printing, or sharing with your team.
+              </p>
+              <PdfDownloadButton guide={guide} />
+            </div>
+          )}
+          {guide.downloadFile && (
+            <div className="flex justify-center sm:justify-start">
+              <DownloadButton filename={guide.downloadFile} />
+            </div>
+          )}
         </div>
       )}
 
