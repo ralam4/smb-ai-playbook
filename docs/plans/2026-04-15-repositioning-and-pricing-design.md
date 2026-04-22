@@ -8,6 +8,7 @@
 - **2026-04-15** — Design approved.
 - **2026-04-15** — Phase 1 implemented in worktree `.worktrees/phase-1-repositioning` on branch `feat/phase-1-repositioning`. All new pages + nav/footer/home changes live. Polish pass applied (GridPattern heroes on every new page, bumped card typography to `text-base` body / `text-2xl` headings / `p-8 sm:p-10` density, gradient section dividers, `glass-shadow-lg` anchor panels on About credentials and Contact CTA). Committed as `bb2825a`. **Not yet pushed or PR'd** — awaiting user review.
 - **Phase 2 decision (2026-04-15):** Locked in **Option B** for Pro content — existing Intermediate guides stay free. New Pro guides will be authored from scratch so the paid tier is a legitimate upgrade, not a bait-and-switch repaywall of previously-free content. `difficulty` (Beginner/Intermediate/Advanced) and `tier` (free/pro) remain independent axes.
+- **2026-04-21** — Two-tier guide restructure designed and approved. Full design in `docs/plans/2026-04-21-two-tier-guide-restructure.md`. Free tier: 10 problem-first industry-agnostic guides at `/guides`. Pro tier: 32 industry-specific guides across 8 industries at `/pro` with per-industry landing pages. Phase 2 pricing plumbing design still applies but routes and data model updated to reflect the new structure.
 
 ## Scope note
 
