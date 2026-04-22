@@ -278,7 +278,7 @@ Please write:
       time: 'Creating the initial templates takes 2–3 hours. After that, each new quote takes 2–5 minutes to customize instead of writing from scratch.',
     },
     downloadFile: null,
-    problems: ['get-customers', 'fix-profits'],
+    problems: ['get-customers'],
   },
 
   {
@@ -769,7 +769,7 @@ Please create:
       time: 'The reminder flow is set-and-forget once you build it. The waitlist system (Step 3) is the highest-leverage part — most businesses capture 5–10% of revenue they were previously losing.',
     },
     downloadFile: null,
-    problems: ['fix-operations', 'fix-profits'],
+    problems: ['fix-operations'],
   },
 
   {
@@ -875,7 +875,7 @@ Please create:
       time: 'Design work takes 2–4 hours. Launch is 4 weeks. Real signal on whether the program works comes at 90 days — that’s when you can see renewals and true lifetime value.',
     },
     downloadFile: null,
-    problems: ['scale-up', 'fix-profits'],
+    problems: ['scale-up'],
   },
 
   {
@@ -964,7 +964,7 @@ Please create:
       time: 'The audit itself takes 30–60 minutes. The proposal template is a one-time build. The weekly habit is 15 minutes. The ROI is measured in the projects you NO LONGER lose money on.',
     },
     downloadFile: null,
-    problems: ['fix-profits', 'scale-up'],
+    problems: ['scale-up'],
   },
 ]
 
