@@ -4,27 +4,15 @@ import {
   Text,
   View,
   StyleSheet,
-  Font,
 } from '@react-pdf/renderer'
 import industries from '../data/industries'
 
-// Register fonts from Google Fonts CDN so the PDF matches site typography.
-Font.register({
-  family: 'DM Serif Display',
-  src: 'https://fonts.gstatic.com/s/dmserifdisplay/v10/-nFnOHM81r4j6k0gjAW3mujVU2B2K_d709jy92k.ttf',
-})
-Font.register({
-  family: 'DM Sans',
-  fonts: [
-    { src: 'https://fonts.gstatic.com/s/dmsans/v15/rP2Hp2ywxg089UriCZOIHQ.ttf', fontWeight: 400 },
-    { src: 'https://fonts.gstatic.com/s/dmsans/v15/rP2Cp2ywxg089UriAWCrCBimC2Q.ttf', fontWeight: 500 },
-    { src: 'https://fonts.gstatic.com/s/dmsans/v15/rP2Cp2ywxg089UriASitCBimC2Q.ttf', fontWeight: 700 },
-  ],
-})
-Font.register({
-  family: 'IBM Plex Mono',
-  src: 'https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n5igg1l9kn-s.ttf',
-})
+// Use react-pdf's built-in PDF fonts — no external fetch, always available.
+// Custom-font registration via Google Fonts CDN is unreliable in the browser
+// context react-pdf uses, so we pick built-ins that render reliably.
+const FONT_DISPLAY = 'Times-Roman'
+const FONT_BODY = 'Helvetica'
+const FONT_MONO = 'Courier'
 
 const ACCENT = '#C4622D'
 const TEXT_PRIMARY = '#1A1714'
@@ -34,7 +22,7 @@ const SURFACE = '#FAF7F2'
 
 const styles = StyleSheet.create({
   page: {
-    fontFamily: 'DM Sans',
+    fontFamily: FONT_BODY,
     fontSize: 11,
     lineHeight: 1.6,
     color: TEXT_PRIMARY,
@@ -44,7 +32,7 @@ const styles = StyleSheet.create({
 
   // ─── Cover ───
   coverPage: {
-    fontFamily: 'DM Sans',
+    fontFamily: FONT_BODY,
     backgroundColor: '#FFFFFF',
     padding: 64,
     flexDirection: 'column',
@@ -58,7 +46,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
   },
   coverTitle: {
-    fontFamily: 'DM Serif Display',
+    fontFamily: FONT_DISPLAY,
     fontSize: 40,
     color: TEXT_PRIMARY,
     lineHeight: 1.1,
@@ -114,7 +102,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   sectionTitle: {
-    fontFamily: 'DM Serif Display',
+    fontFamily: FONT_DISPLAY,
     fontSize: 22,
     color: TEXT_PRIMARY,
     marginBottom: 14,
@@ -173,13 +161,13 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     borderRadius: 5,
     fontSize: 13,
-    fontFamily: 'DM Serif Display',
+    fontFamily: FONT_DISPLAY,
     textAlign: 'center',
     paddingTop: 5,
     marginRight: 12,
   },
   stepTitle: {
-    fontFamily: 'DM Serif Display',
+    fontFamily: FONT_DISPLAY,
     fontSize: 16,
     color: TEXT_PRIMARY,
     flex: 1,
@@ -230,7 +218,7 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   promptText: {
-    fontFamily: 'IBM Plex Mono',
+    fontFamily: FONT_MONO,
     fontSize: 9,
     color: '#F5E6DC',
     lineHeight: 1.55,
@@ -245,7 +233,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   expectationsTitle: {
-    fontFamily: 'DM Serif Display',
+    fontFamily: FONT_DISPLAY,
     fontSize: 14,
     color: TEXT_PRIMARY,
     marginBottom: 10,
