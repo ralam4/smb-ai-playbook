@@ -14,10 +14,10 @@ export default function UpvoteButton({ count, voted, onToggle, accentColor }) {
   return (
     <button
       onClick={handleClick}
-      className="flex items-center gap-1 px-2 py-1 rounded-md text-xs font-medium transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
+      className="flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95"
       style={{
-        color: voted ? accentColor : 'var(--color-text-secondary)',
-        backgroundColor: voted ? accentColor + '14' : 'var(--color-bg)',
+        color: voted ? accentColor : 'var(--color-ink-soft)',
+        backgroundColor: voted ? accentColor + '14' : 'var(--color-sand)',
       }}
       aria-label={voted ? 'Remove upvote' : 'Upvote this guide'}
     >

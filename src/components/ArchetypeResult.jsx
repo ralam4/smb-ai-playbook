@@ -1,7 +1,19 @@
 import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ShareCard from './ShareCard'
+import Blob from './Blob'
+import Doodle from './Doodle'
 import guides from '../data/guides'
+
+// Maps each archetype to one of the shared pastel blob colors (closest match
+// to that archetype's wash tone) so the result page leans harder into its
+// own color system with a matching Blob composition.
+const BLOB_COLOR_BY_ARCHETYPE = {
+  architect: 'butter',
+  alchemist: 'peach',
+  conductor: 'mint',
+  oracle: 'sky',
+}
 
 export default function ArchetypeResult({ resultType, onRetake }) {
   const [copied, setCopied] = useState(false)
@@ -10,6 +22,8 @@ export default function ArchetypeResult({ resultType, onRetake }) {
   const matchedGuides = guides.filter((g) =>
     resultType.recommendedGuides?.includes(g.slug),
   )
+
+  const blobColor = BLOB_COLOR_BY_ARCHETYPE[resultType.id] || 'peach'
 
   const handleCopy = () => {
     navigator.clipboard.writeText(resultType.linkedinCopy)
@@ -30,15 +44,22 @@ export default function ArchetypeResult({ resultType, onRetake }) {
 
   return (
     <div style={{ backgroundColor: resultType.colors.wash }}>
-      {/* Reveal hero */}
-      <section className="px-4 sm:px-6 pt-16 sm:pt-24 pb-12">
-        <div className="opacity-0 animate-fade-up mx-auto max-w-4xl text-center">
-          <p
-            className="font-[--font-mono] text-xs font-semibold uppercase tracking-widest mb-2"
-            style={{ color: resultType.colors.primary }}
-          >
-            Your AI Archetype is
-          </p>
+      {/* Reveal hero — matching Blob composition */}
+      <section className="relative overflow-hidden px-4 sm:px-6 pt-16 sm:pt-24 pb-12">
+        <Blob variant={1} color={blobColor} float className="absolute -top-16 -right-20 w-80 h-80 opacity-40 pointer-events-none" />
+        <Blob variant={3} color={blobColor} className="absolute bottom-0 -left-20 w-64 h-64 opacity-30 pointer-events-none hidden sm:block" />
+
+        <div className="relative opacity-0 animate-fade-up mx-auto max-w-4xl text-center">
+          <div className="flex items-center justify-center gap-2.5 mb-3">
+            <Doodle variant="sparkle" color={blobColor} className="w-5 h-5" />
+            <p
+              className="font-[--font-mono] text-xs font-semibold uppercase tracking-widest"
+              style={{ color: resultType.colors.primary }}
+            >
+              Your AI Archetype is
+            </p>
+            <Doodle variant="sparkle" color={blobColor} className="w-5 h-5" />
+          </div>
 
           <h1
             className="font-[--font-display] italic text-5xl sm:text-6xl md:text-7xl mb-3"
@@ -50,11 +71,10 @@ export default function ArchetypeResult({ resultType, onRetake }) {
           {/* Tagline pill */}
           <div className="flex justify-center mb-8">
             <span
-              className="inline-block rounded-full border px-5 py-2 text-sm font-medium font-[--font-display]"
+              className="inline-block rounded-full px-5 py-2 text-sm font-medium font-[--font-display] shadow-sm"
               style={{
-                borderColor: resultType.colors.primary + '60',
                 color: resultType.colors.anchor,
-                backgroundColor: 'rgba(255,255,255,0.5)',
+                backgroundColor: 'rgba(255,255,255,0.65)',
               }}
             >
               &ldquo;{resultType.tagline}&rdquo;
@@ -64,8 +84,9 @@ export default function ArchetypeResult({ resultType, onRetake }) {
       </section>
 
       {/* Card + description section */}
-      <section className="px-4 sm:px-6 pb-16">
-        <div className="opacity-0 animate-fade-up delay-1 mx-auto max-w-5xl">
+      <section className="relative overflow-hidden px-4 sm:px-6 pb-16">
+        <Blob variant={5} color={blobColor} className="absolute top-1/3 right-0 w-72 h-72 opacity-20 pointer-events-none hidden lg:block" />
+        <div className="relative opacity-0 animate-fade-up delay-1 mx-auto max-w-5xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
             {/* Left: Share card */}
             <div ref={cardRef} className="mx-auto max-w-lg lg:max-w-none">
@@ -75,7 +96,7 @@ export default function ArchetypeResult({ resultType, onRetake }) {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-6">
                 <button
                   onClick={handleSaveImage}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all duration-200 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold border-2 bg-surface transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
                   style={{
                     borderColor: resultType.colors.primary,
                     color: resultType.colors.primary,
@@ -88,38 +109,32 @@ export default function ArchetypeResult({ resultType, onRetake }) {
                 </button>
                 <button
                   onClick={handleCopy}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
                   style={{ backgroundColor: '#C4622D' }}
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
                   </svg>
-                  {copied ? 'Copied \u2713' : 'Copy LinkedIn Post'}
+                  {copied ? 'Copied ✓' : 'Copy LinkedIn Post'}
                 </button>
               </div>
             </div>
 
             {/* Right: Description + stats */}
             <div className="lg:pt-4">
-              <p className="text-text-primary text-base sm:text-lg leading-relaxed mb-8">
+              <p className="text-ink text-base sm:text-lg leading-relaxed mb-8">
                 {resultType.description}
               </p>
 
-              {/* AI Edge + Watch Out */}
+              {/* AI Edge + Watch Out — soft cards */}
               <div className="space-y-4 mb-8">
-                <div
-                  className="rounded-xl p-5 border"
-                  style={{
-                    backgroundColor: 'rgba(255,255,255,0.5)',
-                    borderColor: resultType.colors.primary + '25',
-                  }}
-                >
+                <div className="soft-card p-5">
                   <div className="flex items-center gap-2 mb-1.5">
                     <span
                       className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: resultType.colors.primary }}
                     />
-                    <p className="font-[--font-mono] text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+                    <p className="font-[--font-mono] text-[11px] font-semibold uppercase tracking-wider text-ink-soft">
                       Your AI Edge
                     </p>
                   </div>
@@ -131,22 +146,14 @@ export default function ArchetypeResult({ resultType, onRetake }) {
                   </p>
                 </div>
 
-                <div
-                  className="rounded-xl p-5 border"
-                  style={{
-                    backgroundColor: 'rgba(255,255,255,0.5)',
-                    borderColor: resultType.colors.primary + '25',
-                  }}
-                >
+                <div className="soft-card p-5">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span
-                      className="w-2 h-2 rounded-full bg-text-secondary/40"
-                    />
-                    <p className="font-[--font-mono] text-[11px] font-semibold uppercase tracking-wider text-text-secondary">
+                    <span className="w-2 h-2 rounded-full bg-ink-soft/40" />
+                    <p className="font-[--font-mono] text-[11px] font-semibold uppercase tracking-wider text-ink-soft">
                       Watch out for
                     </p>
                   </div>
-                  <p className="font-medium text-text-primary text-sm leading-relaxed">
+                  <p className="font-medium text-ink text-sm leading-relaxed">
                     {resultType.watchOut}
                   </p>
                 </div>
@@ -155,7 +162,7 @@ export default function ArchetypeResult({ resultType, onRetake }) {
               {/* Recommended Guides */}
               {matchedGuides.length > 0 && (
                 <div>
-                  <p className="font-[--font-mono] text-[11px] font-semibold uppercase tracking-wider text-text-secondary mb-4">
+                  <p className="font-[--font-mono] text-[11px] font-semibold uppercase tracking-wider text-ink-soft mb-4">
                     Recommended Guides for You
                   </p>
                   <div className="space-y-3">
@@ -163,17 +170,16 @@ export default function ArchetypeResult({ resultType, onRetake }) {
                       <Link
                         key={guide.slug}
                         to={`/guide/${guide.slug}`}
-                        className="group flex items-center gap-3 rounded-xl border bg-white/60 px-5 py-4 transition-all duration-200 hover:shadow-md hover:bg-white/80"
-                        style={{ borderColor: resultType.colors.primary + '30' }}
+                        className="group soft-card soft-card-hover flex items-center gap-3 px-5 py-4"
                       >
                         <span
                           className="w-1 h-8 rounded-full flex-shrink-0"
                           style={{ backgroundColor: resultType.colors.primary }}
                         />
-                        <span className="text-sm font-medium text-text-primary group-hover:text-accent transition-colors">
+                        <span className="text-sm font-medium text-ink group-hover:text-accent transition-colors">
                           {guide.title}
                         </span>
-                        <svg className="w-4 h-4 ml-auto text-text-secondary/40 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <svg className="w-4 h-4 ml-auto text-ink-soft/40 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-200 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                         </svg>
                       </Link>
@@ -189,14 +195,8 @@ export default function ArchetypeResult({ resultType, onRetake }) {
       {/* Retake strip */}
       <section className="px-4 sm:px-6 pb-16">
         <div className="mx-auto max-w-4xl text-center">
-          <div
-            className="rounded-2xl border p-6 sm:p-8"
-            style={{
-              backgroundColor: 'rgba(255,255,255,0.4)',
-              borderColor: resultType.colors.primary + '20',
-            }}
-          >
-            <p className="text-text-secondary text-sm mb-3">
+          <div className="soft-card p-6 sm:p-8">
+            <p className="text-ink-soft text-sm mb-3">
               Think a different archetype fits you better?
             </p>
             <button

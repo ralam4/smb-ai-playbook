@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
-import GridPattern from "./GridPattern";
+import { useState } from "react";
+import Blob from "./Blob";
 
+// Note: the parent (ArchetypePage) mounts this component with `key={currentIndex}`
+// so selectedIndex naturally resets to null on every new question — no effect needed.
 export default function ArchetypeQuestion({
   question,
   currentIndex,
@@ -8,10 +10,6 @@ export default function ArchetypeQuestion({
   onAnswer,
 }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
-
-  useEffect(() => {
-    setSelectedIndex(null);
-  }, [currentIndex]);
 
   const progressPercent = ((currentIndex + 1) / totalQuestions) * 100;
 
@@ -23,56 +21,61 @@ export default function ArchetypeQuestion({
 
   return (
     <div className="relative overflow-hidden min-h-[calc(100vh-60px)]">
-      <GridPattern
-        width={48}
-        height={48}
-        x={-1}
-        y={-1}
-        className="fill-accent/[0.03] stroke-border-strong/40 [mask-image:radial-gradient(ellipse_80%_70%_at_50%_40%,black_20%,transparent_80%)]"
-        squares={[
-          [2, 3], [5, 1], [8, 5], [3, 7], [12, 2],
-          [7, 8], [15, 4], [10, 6], [4, 10], [13, 8],
-        ]}
+      <Blob
+        variant={4}
+        color="peach"
+        className="absolute -top-16 -right-24 w-72 h-72 opacity-30 pointer-events-none hidden sm:block"
       />
-    <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-16">
-      {/* Progress bar */}
-      <div>
-        <p className="font-[--font-mono] text-xs text-text-secondary">
-          Question {currentIndex + 1} of {totalQuestions}
-        </p>
-        <div className="mt-2 h-1 w-full rounded-full bg-border">
-          <div
-            className="h-full rounded-full bg-accent transition-all duration-500 ease-out"
-            style={{ width: `${progressPercent}%` }}
-          />
+      <Blob
+        variant={2}
+        color="mint"
+        className="absolute bottom-0 -left-24 w-64 h-64 opacity-25 pointer-events-none hidden sm:block"
+      />
+
+      <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-16">
+        {/* Progress bar — terracotta fill on sand track w/ a dot marker at the tip */}
+        <div>
+          <p className="font-[--font-mono] text-xs text-ink-soft">
+            Question {currentIndex + 1} of {totalQuestions}
+          </p>
+          <div className="mt-3 relative h-2 w-full rounded-full bg-sand">
+            <div
+              className="h-full rounded-full bg-accent transition-all duration-500 ease-out"
+              style={{ width: `${progressPercent}%` }}
+            />
+            <span
+              aria-hidden="true"
+              className="absolute top-1/2 w-3.5 h-3.5 rounded-full bg-accent ring-4 ring-accent-light -translate-y-1/2 -translate-x-1/2 transition-all duration-500 ease-out"
+              style={{ left: `${progressPercent}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Question text */}
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink text-center max-w-2xl mx-auto mt-14">
+          {question.text}
+        </h2>
+
+        {/* Answer options — soft-card pill buttons */}
+        <div className="flex flex-col gap-3 max-w-xl mx-auto mt-10">
+          {question.options.map((option, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => handleSelect(i, option.type)}
+              className={`w-full text-left rounded-[1.75rem] border px-5 py-4 sm:px-6 sm:py-4.5 cursor-pointer transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5 ${
+                selectedIndex === i
+                  ? "border-accent bg-peach-light"
+                  : "border-border bg-surface hover:border-accent/50"
+              }`}
+            >
+              <span className="text-sm sm:text-base text-ink">
+                {option.text}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
-
-      {/* Question text */}
-      <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary text-center max-w-2xl mx-auto mt-12">
-        {question.text}
-      </h2>
-
-      {/* Answer options */}
-      <div className="flex flex-col gap-3 max-w-xl mx-auto mt-10">
-        {question.options.map((option, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => handleSelect(i, option.type)}
-            className={`w-full text-left bg-surface border rounded-xl px-5 py-4 cursor-pointer transition-all duration-200 ${
-              selectedIndex === i
-                ? "border-accent bg-accent/10"
-                : "border-border hover:border-accent/50 hover:shadow-sm"
-            }`}
-          >
-            <span className="text-sm sm:text-base text-text-primary">
-              {option.text}
-            </span>
-          </button>
-        ))}
-      </div>
-    </div>
     </div>
   );
 }

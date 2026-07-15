@@ -28,14 +28,14 @@ export default function BusinessFilter({ activeFilter, onFilterChange, filterMod
   return (
     <div className="space-y-4">
       {/* Segmented mode toggle */}
-      <div className="inline-flex items-center rounded-xl glass glass-shadow p-0.5">
+      <div className="inline-flex items-center rounded-full soft-card p-1">
         <button
           onClick={() => onModeChange('business')}
           className={`
-            relative px-4 py-1.5 rounded-md text-xs font-semibold tracking-wide uppercase transition-all duration-200 cursor-pointer
+            relative px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-200 cursor-pointer
             ${filterMode === 'business'
-              ? 'bg-text-primary text-white shadow-sm'
-              : 'text-text-secondary hover:text-text-primary'
+              ? 'bg-ink text-white shadow-sm'
+              : 'text-ink-soft hover:text-ink'
             }
           `}
         >
@@ -44,10 +44,10 @@ export default function BusinessFilter({ activeFilter, onFilterChange, filterMod
         <button
           onClick={() => onModeChange('problem')}
           className={`
-            relative px-4 py-1.5 rounded-md text-xs font-semibold tracking-wide uppercase transition-all duration-200 cursor-pointer
+            relative px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase transition-all duration-200 cursor-pointer
             ${filterMode === 'problem'
-              ? 'bg-text-primary text-white shadow-sm'
-              : 'text-text-secondary hover:text-text-primary'
+              ? 'bg-ink text-white shadow-sm'
+              : 'text-ink-soft hover:text-ink'
             }
           `}
         >
@@ -68,7 +68,7 @@ export default function BusinessFilter({ activeFilter, onFilterChange, filterMod
                 transition-all duration-200 cursor-pointer border
                 ${isActive
                   ? 'bg-accent text-white border-accent shadow-sm'
-                  : 'bg-white/40 backdrop-blur-sm border-white/30 text-text-secondary hover:bg-white/60 hover:text-text-primary hover:shadow-sm'
+                  : 'bg-surface border-border text-ink-soft hover:bg-sand hover:text-ink hover:shadow-sm'
                 }
               `}
             >

@@ -1,44 +1,36 @@
-import GridPattern from '../components/GridPattern'
+import Blob from '../components/Blob'
+import Doodle from '../components/Doodle'
 
 export default function PrivacyPage() {
   return (
     <>
       <section className="relative overflow-hidden grain">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-light/30 via-transparent to-transparent pointer-events-none" />
-        <GridPattern
-          width={48}
-          height={48}
-          x={-1}
-          y={-1}
-          className="fill-accent/[0.03] stroke-border-strong/40 [mask-image:radial-gradient(ellipse_80%_70%_at_30%_40%,black_20%,transparent_80%)]"
-          squares={[[3, 2], [6, 4], [10, 1], [2, 6], [13, 3], [8, 7], [5, 9]]}
-        />
+        <Blob variant={3} color="mint" className="absolute -top-16 -right-20 w-64 h-64 opacity-25 pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-14">
-          <div className="flex items-center gap-2 mb-8">
-            <div className="h-px w-8 bg-accent" />
+          <div className="flex items-center gap-2.5 mb-8">
+            <Doodle variant="asterisk" color="accent" className="w-5 h-5" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
               Legal
             </p>
           </div>
-          <h1 className="font-[--font-display] text-4xl sm:text-5xl md:text-6xl text-text-primary leading-[1.1]">
+          <h1 className="font-[--font-display] font-semibold text-4xl sm:text-5xl md:text-6xl text-ink leading-[1.1]">
             Privacy Policy
           </h1>
-          <p className="mt-6 text-sm text-text-secondary">
+          <p className="mt-6 text-sm text-ink-soft">
             Last updated: April 2026
           </p>
         </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
       {/* TODO: replace with lawyer-reviewed copy before enabling payments */}
-      <div className="prose prose-lg max-w-none text-text-primary text-base sm:text-lg leading-[1.7] space-y-6">
+      <div className="prose prose-lg max-w-none text-ink text-base sm:text-lg leading-[1.7] space-y-6">
         <p>
           This Privacy Policy describes how SMB AI Playbook collects, uses, and
           protects information when you use smbaiplaybook.xyz.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           1. What we collect
         </h2>
         <p>
@@ -49,7 +41,7 @@ export default function PrivacyPage() {
           personal information.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           2. How we use it
         </h2>
         <p>
@@ -58,7 +50,7 @@ export default function PrivacyPage() {
           parties.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           3. Local storage
         </h2>
         <p>
@@ -66,7 +58,7 @@ export default function PrivacyPage() {
           guides you have unlocked. This information stays on your device.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           4. Your rights
         </h2>
         <p>
@@ -75,7 +67,7 @@ export default function PrivacyPage() {
           your data by contacting us.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           5. Contact
         </h2>
         <p>

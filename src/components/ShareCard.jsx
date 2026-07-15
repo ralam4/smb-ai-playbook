@@ -59,10 +59,12 @@ export default function ShareCard({ resultType }) {
       <div className="share-card-wrapper" style={{ perspective: '1000px' }}>
         <div
           ref={cardRef}
-          className="relative overflow-hidden rounded-[20px] shadow-xl cursor-grab active:cursor-grabbing"
+          className="relative overflow-hidden rounded-[20px] border cursor-grab active:cursor-grabbing"
           style={{
             transition: 'transform 0.15s ease-out, box-shadow 0.3s ease',
             transformStyle: 'preserve-3d',
+            borderColor: 'var(--color-border)',
+            boxShadow: 'var(--shadow-soft-lg)',
           }}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}

@@ -1,45 +1,37 @@
-import GridPattern from '../components/GridPattern'
+import Blob from '../components/Blob'
+import Doodle from '../components/Doodle'
 
 export default function TermsPage() {
   return (
     <>
       <section className="relative overflow-hidden grain">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-light/30 via-transparent to-transparent pointer-events-none" />
-        <GridPattern
-          width={48}
-          height={48}
-          x={-1}
-          y={-1}
-          className="fill-accent/[0.03] stroke-border-strong/40 [mask-image:radial-gradient(ellipse_80%_70%_at_30%_40%,black_20%,transparent_80%)]"
-          squares={[[2, 3], [5, 1], [8, 5], [3, 7], [12, 2], [7, 8], [10, 6]]}
-        />
+        <Blob variant={2} color="butter" className="absolute -top-16 -right-20 w-64 h-64 opacity-25 pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-14">
-          <div className="flex items-center gap-2 mb-8">
-            <div className="h-px w-8 bg-accent" />
+          <div className="flex items-center gap-2.5 mb-8">
+            <Doodle variant="asterisk" color="accent" className="w-5 h-5" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
               Legal
             </p>
           </div>
-          <h1 className="font-[--font-display] text-4xl sm:text-5xl md:text-6xl text-text-primary leading-[1.1]">
+          <h1 className="font-[--font-display] font-semibold text-4xl sm:text-5xl md:text-6xl text-ink leading-[1.1]">
             Terms of Service
           </h1>
-          <p className="mt-6 text-sm text-text-secondary">
+          <p className="mt-6 text-sm text-ink-soft">
             Last updated: April 2026
           </p>
         </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
       {/* TODO: replace with lawyer-reviewed copy before enabling payments */}
-      <div className="prose prose-lg max-w-none text-text-primary text-base sm:text-lg leading-[1.7] space-y-6">
+      <div className="prose prose-lg max-w-none text-ink text-base sm:text-lg leading-[1.7] space-y-6">
         <p>
           These Terms of Service govern your use of the SMB AI Playbook
           (smbaiplaybook.xyz), operated by Rafee Alam. By accessing or using the
           site, you agree to be bound by these terms.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           1. Use of the site
         </h2>
         <p>
@@ -49,7 +41,7 @@ export default function TermsPage() {
           your business.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           2. Paid content
         </h2>
         <p>
@@ -58,7 +50,7 @@ export default function TermsPage() {
           per-guide basis and is tied to your browser unless otherwise stated.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           3. Intellectual property
         </h2>
         <p>
@@ -67,7 +59,7 @@ export default function TermsPage() {
           business. Republishing or reselling guide content is not permitted.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           4. Limitation of liability
         </h2>
         <p>
@@ -75,7 +67,7 @@ export default function TermsPage() {
           for any damages arising from your use of the site or its content.
         </p>
 
-        <h2 className="font-[--font-display] text-2xl sm:text-3xl text-text-primary mt-10 mb-4">
+        <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
           5. Contact
         </h2>
         <p>

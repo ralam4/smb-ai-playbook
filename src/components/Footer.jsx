@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Doodle from './Doodle'
+import Blob from './Blob'
 
 export default function Footer() {
   const [email, setEmail] = useState('')
@@ -49,21 +51,24 @@ export default function Footer() {
   const showForm = status !== 'success'
 
   return (
-    <footer className="border-t border-border mt-20 bg-surface-warm">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+    <footer className="relative border-t border-border mt-20 bg-sand overflow-hidden">
+      <Blob variant={5} color="mint" className="absolute -left-16 -bottom-10 w-64 h-64 opacity-40 pointer-events-none" />
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-10">
         {/* Newsletter signup */}
-        <div className="glass glass-shadow-lg rounded-2xl p-8 sm:p-10 text-center mb-8">
-          <h3 className="font-[--font-display] text-xl sm:text-2xl text-text-primary mb-2">
+        <div className="relative soft-card p-8 sm:p-10 text-center mb-8 overflow-hidden">
+          <Blob variant={2} color="peach" className="absolute -right-10 -top-10 w-40 h-40 opacity-50 pointer-events-none" />
+          <h3 className="relative font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mb-2 inline-flex items-center gap-2">
             Stay in the loop
+            <Doodle variant="sparkle" color="butter" className="w-5 h-5" />
           </h3>
-          <p className="text-sm text-text-secondary max-w-md mx-auto leading-relaxed">
+          <p className="relative text-sm text-ink-soft max-w-md mx-auto leading-relaxed">
             New guides, templates & AI tips for small business — straight to your inbox. No spam, unsubscribe anytime.
           </p>
 
           {showForm ? (
             <form
               onSubmit={handleSubmit}
-              className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2.5 max-w-md mx-auto"
+              className="relative mt-6 flex flex-col sm:flex-row items-center justify-center gap-2.5 max-w-md mx-auto"
               noValidate
             >
               <label htmlFor="footer-email" className="sr-only">Email address</label>
@@ -80,12 +85,12 @@ export default function Footer() {
                   if (status === 'error' || status === 'duplicate') setStatus('idle')
                 }}
                 disabled={status === 'loading'}
-                className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-white/60 backdrop-blur-sm border border-white/40 text-sm text-text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors disabled:opacity-60"
+                className="w-full sm:flex-1 px-4 py-3 rounded-xl bg-bg border border-border text-sm text-ink placeholder:text-ink-soft/50 focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-colors disabled:opacity-60"
               />
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-accent text-white text-sm font-semibold hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 transition-colors disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
+                className="w-full sm:w-auto px-6 py-3 rounded-full bg-accent text-white text-sm font-semibold hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent/30 transition-colors disabled:opacity-60 cursor-pointer disabled:cursor-not-allowed"
               >
                 {status === 'loading' ? 'Joining...' : 'Join'}
               </button>

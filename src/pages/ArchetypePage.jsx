@@ -37,6 +37,7 @@ export default function ArchetypePage() {
       )}
       {phase === 'question' && (
         <ArchetypeQuestion
+          key={currentIndex}
           question={questions[currentIndex]}
           currentIndex={currentIndex}
           totalQuestions={questions.length}

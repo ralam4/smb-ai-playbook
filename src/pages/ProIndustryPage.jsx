@@ -2,7 +2,11 @@ import { useParams, Link } from 'react-router-dom'
 import industries from '../data/industries'
 import { proGuides } from '../data/guides'
 import GuideCard from '../components/GuideCard'
-import GridPattern from '../components/GridPattern'
+import Blob from '../components/Blob'
+import Doodle from '../components/Doodle'
+
+// Cycle of doodle variants for the pain-point list so each bullet feels hand-placed.
+const PAIN_DOODLES = ['sparkle', 'star', 'asterisk', 'loop']
 
 export default function ProIndustryPage() {
   const { slug } = useParams()
@@ -23,26 +27,20 @@ export default function ProIndustryPage() {
 
   return (
     <>
-      {/* Hero */}
+      {/* ── Hero ── per-industry pastel wash (softened, no saturated gradients) */}
       <section className="relative overflow-hidden grain">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: `linear-gradient(135deg, ${industry.color}12 0%, transparent 50%)` }}
+          style={{ background: `linear-gradient(135deg, ${industry.color}14 0%, transparent 55%)` }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-light/20 via-transparent to-transparent pointer-events-none" />
-        <GridPattern
-          width={48}
-          height={48}
-          x={-1}
-          y={-1}
-          className="fill-accent/[0.03] stroke-border-strong/40 [mask-image:radial-gradient(ellipse_80%_70%_at_30%_40%,black_20%,transparent_80%)]"
-          squares={[[2, 3], [5, 1], [8, 5], [3, 7], [12, 2], [7, 8], [10, 6]]}
-        />
+        <Blob variant={1} color="peach" float className="absolute -top-16 -right-20 w-80 h-80 opacity-50 pointer-events-none" />
+        <Blob variant={4} color="mint" className="absolute bottom-0 -left-16 w-64 h-64 opacity-35 pointer-events-none" />
+
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-20">
           {/* Breadcrumb */}
           <Link
             to="/pro"
-            className="inline-flex items-center gap-2 text-sm text-text-secondary hover:text-accent transition-colors no-underline mb-8 group"
+            className="inline-flex items-center gap-2 text-sm text-ink-soft hover:text-accent transition-colors no-underline mb-8 group"
           >
             <svg className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -50,39 +48,46 @@ export default function ProIndustryPage() {
             All Pro libraries
           </Link>
 
-          <div className="flex items-center gap-2 mb-6">
-            <div className="h-px w-8" style={{ backgroundColor: industry.color }} />
-            <p className="text-[11px] font-bold uppercase tracking-[0.25em]" style={{ color: industry.color }}>
+          <div className="flex items-center gap-2.5 mb-6">
+            <Doodle variant="asterisk" color="accent" className="w-5 h-5" />
+            <span
+              className="inline-flex items-center text-[11px] font-semibold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full text-ink"
+              style={{ backgroundColor: `${industry.color}1F` }}
+            >
               {industry.name}
-            </p>
+            </span>
           </div>
 
-          <h1 className="font-[--font-display] text-[2.5rem] sm:text-5xl md:text-6xl text-text-primary leading-[1.05] max-w-3xl mb-6">
+          <h1 className="font-[--font-display] font-semibold text-[2.5rem] sm:text-5xl md:text-6xl text-ink leading-[1.05] max-w-3xl mb-6">
             {industry.tagline}
           </h1>
 
-          <p className="text-lg sm:text-xl text-text-secondary leading-relaxed max-w-2xl">
+          <p className="text-lg sm:text-xl text-ink-soft leading-relaxed max-w-2xl">
             {industry.description}
           </p>
 
-          {/* Who this is for + pain points */}
+          {/* Who this is for + pain points — soft cards */}
           <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="glass glass-shadow rounded-2xl p-6 sm:p-8">
+            <div className="soft-card p-6 sm:p-8">
               <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-3">
                 Who it&rsquo;s for
               </p>
-              <p className="text-[15px] text-text-primary leading-[1.7]">
+              <p className="text-[15px] text-ink leading-[1.7]">
                 {industry.whoFor}
               </p>
             </div>
-            <div className="glass glass-shadow rounded-2xl p-6 sm:p-8">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-3">
+            <div className="soft-card p-6 sm:p-8">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-4">
                 Problems this library solves
               </p>
-              <ul className="space-y-2">
-                {industry.painPoints.map((point) => (
-                  <li key={point} className="flex items-start gap-2 text-[15px] text-text-primary leading-[1.6]">
-                    <span className="w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0 mt-2" />
+              <ul className="space-y-3">
+                {industry.painPoints.map((point, i) => (
+                  <li key={point} className="flex items-start gap-2.5 text-[15px] text-ink leading-[1.6]">
+                    <Doodle
+                      variant={PAIN_DOODLES[i % PAIN_DOODLES.length]}
+                      color="accent"
+                      className="w-4 h-4 flex-shrink-0 mt-0.5"
+                    />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -90,19 +95,18 @@ export default function ProIndustryPage() {
             </div>
           </div>
         </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
-      {/* Guide grid */}
+      {/* ── Guide grid ── */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
         <div className="mb-10 sm:mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="h-px w-8 bg-accent" />
+          <div className="flex items-center gap-2.5 mb-4">
+            <Doodle variant="squiggle-underline" color="accent" className="w-8 h-3" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
               The library
             </p>
           </div>
-          <h2 className="font-[--font-display] text-3xl sm:text-5xl text-text-primary leading-[1.1]">
+          <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink leading-[1.1]">
             {industryGuides.length} guide{industryGuides.length !== 1 ? 's' : ''} for {industry.name.toLowerCase()} operators.
           </h2>
         </div>
@@ -115,7 +119,7 @@ export default function ProIndustryPage() {
           </div>
         ) : (
           <div className="text-center py-16">
-            <p className="text-text-secondary text-lg">More guides coming soon.</p>
+            <p className="text-ink-soft text-lg">More guides coming soon.</p>
           </div>
         )}
       </section>

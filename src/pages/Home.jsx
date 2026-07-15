@@ -1,291 +1,281 @@
 import { Link } from 'react-router-dom'
-import GridPattern from '../components/GridPattern'
 import useScrollReveal from '../hooks/useScrollReveal'
+import Blob from '../components/Blob'
+import Doodle from '../components/Doodle'
+import BlobBadge from '../components/BlobBadge'
+import SectionBand from '../components/SectionBand'
+import architectImg from '../assets/mascots/architect.png'
 
+// Pastel chip treatment for the 4 problem categories: soft fill + deep-ink text.
 const problemPreviews = [
-  { label: 'Get Customers', color: '#D97706', description: 'Fill your schedule and get noticed' },
-  { label: 'Fix Profits', color: '#059669', description: 'Cut waste and price smarter' },
-  { label: 'Fix Operations', color: '#4F6D7A', description: 'Streamline and stop drowning' },
-  { label: 'Scale Up', color: '#7C3AED', description: 'Grow without the chaos' },
+  { label: 'Get Customers', chip: 'bg-peach-light', dot: 'var(--color-peach)', description: 'Fill your schedule and get noticed.' },
+  { label: 'Fix Profits', chip: 'bg-mint-light', dot: 'var(--color-mint)', description: 'Cut waste and price smarter.' },
+  { label: 'Fix Operations', chip: 'bg-sky-light', dot: 'var(--color-sky)', description: 'Streamline and stop drowning.' },
+  { label: 'Scale Up', chip: 'bg-butter-light', dot: 'var(--color-butter)', description: 'Grow without the chaos.' },
 ]
+
+const howItWorks = [
+  {
+    n: 1,
+    color: 'peach',
+    doodle: 'star',
+    title: 'Browse real problems',
+    desc: 'Find the one that matches your business — no jargon, no tech-speak.',
+  },
+  {
+    n: 2,
+    color: 'mint',
+    doodle: 'arrow-curve',
+    title: 'Follow the guide',
+    desc: 'Step-by-step, with prompts you can copy and paste as-is.',
+  },
+  {
+    n: 3,
+    color: 'butter',
+    doodle: 'sparkle',
+    title: 'Use tools you have',
+    desc: 'ChatGPT, Claude — no special software, no engineering team.',
+  },
+]
+
+const threeWays = [
+  {
+    n: 1, color: 'peach', to: '/guides', title: 'Beginner Playbook', cta: 'Browse guides',
+    tag: 'Free',
+    body: 'Step-by-step guides for the problems that keep small business owners up at night. Free, no signup required.',
+  },
+  {
+    n: 2, color: 'mint', to: '/pro', title: 'Pro Guides', cta: 'Browse libraries',
+    tag: 'Pro',
+    body: 'Industry-specific playbooks — multi-step frameworks, prompts, and templates built for your business type. $5 per guide.',
+  },
+  {
+    n: 3, color: 'butter', to: '/contact', title: 'Work with Rafee', cta: 'Work with me',
+    tag: 'Consulting',
+    body: 'End-to-end AI consulting when the problem is bigger than a guide can solve. Scoping, implementation, ongoing support.',
+  },
+]
+
+const Arrow = () => (
+  <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+  </svg>
+)
 
 export default function Home() {
   const problemsRef = useScrollReveal()
 
   return (
     <>
-      {/* Hero */}
+      {/* ── Hero ── blob composition + doodle-underlined key word */}
       <section className="relative overflow-hidden grain">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-light/30 via-transparent to-transparent pointer-events-none" />
-
-        <GridPattern
-          width={48}
-          height={48}
-          x={-1}
-          y={-1}
-          className="fill-accent/[0.03] stroke-border-strong/40 [mask-image:radial-gradient(ellipse_80%_70%_at_30%_40%,black_20%,transparent_80%)]"
-          squares={[
-            [2, 3], [5, 1], [8, 5], [3, 7], [12, 2],
-            [7, 8], [15, 4], [10, 6], [4, 10], [13, 8],
-            [1, 5], [9, 2], [6, 9], [11, 3], [14, 7],
-          ]}
-        />
+        {/* Organic blob composition (distinct from About's photo-led hero) */}
+        <Blob variant={1} color="peach" float className="absolute -top-24 -right-16 w-[26rem] h-[26rem] opacity-90 pointer-events-none" />
+        <Blob variant={4} color="mint" float className="absolute top-40 -left-24 w-80 h-80 opacity-70 pointer-events-none" />
+        <Blob variant={2} color="butter" className="absolute bottom-4 right-1/3 w-40 h-40 opacity-60 rotate-12 pointer-events-none hidden sm:block" />
 
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-20 sm:pb-28">
-          <div className="animate-fade-up flex items-center gap-2 mb-8">
-            <div className="h-px w-8 bg-accent" />
+          <div className="animate-fade-up flex items-center gap-2.5 mb-8">
+            <Doodle variant="asterisk" color="accent" className="w-5 h-5" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
               The SMB AI Playbook
             </p>
           </div>
 
-          <h1 className="animate-fade-up delay-1 font-[--font-display] text-[2.75rem] sm:text-6xl md:text-7xl lg:text-8xl text-text-primary leading-[1.05] max-w-3xl">
+          <h1 className="animate-fade-up delay-1 font-[--font-display] font-semibold text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.5rem] text-ink leading-[1.02] tracking-[-0.01em] max-w-3xl">
             AI that{' '}
-            <em className="font-[--font-display] italic text-accent">actually</em>{' '}
+            <span className="relative inline-block">
+              <em className="font-[--font-display] italic text-accent">actually</em>
+              <Doodle variant="squiggle-underline" color="accent" className="absolute left-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-4" />
+            </span>{' '}
             helps your small business.
           </h1>
 
-          <p className="animate-fade-up delay-2 mt-8 sm:mt-10 text-lg sm:text-xl text-text-secondary leading-relaxed max-w-xl">
+          <p className="animate-fade-up delay-2 mt-9 sm:mt-11 text-lg sm:text-xl text-ink-soft leading-relaxed max-w-xl">
             Most AI advice is written for companies with engineering teams.
-            This is built for the owner who has <strong className="text-text-primary font-semibold">real problems to solve</strong> —
+            This is built for the owner who has <strong className="text-ink font-semibold">real problems to solve</strong> —
             free guides to start, and end-to-end consulting when the problem is bigger than a guide can solve.
           </p>
 
-          {/* How it works strip */}
-          <div className="animate-fade-up delay-3 mt-14 sm:mt-18">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-secondary/60 mb-5">
-              How it works
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-0">
-              {[
-                { num: '01', text: 'Browse real problems', desc: 'Find the one that matches your business' },
-                { num: '02', text: 'Follow the guide', desc: 'Step-by-step, with prompts you can copy' },
-                { num: '03', text: 'Use tools you have', desc: 'ChatGPT, Claude \u2014 no special software' },
-              ].map((step, i) => (
-                <div key={step.num} className="flex items-start sm:items-center">
-                  {i > 0 && (
-                    <div className="hidden sm:block w-px h-12 bg-border mx-6 flex-shrink-0" />
-                  )}
-                  <div className="flex items-start gap-3 sm:gap-3.5">
-                    <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 flex-shrink-0 mt-0.5 sm:mt-0">
-                      {step.num}
-                    </span>
-                    <div>
-                      <span className="text-sm font-semibold text-text-primary block sm:inline">
-                        {step.text}
-                      </span>
-                      <span className="text-xs text-text-secondary block sm:hidden mt-0.5">
-                        {step.desc}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
           {/* Hero CTAs */}
-          <div className="animate-fade-up delay-4 mt-12 sm:mt-14 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="animate-fade-up delay-3 mt-11 sm:mt-12 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Link
               to="/guides"
-              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
             >
               Explore the Guides
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              <Arrow />
             </Link>
             <Link
               to="/archetype"
-              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200 cursor-pointer"
+              className="group inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold border-2 border-accent text-accent hover:bg-accent hover:text-white transition-all duration-200 cursor-pointer"
             >
               Discover Your AI Archetype
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              <Arrow />
             </Link>
           </div>
         </div>
-
-        <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent" />
       </section>
 
-      {/* Three ways to use this — Free / Pro / Consulting */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
-        <div className="text-center mb-12 sm:mb-14">
-          <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-4">
-            Three ways to use this
-          </p>
-          <h2 className="font-[--font-display] text-3xl sm:text-5xl text-text-primary leading-[1.1] max-w-2xl mx-auto">
-            Free guides for everyone. Deeper help when you need it.
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <Link
-            to="/guides"
-            className="group glass glass-shadow rounded-2xl p-8 sm:p-10 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col"
-          >
-            <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 self-start mb-4">
-              01 &middot; Free
-            </span>
-            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug group-hover:text-accent transition-colors">
-              Beginner Playbook
-            </h3>
-            <p className="text-[15px] sm:text-base text-text-secondary leading-[1.7] mb-6 flex-1">
-              Step-by-step guides for the problems that keep small business owners up at night. Free, no signup required.
+      {/* ── How it works ── 3 soft cards with BlobBadges + spot doodles */}
+      <SectionBand tone="sand" wave className="overflow-hidden">
+        <Blob variant={3} color="peach" className="absolute -right-20 top-10 w-72 h-72 opacity-30 pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+          <div className="text-center mb-12 sm:mb-16">
+            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-4">
+              How it works
             </p>
-            <span className="text-sm font-semibold text-accent inline-flex items-center gap-1.5">
-              Browse guides
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-          </Link>
-
-          <Link
-            to="/pro"
-            className="group glass glass-shadow rounded-2xl p-8 sm:p-10 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col"
-          >
-            <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 self-start mb-4">
-              02 &middot; Pro
-            </span>
-            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug group-hover:text-accent transition-colors">
-              Pro Guides
-            </h3>
-            <p className="text-[15px] sm:text-base text-text-secondary leading-[1.7] mb-6 flex-1">
-              Industry-specific playbooks — multi-step frameworks, prompts, and templates built for your business type. $5 per guide.
-            </p>
-            <span className="text-sm font-semibold text-accent inline-flex items-center gap-1.5">
-              Browse libraries
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-          </Link>
-
-          <Link
-            to="/contact"
-            className="group glass glass-shadow rounded-2xl p-8 sm:p-10 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer flex flex-col"
-          >
-            <span className="font-[--font-mono] text-xs font-medium text-accent bg-accent-light/60 rounded-md px-2 py-1 self-start mb-4">
-              03 &middot; Consulting
-            </span>
-            <h3 className="font-[--font-display] text-2xl text-text-primary mb-4 leading-snug group-hover:text-accent transition-colors">
-              Work with Rafee
-            </h3>
-            <p className="text-[15px] sm:text-base text-text-secondary leading-[1.7] mb-6 flex-1">
-              End-to-end AI consulting when the problem is bigger than a guide can solve. Scoping, implementation, ongoing support.
-            </p>
-            <span className="text-sm font-semibold text-accent inline-flex items-center gap-1.5">
-              Work with me
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </span>
-          </Link>
-        </div>
-      </section>
-
-      <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent max-w-5xl mx-auto" />
-
-      {/* Problem Preview — Visual bridge to Guides page */}
-      <section ref={problemsRef} className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
-        <div className="text-center mb-12 sm:mb-16">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent mb-4">
-            What are you dealing with?
-          </p>
-          <h2 className="font-[--font-display] text-3xl sm:text-5xl md:text-6xl text-text-primary leading-[1.1] mb-5">
-            Real problems. Real solutions.
-          </h2>
-          <p className="text-text-secondary text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
-            25 step-by-step guides organized around the problems that keep small business owners up at night.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-2xl mx-auto mb-12">
-          {problemPreviews.map((problem) => (
-            <Link
-              key={problem.label}
-              to="/guides"
-              className="group glass glass-shadow rounded-2xl p-6 sm:p-7 no-underline transition-all duration-300 hover:-translate-y-1 hover:shadow-lg cursor-pointer"
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <span
-                  className="w-3 h-3 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: problem.color }}
-                />
-                <span className="font-semibold text-text-primary text-base sm:text-lg group-hover:text-accent transition-colors">
-                  {problem.label}
-                </span>
-              </div>
-              <p className="text-sm sm:text-[15px] text-text-secondary leading-relaxed">
-                {problem.description}
-              </p>
-            </Link>
-          ))}
-        </div>
-
-        <div className="text-center">
-          <Link
-            to="/guides"
-            className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
-          >
-            Browse All Guides
-            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
-        </div>
-      </section>
-
-      <div className="h-px bg-gradient-to-r from-transparent via-border-strong to-transparent max-w-5xl mx-auto" />
-
-      {/* Archetype Quiz Teaser */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
-        <div className="glass glass-shadow-lg rounded-2xl p-8 sm:p-12 flex flex-col md:flex-row items-center gap-10">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="h-px w-6 bg-accent" />
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
-                2-Minute Assessment
-              </p>
-            </div>
-            <h2 className="font-[--font-display] text-3xl sm:text-4xl md:text-5xl text-text-primary mb-4 leading-snug">
-              Not sure where to start?
+            <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink leading-[1.08] max-w-2xl mx-auto">
+              Three steps. No engineering degree required.
             </h2>
-            <p className="text-text-secondary leading-relaxed text-base sm:text-lg mb-8 max-w-lg">
-              Every business owner uses AI differently. Some are natural strategists. Others are creative improvisers. Find your AI archetype and get guides matched to how you already think and work.
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {howItWorks.map((step) => (
+              <div key={step.n} className="soft-card soft-card-hover relative p-8 flex flex-col overflow-hidden">
+                <Doodle variant={step.doodle} color={step.color} className="absolute top-6 right-6 w-7 h-7 opacity-80" />
+                <BlobBadge n={step.n} color={step.color} size={60} className="mb-6" />
+                <h3 className="font-[--font-display] font-semibold text-xl text-ink mb-2.5 leading-snug">
+                  {step.title}
+                </h3>
+                <p className="text-[15px] text-ink-soft leading-[1.7]">
+                  {step.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </SectionBand>
+
+      {/* ── Three ways to use this ── soft cards */}
+      <section className="relative overflow-hidden">
+        <Blob variant={5} color="sky" className="absolute -left-24 bottom-0 w-80 h-80 opacity-30 pointer-events-none" />
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+          <div className="text-center mb-12 sm:mb-14">
+            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-4">
+              Three ways to use this
             </p>
+            <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink leading-[1.1] max-w-2xl mx-auto">
+              Free guides for everyone. Deeper help when you need it.
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {threeWays.map((way) => (
+              <Link
+                key={way.to}
+                to={way.to}
+                className="group soft-card soft-card-hover p-8 sm:p-9 no-underline flex flex-col cursor-pointer"
+              >
+                <div className="flex items-center gap-3 mb-6">
+                  <BlobBadge n={way.n} color={way.color} size={52} />
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-ink-soft">
+                    {way.tag}
+                  </span>
+                </div>
+                <h3 className="font-[--font-display] font-semibold text-2xl text-ink mb-3 leading-snug group-hover:text-accent transition-colors">
+                  {way.title}
+                </h3>
+                <p className="text-[15px] text-ink-soft leading-[1.7] mb-6 flex-1">
+                  {way.body}
+                </p>
+                <span className="text-sm font-semibold text-accent inline-flex items-center gap-1.5">
+                  {way.cta}
+                  <Arrow />
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Problem preview ── pastel-chip soft cards */}
+      <SectionBand tone="sand" wave className="overflow-hidden">
+        <Blob variant={2} color="mint" className="absolute -right-16 -top-8 w-72 h-72 opacity-30 pointer-events-none" />
+        <div ref={problemsRef} className="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="text-center mb-12 sm:mb-16">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-accent mb-4">
+              What are you dealing with?
+            </p>
+            <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl md:text-6xl text-ink leading-[1.08] mb-5">
+              Real problems.{' '}
+              <span className="relative inline-block">
+                <em className="font-[--font-display] italic text-accent">Real</em>
+                <Doodle variant="squiggle-underline" color="accent" className="absolute left-0 -bottom-2 w-full h-3" />
+              </span>{' '}
+              solutions.
+            </h2>
+            <p className="text-ink-soft text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
+              25 step-by-step guides organized around the problems that keep small business owners up at night.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 max-w-2xl mx-auto mb-12">
+            {problemPreviews.map((problem) => (
+              <Link
+                key={problem.label}
+                to="/guides"
+                className="group soft-card soft-card-hover p-6 sm:p-7 no-underline cursor-pointer"
+              >
+                <span className={`inline-flex items-center gap-2 rounded-full ${problem.chip} px-3.5 py-1.5 mb-4`}>
+                  <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: problem.dot }} />
+                  <span className="text-[13px] font-semibold text-ink">{problem.label}</span>
+                </span>
+                <p className="text-[15px] text-ink-soft leading-relaxed group-hover:text-ink transition-colors">
+                  {problem.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
             <Link
-              to="/archetype"
-              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-xl text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+              to="/guides"
+              className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
             >
-              Take the Quiz
-              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
+              Browse All Guides
+              <Arrow />
             </Link>
           </div>
-          <div className="flex flex-wrap justify-center gap-3 md:max-w-[240px]">
-            {[
-              { name: 'Architect', color: '#8B6914', bg: '#F5EDD6' },
-              { name: 'Alchemist', color: '#5C4A7A', bg: '#EDE8F5' },
-              { name: 'Conductor', color: '#2D6A4F', bg: '#E8F5EE' },
-              { name: 'Oracle', color: '#1D3557', bg: '#E4EAF5' },
-            ].map((type) => (
-              <span
-                key={type.name}
-                className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-medium border backdrop-blur-sm"
-                style={{
-                  borderColor: type.color + '30',
-                  backgroundColor: type.bg + 'cc',
-                  color: type.color,
-                }}
+        </div>
+      </SectionBand>
+
+      {/* ── Archetype quiz teaser ── soft card featuring a mascot */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-28">
+          <div className="relative soft-card overflow-hidden p-8 sm:p-12 flex flex-col md:flex-row items-center gap-10">
+            <Blob variant={1} color="butter" className="absolute -left-16 -bottom-16 w-72 h-72 opacity-40 pointer-events-none" />
+            <div className="relative flex-1">
+              <div className="flex items-center gap-2.5 mb-4">
+                <Doodle variant="sparkle" color="accent" className="w-5 h-5" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
+                  2-Minute Assessment
+                </p>
+              </div>
+              <h2 className="font-[--font-display] font-semibold text-3xl sm:text-4xl md:text-5xl text-ink mb-4 leading-[1.08]">
+                Not sure where to start?
+              </h2>
+              <p className="text-ink-soft leading-relaxed text-base sm:text-lg mb-8 max-w-lg">
+                Every business owner uses AI differently. Some are natural strategists. Others are creative improvisers. Find your AI archetype and get guides matched to how you already think and work.
+              </p>
+              <Link
+                to="/archetype"
+                className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
               >
-                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: type.color }} />
-                {type.name}
-              </span>
-            ))}
+                Take the Quiz
+                <Arrow />
+              </Link>
+            </div>
+            <div className="relative flex-shrink-0">
+              <Blob variant={3} color="mint" className="absolute inset-0 w-full h-full scale-110 opacity-80 pointer-events-none" />
+              <img
+                src={architectImg}
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                width={200}
+                height={200}
+                className="relative w-40 sm:w-48 h-auto drop-shadow-sm"
+              />
+            </div>
           </div>
         </div>
       </section>
