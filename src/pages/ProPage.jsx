@@ -6,6 +6,7 @@ import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
 import { PRO_PRICE_DISPLAY } from '../config/pro'
+import { AGENTS_PRICE_DISPLAY } from '../config/agents'
 
 const howProWorks = [
   {
@@ -163,7 +164,7 @@ export default function ProPage() {
             Ready to go beyond prompts?
           </p>
           <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mb-5 leading-snug">
-            Agent Packs &mdash; $29, 3 blueprints per industry.
+            Agent Packs &mdash; {AGENTS_PRICE_DISPLAY}, 3 blueprints per industry.
           </h2>
           <p className="text-ink-soft leading-relaxed max-w-lg mx-auto mb-8">
             Pro guides teach you to use AI. Agent Packs teach you to build an AI employee that runs a job in

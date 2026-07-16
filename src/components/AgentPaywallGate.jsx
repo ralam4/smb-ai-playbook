@@ -24,7 +24,7 @@ export default function AgentPaywallGate({ agent, children }) {
   function handleCheckout() {
     setPendingPack(agent.industry)
     if (AGENTS_STRIPE_URL) {
-      window.location.href = AGENTS_STRIPE_URL
+      window.location.assign(AGENTS_STRIPE_URL)
     }
   }
 

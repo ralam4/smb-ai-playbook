@@ -5,6 +5,7 @@ import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
 import architectImg from '../assets/mascots/architect.png'
+import { AGENTS_PRICE_DISPLAY } from '../config/agents'
 
 // Pastel chip treatment for the 4 problem categories: soft fill + deep-ink text.
 const problemPreviews = [
@@ -204,7 +205,7 @@ export default function Home() {
             <p className="relative flex-1 text-[15px] sm:text-lg text-ink leading-relaxed">
               Not another chatbot subscription — blueprints to build an{' '}
               <strong className="font-semibold">AI employee</strong> that runs one job in your business every
-              day. $29 per pack, 3 blueprints included.
+              day. {AGENTS_PRICE_DISPLAY} per pack, 3 blueprints included.
             </p>
             <span className="relative flex-shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
               Explore Agent Packs
