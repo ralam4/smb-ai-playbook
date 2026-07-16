@@ -20,7 +20,8 @@ function Icon({ children, className, size, title }) {
     <svg
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
+      aria-hidden={title ? undefined : 'true'}
+      role={title ? 'img' : undefined}
       focusable="false"
       width={size}
       height={size}
@@ -216,6 +217,6 @@ const VARIANTS = {
 }
 
 export default function AgentIcon({ variant = 'sparkle', className = '', size = 24, title }) {
-  const render = VARIANTS[variant] || VARIANTS.sparkle || VARIANTS.chat
+  const render = VARIANTS[variant] || VARIANTS.sparkle
   return render({ className, size, title })
 }
