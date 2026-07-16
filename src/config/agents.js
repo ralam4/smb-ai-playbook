@@ -3,11 +3,9 @@
 // Before redirecting, we stash the intended industry slug in localStorage via
 // setPendingPack() from useAgentAccess. The /success page consumes it.
 //
-// Leave AGENTS_STRIPE_URL as null until Rafee creates a $29 Payment Link in
-// the Stripe dashboard (success URL https://smbaiplaybook.xyz/success), then
-// pastes it here. The AgentPaywallGate renders a "coming soon" state in that
-// case so the UI works end-to-end before Stripe is configured.
-export const AGENTS_STRIPE_URL = null
+// If this is ever set back to null, the AgentPaywallGate falls back to a
+// "coming soon" state so the UI keeps working without Stripe.
+export const AGENTS_STRIPE_URL = 'https://buy.stripe.com/cNi5kCalI72F96u9GY6sw01'
 
 export const AGENTS_PRICE_DISPLAY = '$29'
 export const AGENTS_PRICE_SUBLINE =
