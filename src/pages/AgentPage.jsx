@@ -5,6 +5,7 @@ import StepCard from '../components/StepCard'
 import PromptBlock from '../components/PromptBlock'
 import AgentCard, { AgentLogo } from '../components/AgentCard'
 import AgentPaywallGate from '../components/AgentPaywallGate'
+import AgentPdfDownloadButton from '../components/AgentPdfDownloadButton'
 import Doodle from '../components/Doodle'
 import useAgentAccess from '../hooks/useAgentAccess'
 
@@ -254,6 +255,20 @@ export default function AgentPage() {
             <p className="text-[15px] text-ink-soft leading-relaxed">
               {agent.maintenance}
             </p>
+          </div>
+
+          {/* Download section */}
+          <div className="mt-10 sm:mt-12">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-px w-6 bg-accent" />
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
+                Take it with you
+              </h2>
+            </div>
+            <p className="text-sm text-ink-soft mb-4 max-w-md leading-relaxed">
+              Download this blueprint as a PDF for offline reading, printing, or sharing with your team.
+            </p>
+            <AgentPdfDownloadButton agent={agent} />
           </div>
         </AgentPaywallGate>
       </div>
