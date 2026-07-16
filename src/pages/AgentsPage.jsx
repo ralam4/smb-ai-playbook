@@ -91,7 +91,7 @@ export default function AgentsPage() {
   useSEO({
     title: 'AI Agent Blueprints for Small Business — SMB AI Playbook',
     description:
-      'Blueprints to build an AI agent for your small business — system prompts, tool wiring, honest costs, and guardrails. $29 per industry pack, 3 blueprints included.',
+      'Blueprints to build an AI agent for your small business — system prompts, tool wiring, honest costs, and guardrails. $29 per pack, 3 blueprints included.',
     canonical: '/agents',
   })
   return (
