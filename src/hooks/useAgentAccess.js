@@ -54,7 +54,12 @@ export default function useAgentAccess() {
 
 export function setPendingPack(slug) {
   try {
-    if (slug) localStorage.setItem(PENDING_KEY, slug)
+    if (slug) {
+      localStorage.setItem(PENDING_KEY, slug)
+      // Only one checkout can be in flight. Clear any stale pending guide so an
+      // abandoned guide checkout can't hijack this purchase on /success.
+      localStorage.removeItem('smbai_pending_unlock')
+    }
   } catch {
     /* noop */
   }

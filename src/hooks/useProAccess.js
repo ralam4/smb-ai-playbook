@@ -51,7 +51,12 @@ export default function useProAccess() {
 
   const setPendingUnlock = useCallback((slug) => {
     try {
-      if (slug) localStorage.setItem(PENDING_KEY, slug)
+      if (slug) {
+        localStorage.setItem(PENDING_KEY, slug)
+        // Only one checkout can be in flight. Clear any stale pending pack so an
+        // abandoned Agent Pack checkout can't hijack this purchase on /success.
+        localStorage.removeItem('smbai_pending_pack')
+      }
     } catch {
       /* noop */
     }
