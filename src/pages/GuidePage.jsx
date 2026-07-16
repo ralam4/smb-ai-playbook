@@ -9,6 +9,7 @@ import ProBadge from '../components/ProBadge'
 import PdfDownloadButton from '../components/PdfDownloadButton'
 import Doodle from '../components/Doodle'
 import useProAccess from '../hooks/useProAccess'
+import useSEO, { truncate } from '../hooks/useSEO'
 
 // Soft-tint a hex color for the pastel chip fill (deep-ink text stays on top for contrast).
 function tint(hex, alpha = '26') {
@@ -41,6 +42,16 @@ export default function GuidePage() {
   const { slug } = useParams()
   const guide = guides.find((g) => g.slug === slug)
   const { isUnlocked } = useProAccess()
+
+  useSEO({
+    title: guide
+      ? `${guide.title} — SMB AI Playbook`
+      : 'Guide Not Found — SMB AI Playbook',
+    description: guide
+      ? truncate(guide.description || guide.intro, 155)
+      : 'This guide could not be found. Browse the full library of free and Pro AI guides for small business owners.',
+    canonical: guide ? `/guide/${guide.slug}` : '/guides',
+  })
 
   if (!guide) {
     return (

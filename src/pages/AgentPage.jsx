@@ -8,11 +8,23 @@ import AgentPaywallGate from '../components/AgentPaywallGate'
 import AgentPdfDownloadButton from '../components/AgentPdfDownloadButton'
 import Doodle from '../components/Doodle'
 import useAgentAccess from '../hooks/useAgentAccess'
+import useSEO, { truncate } from '../hooks/useSEO'
 
 export default function AgentPage() {
   const { industry: industrySlug, slug } = useParams()
   const { isPackUnlocked } = useAgentAccess()
   const agent = agents.find((a) => a.slug === slug && a.industry === industrySlug)
+  const seoIndustry = agent ? industries.find((i) => i.slug === agent.industry) : null
+
+  useSEO({
+    title: agent
+      ? `${agent.name} — AI Agent Blueprint for ${seoIndustry ? seoIndustry.name : agent.industry}`
+      : 'Agent Not Found — SMB AI Playbook',
+    description: agent
+      ? truncate(agent.description, 155)
+      : 'This agent blueprint could not be found. Browse all Agent Packs for small business owners.',
+    canonical: agent ? `/agents/${agent.industry}/${agent.slug}` : '/agents',
+  })
 
   if (!agent) {
     return (

@@ -1,7 +1,14 @@
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
+import useSEO from '../hooks/useSEO'
 
 export default function TermsPage() {
+  useSEO({
+    title: 'Terms of Service — SMB AI Playbook',
+    description:
+      'The terms governing your use of the SMB AI Playbook, including free guides, Pro guides, and Agent Packs sold at smbaiplaybook.xyz.',
+    canonical: '/terms',
+  })
   return (
     <>
       <section className="relative overflow-hidden grain">

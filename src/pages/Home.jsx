@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import useSEO from '../hooks/useSEO'
 import useScrollReveal from '../hooks/useScrollReveal'
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
@@ -64,6 +65,12 @@ const Arrow = () => (
 )
 
 export default function Home() {
+  useSEO({
+    title: 'AI Playbook for Small Business',
+    description:
+      'Free, step-by-step AI guides for small business owners, plus $5 Pro playbooks and $29 AI agent blueprints for building an employee out of AI. Practical, honest, no hype.',
+    canonical: '/',
+  })
   const problemsRef = useScrollReveal()
 
   return (

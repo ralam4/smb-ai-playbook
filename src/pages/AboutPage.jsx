@@ -3,6 +3,7 @@ import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
+import useSEO from '../hooks/useSEO'
 import rafeeImg from '../assets/rafee.png'
 
 const credentials = [
@@ -24,6 +25,12 @@ const credentials = [
 ]
 
 export default function AboutPage() {
+  useSEO({
+    title: 'About — SMB AI Playbook',
+    description:
+      'Rafee Alam built the SMB AI Playbook because most AI advice online is written for engineering teams, not small business owners with real problems to solve.',
+    canonical: '/about',
+  })
   return (
     <>
       {/* ── Photo-led hero (distinct composition: portrait on a peach blob) ── */}

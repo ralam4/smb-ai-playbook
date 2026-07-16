@@ -6,6 +6,7 @@ import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
+import useSEO from '../hooks/useSEO'
 import { AGENTS_PRICE_DISPLAY } from '../config/agents'
 
 const howBlueprintsWork = [
@@ -40,6 +41,46 @@ const insideEveryBlueprint = [
   'Guardrails, a test checklist, and the 15-minute monthly maintenance routine.',
 ]
 
+// FAQ content — one array feeds both the visible accordion-style Q/A blocks
+// and the JSON-LD FAQPage structured data below, so the two can never drift.
+const industryNameList = industries.map((i) => i.name).join(', ')
+
+const faqs = [
+  {
+    q: 'What is an AI agent, in plain English?',
+    a: 'An agent isn’t a chatbot you talk to once — it’s wired into a real trigger in your business (a new review, tomorrow’s forecast, an unapproved estimate) and does the same job every day: reading the input, drafting the output, and flagging anything that needs your judgment. You keep the final say on what matters; the agent just handles the repetitive part.',
+  },
+  {
+    q: 'What does it cost to run an AI agent?',
+    a: 'Most blueprints in this catalog run $0–50 a month — free-tier AI chat tools and free-tier automation (like Zapier) to start, with a paid upgrade only if you outgrow it. Every blueprint itemizes the real monthly cost before you buy, so you know exactly what you’re signing up for.',
+  },
+  {
+    q: 'Do I need to know how to code?',
+    a: 'No. Every blueprint gives you a complete, copy-paste system prompt and a no-code tool stack — ChatGPT or Claude plus Zapier or Make — the same tools you probably already use, wired together with clicks, not code.',
+  },
+  {
+    q: 'How is this different from the $5 Pro guides?',
+    a: 'Pro guides teach you to use AI — a great prompt for a specific task, run when you remember to run it. Agent Packs teach you to build an employee out of AI — the same job done automatically, every day, with guardrails and a human still approving the calls that matter. Pro guides are $5 each; Agent Packs are $29 for 3 full blueprints.',
+  },
+  {
+    q: 'Is my industry’s pack available?',
+    a: `All 8 industry packs are live: ${industryNameList}. Each pack ships with 3 complete agent blueprints — find yours above.`,
+  },
+]
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+}
+
 const Arrow = () => (
   <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
@@ -47,6 +88,12 @@ const Arrow = () => (
 )
 
 export default function AgentsPage() {
+  useSEO({
+    title: 'AI Agent Blueprints for Small Business — SMB AI Playbook',
+    description:
+      'Blueprints to build an AI agent for your small business — system prompts, tool wiring, honest costs, and guardrails. $29 per industry pack, 3 blueprints included.',
+    canonical: '/agents',
+  })
   return (
     <>
       {/* ── Hero ── */}
@@ -250,6 +297,36 @@ export default function AgentsPage() {
         </div>
       </section>
 
+      {/* ── FAQ ── stacked soft-card Q/A, doubles as JSON-LD FAQPage source */}
+      <SectionBand tone="sand" wave className="overflow-hidden">
+        <Blob variant={5} color="sky" className="absolute -right-16 bottom-10 w-60 h-60 opacity-25 pointer-events-none" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
+          <div className="mb-12 sm:mb-14">
+            <div className="flex items-center gap-2.5 mb-5">
+              <Doodle variant="asterisk" color="accent" className="w-5 h-5" />
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
+                Frequently asked
+              </p>
+            </div>
+            <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink leading-[1.1]">
+              Agent Packs, answered.
+            </h2>
+          </div>
+          <div className="space-y-5">
+            {faqs.map((faq) => (
+              <div key={faq.q} className="soft-card p-6 sm:p-8">
+                <h3 className="font-[--font-display] font-semibold text-xl sm:text-2xl text-ink mb-3 leading-snug">
+                  {faq.q}
+                </h3>
+                <p className="text-base sm:text-lg text-ink-soft leading-[1.7]">
+                  {faq.a}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </SectionBand>
+
       {/* ── Cross-link to Pro ── */}
       <SectionBand tone="sand" wave className="overflow-hidden">
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
@@ -272,6 +349,12 @@ export default function AgentsPage() {
           </Link>
         </div>
       </SectionBand>
+
+      {/* JSON-LD structured data for the FAQ above — same `faqs` array, so copy can't drift */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
     </>
   )
 }

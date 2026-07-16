@@ -5,6 +5,7 @@ import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
+import useSEO from '../hooks/useSEO'
 import { PRO_PRICE_DISPLAY } from '../config/pro'
 import { AGENTS_PRICE_DISPLAY } from '../config/agents'
 
@@ -39,6 +40,12 @@ const Arrow = () => (
 )
 
 export default function ProPage() {
+  useSEO({
+    title: 'Pro AI Guides for Small Business — SMB AI Playbook',
+    description:
+      'Industry-specific AI playbooks for small business owners — $5 per guide, one-time unlock. Deep, step-by-step prompts and frameworks built for your exact business type.',
+    canonical: '/pro',
+  })
   return (
     <>
       {/* ── Hero ── butter/peach-led blob composition, distinct from Home/About/Guides */}

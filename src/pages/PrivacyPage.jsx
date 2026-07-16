@@ -1,7 +1,14 @@
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
+import useSEO from '../hooks/useSEO'
 
 export default function PrivacyPage() {
+  useSEO({
+    title: 'Privacy Policy — SMB AI Playbook',
+    description:
+      'How the SMB AI Playbook collects, uses, and protects information when you browse or purchase guides and Agent Packs at smbaiplaybook.xyz.',
+    canonical: '/privacy',
+  })
   return (
     <>
       <section className="relative overflow-hidden grain">

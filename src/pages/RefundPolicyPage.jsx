@@ -1,7 +1,14 @@
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
+import useSEO from '../hooks/useSEO'
 
 export default function RefundPolicyPage() {
+  useSEO({
+    title: 'Refund Policy — SMB AI Playbook',
+    description:
+      'How refunds work for Pro guides, Agent Packs, and consulting engagements purchased through the SMB AI Playbook at smbaiplaybook.xyz.',
+    canonical: '/refunds',
+  })
   return (
     <>
       <section className="relative overflow-hidden grain">

@@ -5,6 +5,7 @@ import AgentCard from '../components/AgentCard'
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import useAgentAccess, { setPendingPack } from '../hooks/useAgentAccess'
+import useSEO, { truncate } from '../hooks/useSEO'
 import { AGENTS_STRIPE_URL, AGENTS_PRICE_DISPLAY, AGENTS_PRICE_SUBLINE } from '../config/agents'
 
 // Cycle of doodle variants for the "why agents" list so each bullet feels hand-placed.
@@ -16,6 +17,20 @@ export default function AgentPackPage() {
   const industry = industries.find((i) => i.slug === industrySlug)
   const pack = industry ? packs.find((p) => p.industry === industry.slug) : null
   const packAgents = industry ? agentsForIndustry(industry.slug) : []
+
+  useSEO({
+    title: pack
+      ? truncate(pack.seoTitle || `AI Agents for ${industry.name} — SMB AI Playbook`, 60)
+      : industry
+        ? `AI Agents for ${industry.name} — SMB AI Playbook`
+        : 'Agent Pack Not Found — SMB AI Playbook',
+    description: pack
+      ? truncate(pack.seoDescription || pack.subhead, 160)
+      : industry
+        ? `AI agent blueprints for ${industry.name.toLowerCase()} owners are coming soon. Explore the free guides and Pro library for ${industry.name.toLowerCase()} in the meantime.`
+        : 'This industry could not be found. Browse all Agent Packs for small business owners.',
+    canonical: industry ? `/agents/${industry.slug}` : '/agents',
+  })
 
   if (!industry) {
     return (

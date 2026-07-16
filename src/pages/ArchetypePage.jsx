@@ -3,8 +3,15 @@ import { questions, resultTypes, scoreArchetype } from '../data/archetype'
 import ArchetypeIntro from '../components/ArchetypeIntro'
 import ArchetypeQuestion from '../components/ArchetypeQuestion'
 import ArchetypeResult from '../components/ArchetypeResult'
+import useSEO from '../hooks/useSEO'
 
 export default function ArchetypePage() {
+  useSEO({
+    title: 'Find Your AI Archetype — SMB AI Playbook',
+    description:
+      'A 2-minute quiz that matches your small business to the AI guides built for how you already think and work. No email required, just your result.',
+    canonical: '/archetype',
+  })
   const [phase, setPhase] = useState('intro')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState([])

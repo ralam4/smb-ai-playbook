@@ -7,8 +7,14 @@ import useProAccess from '../hooks/useProAccess'
 import useAgentAccess, { consumePendingPack } from '../hooks/useAgentAccess'
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
+import useSEO from '../hooks/useSEO'
 
 export default function SuccessPage() {
+  useSEO({
+    title: 'Thank You — SMB AI Playbook',
+    description: 'Your purchase is confirmed and your content is unlocked on this browser.',
+    canonical: '/success',
+  })
   const { unlock, consumePendingUnlock } = useProAccess()
   const { unlockPack } = useAgentAccess()
   // { type: 'pack', slug } | { type: 'guide', slug } | null — a pending pack

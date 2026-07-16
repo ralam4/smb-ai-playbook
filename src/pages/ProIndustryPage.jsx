@@ -4,6 +4,7 @@ import { proGuides } from '../data/guides'
 import GuideCard from '../components/GuideCard'
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
+import useSEO, { truncate } from '../hooks/useSEO'
 
 // Cycle of doodle variants for the pain-point list so each bullet feels hand-placed.
 const PAIN_DOODLES = ['sparkle', 'star', 'asterisk', 'loop']
@@ -11,6 +12,16 @@ const PAIN_DOODLES = ['sparkle', 'star', 'asterisk', 'loop']
 export default function ProIndustryPage() {
   const { slug } = useParams()
   const industry = industries.find((i) => i.slug === slug)
+
+  useSEO({
+    title: industry
+      ? `${industry.name} AI Guides (Pro) — SMB AI Playbook`
+      : 'Industry Not Found — SMB AI Playbook',
+    description: industry
+      ? truncate(`${industry.tagline} ${industry.description}`, 155)
+      : 'This Pro industry library could not be found. Browse all Pro guide libraries for small business owners.',
+    canonical: industry ? `/pro/${industry.slug}` : '/pro',
+  })
 
   if (!industry) {
     return (
