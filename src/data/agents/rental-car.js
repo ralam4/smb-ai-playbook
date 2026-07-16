@@ -187,7 +187,7 @@ If you're ever unsure whether an offer fits a booking, default to "no offer" rat
       'Watches mileage and time-based maintenance triggers across the whole fleet and drafts service-scheduling requests before a car is overdue — timed to slow periods so a vehicle never goes down for maintenance during peak demand.',
     difficulty: 'Intermediate',
     buildTime: '~4 hours',
-    runningCost: '$20–40/month',
+    runningCost: '$29–40/month',
     timeSaved: '~3–4 hours/week',
     stack: ['Claude or ChatGPT', 'a fleet mileage tracking sheet or telematics export', 'Zapier or Make (paid tier)', 'your service provider\'s scheduling contact or portal'],
     whatItDoes:
@@ -522,7 +522,7 @@ export const pack = {
   ],
   seoTitle: 'AI Agents for Rental Car Businesses — Blueprints, Costs & Prompts',
   seoDescription:
-    'Build 3 AI agents for your rental car business: booking upsells, fleet health tracking, and damage claim documentation. Complete system prompts, costs, and steps for $29.',
+    'Build 3 AI agents for your rental car business: booking upsells, fleet health, and damage claims. Complete system prompts, costs, and setup steps for $29.',
 }
 
 export default rentalCarAgents

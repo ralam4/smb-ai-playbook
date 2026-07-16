@@ -9,7 +9,7 @@ const carWashAgents = [
       'Watches for members whose visit frequency is dropping or whose card just failed, and drafts a personal, non-desperate win-back message before they lapse — instead of finding out only after the cancellation email.',
     difficulty: 'Intermediate',
     buildTime: '~3 hours',
-    runningCost: '$20–40/month',
+    runningCost: '$29–40/month',
     timeSaved: '~3 hours/week',
     stack: ['Claude or ChatGPT', 'your membership/POS system\'s usage export', 'Zapier or Make (paid tier)', 'email or SMS tool'],
     whatItDoes:

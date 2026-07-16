@@ -43,7 +43,7 @@ const photographerAgents = [
         note: 'only needed once you\'re past ~100 automation tasks/month or want faster multi-step follow-ups',
       },
     ],
-    roi: 'Studies on lead response time consistently find that replying within 5 minutes converts multiples better than replying within an hour, and photography inquiries are no exception — brides and families often message 3–5 photographers the same night and book whoever responds first with a real, specific answer. If this agent helps you convert even one additional inquiry a month at an average session value of $300–2,000, it has paid for a year of the optional paid tier many times over. On the time side, most photographers spend 20–40 minutes a day checking and answering inquiries in scattered moments between shoots and edits; this collapses that into a 5-minute approval pass, saving roughly 2–3 hours a week — worth $60–90/week of your time against a tool cost that tops out at $30/month.',
+    roi: 'Speed wins inquiries: brides and families often message 3–5 photographers the same night and book whoever responds first with a real, specific answer. If this agent helps you convert even one additional inquiry a month at an average session value of $300–2,000, it has paid for a year of the optional paid tier many times over. On the time side, most photographers spend 20–40 minutes a day checking and answering inquiries in scattered moments between shoots and edits; this collapses that into a 5-minute approval pass, saving roughly 2–3 hours a week — worth $60–90/week of your time against a tool cost that tops out at $30/month.',
     steps: [
       {
         number: 1,

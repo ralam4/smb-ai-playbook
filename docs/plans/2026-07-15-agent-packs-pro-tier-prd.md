@@ -84,7 +84,7 @@ Icons/difficulty/costs are authoritative; content agents flesh out the rest. Run
 3. `pharmacy-question-triage-agent` — **Patient Question Triage Agent** — icon `chat`, Intermediate, ~3h, $20–40/mo — sorts inbox/voicemail questions, drafts pharmacist-reviewable answers.
 
 ### car-wash (#0EA5E9)
-1. `carwash-membership-save-agent` — **Membership Save Agent** — icon `heart`, Intermediate, ~3h, $20–40/mo — detects lapsing members, drafts win-back offers.
+1. `carwash-membership-save-agent` — **Membership Save Agent** — icon `heart`, Intermediate, ~3h, $29–40/mo — detects lapsing members, drafts win-back offers.
 2. `carwash-weather-promo-agent` — **Weather Promo Agent** — icon `sun`, Beginner, ~2h, $0–20/mo — turns the 7-day forecast into same-week promos.
 3. `carwash-review-reply-agent` — **Review Reply Agent** — icon `star`, Beginner, ~2h, $0–20/mo — reply drafts for every review.
 
@@ -100,7 +100,7 @@ Icons/difficulty/costs are authoritative; content agents flesh out the rest. Run
 
 ### rental-car (#EA580C)
 1. `rentalcar-booking-upsell-agent` — **Booking & Upsell Agent** — icon `calendar`, Beginner, ~3h, $0–30/mo — confirmations + tailored upgrade/add-on offers.
-2. `rentalcar-fleet-health-agent` — **Fleet Health Agent** — icon `wrench`, Intermediate, ~4h, $20–40/mo — mileage/maintenance triggers → service scheduling drafts.
+2. `rentalcar-fleet-health-agent` — **Fleet Health Agent** — icon `wrench`, Intermediate, ~4h, $29–40/mo — mileage/maintenance triggers → service scheduling drafts.
 3. `rentalcar-damage-claim-agent` — **Damage Claim Agent** — icon `shield`, Intermediate, ~3h, $20–40/mo — structures incident photos/notes into complete claim documentation.
 
 ---

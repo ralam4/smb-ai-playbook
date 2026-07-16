@@ -400,7 +400,7 @@ If you are ever unsure whether something is an urgent flag, flag it. A false ala
         note: 'free tier usually covers a low-volume weekly overdue-check automation',
       },
     ],
-    roi: 'Studies on referral loss in primary care consistently find that 25–50% of referrals never result in a completed specialist visit, often because nobody followed up. Even a modest improvement — closing that gap by a third for a practice sending 20 referrals a month — means 3–5 more patients actually get seen by the specialist they were referred to, which matters clinically and reduces the liability exposure of a referral that silently went nowhere. On the time side, staff currently spend roughly 10–15 minutes per referral doing this tracking manually if they do it at all; automating the flagging and draft-follow-up step saves 3–4 hours/month for a mid-volume practice, comfortably covering the $20–40/mo cost.',
+    roi: 'Count your own gap first: pull last quarter\'s outbound referrals and check how many have a specialist note back in the chart — most practices that do this find a meaningful share simply went nowhere because nobody followed up. If a practice sending 20 referrals a month closes even a third of its silent-referral gap, that means several more patients actually get seen by the specialist they were referred to, which matters clinically and reduces the liability exposure of a referral that silently went nowhere. On the time side, staff currently spend roughly 10–15 minutes per referral doing this tracking manually if they do it at all; automating the flagging and draft-follow-up step saves 3–4 hours/month for a mid-volume practice, comfortably covering the $20–40/mo cost.',
     steps: [
       {
         number: 1,

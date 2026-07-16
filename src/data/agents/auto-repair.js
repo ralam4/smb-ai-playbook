@@ -529,7 +529,7 @@ export const pack = {
   ],
   seoTitle: 'AI Agents for Auto Repair Shops — Blueprints, Costs & Prompts',
   seoDescription:
-    'Build 3 AI agents for your auto repair shop: estimate follow-up, service advisor updates, and review replies. Complete system prompts, real costs, and setup steps for $29.',
+    'Build 3 AI agents for your auto repair shop: estimate follow-ups, service updates, and review replies. System prompts, real costs, and setup steps for $29.',
 }
 
 export default autoRepairAgents
