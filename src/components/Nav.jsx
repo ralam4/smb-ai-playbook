@@ -24,6 +24,13 @@ export default function Nav() {
           <NavLink to="/pro" className={({ isActive }) => `${navLinkClass({ isActive })} hidden sm:block`}>
             Pro
           </NavLink>
+          <NavLink
+            to="/agents"
+            className={({ isActive }) => `${navLinkClass({ isActive })} hidden sm:inline-flex items-center gap-1.5`}
+          >
+            Agents
+            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-accent" />
+          </NavLink>
           <NavLink to="/archetype" className={({ isActive }) => `${navLinkClass({ isActive })} hidden sm:block`}>
             Quiz
           </NavLink>

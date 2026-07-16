@@ -154,6 +154,30 @@ export default function ProPage() {
           </p>
         </div>
       </SectionBand>
+
+      {/* ── Cross-sell: Agent Packs ── */}
+      <section className="relative overflow-hidden">
+        <Blob variant={3} color="mint" className="absolute -right-20 top-0 w-72 h-72 opacity-25 pointer-events-none" />
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
+          <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-4">
+            Ready to go beyond prompts?
+          </p>
+          <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mb-5 leading-snug">
+            Agent Packs &mdash; $29, 3 blueprints per industry.
+          </h2>
+          <p className="text-ink-soft leading-relaxed max-w-lg mx-auto mb-8">
+            Pro guides teach you to use AI. Agent Packs teach you to build an AI employee that runs a job in
+            your business every day — system prompts, tool wiring, real costs, and guardrails included.
+          </p>
+          <Link
+            to="/agents"
+            className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md"
+          >
+            Explore Agent Packs
+            <Arrow />
+          </Link>
+        </div>
+      </section>
     </>
   )
 }

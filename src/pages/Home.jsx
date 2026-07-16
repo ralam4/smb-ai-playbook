@@ -187,6 +187,33 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── Agent Packs promo ── slim band, new premium tier */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
+          <Link
+            to="/agents"
+            className="group relative soft-card soft-card-hover no-underline overflow-hidden flex flex-col sm:flex-row items-center gap-6 p-7 sm:p-9 cursor-pointer"
+          >
+            <Blob variant={2} color="mint" className="absolute -left-14 -top-14 w-48 h-48 opacity-40 pointer-events-none" />
+            <div className="relative flex items-center gap-2.5 flex-shrink-0">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full bg-mint-light text-ink">
+                <Doodle variant="sparkle" color="mint" className="w-3.5 h-3.5" />
+                New &middot; Agent Packs
+              </span>
+            </div>
+            <p className="relative flex-1 text-[15px] sm:text-lg text-ink leading-relaxed">
+              Not another chatbot subscription — blueprints to build an{' '}
+              <strong className="font-semibold">AI employee</strong> that runs one job in your business every
+              day. $29 per pack, 3 blueprints included.
+            </p>
+            <span className="relative flex-shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+              Explore Agent Packs
+              <Arrow />
+            </span>
+          </Link>
+        </div>
+      </section>
+
       {/* ── Problem preview ── pastel-chip soft cards */}
       <SectionBand tone="sand" wave className="overflow-hidden">
         <Blob variant={2} color="mint" className="absolute -right-16 -top-8 w-72 h-72 opacity-30 pointer-events-none" />

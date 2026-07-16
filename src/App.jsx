@@ -9,6 +9,9 @@ import GuidesPage from './pages/GuidesPage'
 import GuidePage from './pages/GuidePage'
 import ProPage from './pages/ProPage'
 import ProIndustryPage from './pages/ProIndustryPage'
+import AgentsPage from './pages/AgentsPage'
+import AgentPackPage from './pages/AgentPackPage'
+import AgentPage from './pages/AgentPage'
 import SuccessPage from './pages/SuccessPage'
 import ArchetypePage from './pages/ArchetypePage'
 import ContactPage from './pages/ContactPage'
@@ -37,6 +40,9 @@ export default function App() {
           <Route path="/guide/:slug" element={<GuidePage />} />
           <Route path="/pro" element={<ProPage />} />
           <Route path="/pro/:slug" element={<ProIndustryPage />} />
+          <Route path="/agents" element={<AgentsPage />} />
+          <Route path="/agents/:industry" element={<AgentPackPage />} />
+          <Route path="/agents/:industry/:slug" element={<AgentPage />} />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/archetype" element={<ArchetypePage />} />
           <Route path="/contact" element={<ContactPage />} />

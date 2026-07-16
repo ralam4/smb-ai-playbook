@@ -129,6 +129,11 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/agents" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
+                  Agent Packs
+                </Link>
+              </li>
+              <li>
                 <Link to="/archetype" className="text-sm text-text-secondary hover:text-accent transition-colors no-underline">
                   Archetype Quiz
                 </Link>

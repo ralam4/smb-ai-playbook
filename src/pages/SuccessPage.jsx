@@ -2,24 +2,42 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import guides from '../data/guides'
 import industries from '../data/industries'
+import { packs } from '../data/agents/index'
 import useProAccess from '../hooks/useProAccess'
+import useAgentAccess, { consumePendingPack } from '../hooks/useAgentAccess'
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 
 export default function SuccessPage() {
   const { unlock, consumePendingUnlock } = useProAccess()
-  const [unlockedSlug, setUnlockedSlug] = useState(null)
+  const { unlockPack } = useAgentAccess()
+  // { type: 'pack', slug } | { type: 'guide', slug } | null — a pending pack
+  // always takes precedence over a pending guide unlock.
+  const [result, setResult] = useState(null)
 
   useEffect(() => {
-    const slug = consumePendingUnlock()
-    if (slug) {
-      unlock(slug)
-      setUnlockedSlug(slug)
-    }
-  }, [consumePendingUnlock, unlock])
+    const packSlug = consumePendingPack()
+    const guideSlug = packSlug ? null : consumePendingUnlock()
 
-  const guide = unlockedSlug ? guides.find((g) => g.slug === unlockedSlug) : null
-  const industry = guide && guide.industry
+    if (packSlug) unlockPack(packSlug)
+    if (guideSlug) unlock(guideSlug)
+
+    if (packSlug || guideSlug) {
+      setResult(packSlug ? { type: 'pack', slug: packSlug } : { type: 'guide', slug: guideSlug })
+    }
+  }, [consumePendingUnlock, unlock, unlockPack])
+
+  const pendingPackIndustry = result && result.type === 'pack'
+    ? industries.find((i) => i.slug === result.slug)
+    : null
+  const pendingPack = result && result.type === 'pack'
+    ? packs.find((p) => p.industry === result.slug)
+    : null
+
+  const guide = result && result.type === 'guide'
+    ? guides.find((g) => g.slug === result.slug)
+    : null
+  const guideIndustry = guide && guide.industry
     ? industries.find((i) => i.slug === guide.industry)
     : null
 
@@ -50,7 +68,44 @@ export default function SuccessPage() {
             <Doodle variant="asterisk" color="accent" className="w-5 h-5" />
           </div>
 
-          {guide ? (
+          {pendingPackIndustry ? (
+            <>
+              <h1 className="font-[--font-display] font-semibold text-4xl sm:text-5xl md:text-6xl text-ink leading-[1.1] mb-6">
+                The{' '}
+                <em className="italic text-accent">{pendingPackIndustry.name}</em>{' '}
+                Agent Pack is unlocked.
+              </h1>
+              <p className="text-lg sm:text-xl text-ink-soft leading-relaxed max-w-2xl mx-auto mb-10">
+                Thanks for supporting the Playbook. All 3 blueprints
+                {pendingPack ? ` in "${pendingPack.headline}"` : ''} are now available on this browser —
+                build steps, system prompts, guardrails, all of it. Access persists — come back any time.
+              </p>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Link
+                  to={`/agents/${pendingPackIndustry.slug}`}
+                  className="group inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
+                >
+                  Open your blueprints
+                  <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                  </svg>
+                </Link>
+                <Link
+                  to="/agents"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border-2 border-border-strong text-ink hover:border-accent hover:text-accent transition-colors cursor-pointer"
+                >
+                  All Agent Packs
+                </Link>
+              </div>
+              <p className="mt-10 text-xs text-ink-soft/70 max-w-md mx-auto leading-relaxed">
+                Access is tied to this browser. If you need it on another device, email{' '}
+                <a href="mailto:ralam70@gmail.com" className="text-accent hover:underline">
+                  ralam70@gmail.com
+                </a>
+                .
+              </p>
+            </>
+          ) : guide ? (
             <>
               <h1 className="font-[--font-display] font-semibold text-4xl sm:text-5xl md:text-6xl text-ink leading-[1.1] mb-6">
                 <em className="italic text-accent">&ldquo;{guide.title}&rdquo;</em>{' '}
@@ -69,12 +124,12 @@ export default function SuccessPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                   </svg>
                 </Link>
-                {industry && (
+                {guideIndustry && (
                   <Link
-                    to={`/pro/${industry.slug}`}
+                    to={`/pro/${guideIndustry.slug}`}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border-2 border-border-strong text-ink hover:border-accent hover:text-accent transition-colors cursor-pointer"
                   >
-                    More {industry.name} guides
+                    More {guideIndustry.name} guides
                   </Link>
                 )}
               </div>
@@ -92,18 +147,26 @@ export default function SuccessPage() {
                 Thank you.
               </h1>
               <p className="text-lg text-ink-soft leading-relaxed max-w-xl mx-auto mb-10">
-                Something went sideways — we couldn&rsquo;t match your purchase to a specific guide on this device. Forward your Stripe receipt to{' '}
+                Something went sideways — we couldn&rsquo;t match your purchase to a specific guide or pack on this device. Forward your Stripe receipt to{' '}
                 <a href="mailto:ralam70@gmail.com" className="text-accent hover:underline">
                   ralam70@gmail.com
                 </a>{' '}
                 and we&rsquo;ll unlock it manually within one business day.
               </p>
-              <Link
-                to="/pro"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-colors cursor-pointer"
-              >
-                Browse Pro guides
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Link
+                  to="/agents"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-colors cursor-pointer"
+                >
+                  Browse Agent Packs
+                </Link>
+                <Link
+                  to="/pro"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold border-2 border-border-strong text-ink hover:border-accent hover:text-accent transition-colors cursor-pointer"
+                >
+                  Browse Pro guides
+                </Link>
+              </div>
             </>
           )}
         </div>
