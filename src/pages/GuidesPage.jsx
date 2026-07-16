@@ -5,6 +5,7 @@ import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import useUpvotes from '../hooks/useUpvotes'
 import useScrollReveal from '../hooks/useScrollReveal'
+import useSEO from '../hooks/useSEO'
 import { freeGuides } from '../data/guides'
 
 // Each category maps to one of the warm pastel supporting colors, matching the
@@ -53,6 +54,12 @@ const categories = [
 ]
 
 export default function GuidesPage() {
+  useSEO({
+    title: 'Free AI Guides for Small Business',
+    description:
+      'Free, step-by-step AI guides for small business owners — get customers, fix profits, streamline operations, and scale up. No signup, no jargon, just prompts that work.',
+    canonical: '/guides',
+  })
   const [activeTab, setActiveTab] = useState('get-customers')
   const [, setAnimating] = useState(false)
   const contentRef = useRef(null)

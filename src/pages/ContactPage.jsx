@@ -2,6 +2,7 @@ import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
+import useSEO from '../hooks/useSEO'
 import rafeeImg from '../assets/rafee.png'
 
 const MAILTO = 'mailto:ralam70@gmail.com?subject=Let%27s%20talk%20about%20working%20together&body=Hi%20Rafee%2C%0A%0AA%20bit%20about%20my%20business%3A%0A%0AWhat%20I%27m%20trying%20to%20solve%3A%0A%0AThanks%2C'
@@ -50,6 +51,12 @@ const faqs = [
 ]
 
 export default function ContactPage() {
+  useSEO({
+    title: 'Contact — SMB AI Playbook',
+    description:
+      'End-to-end AI consulting for small and mid-sized businesses — scoping, implementation, and ongoing support. Email Rafee about the problem you need help solving.',
+    canonical: '/contact',
+  })
   return (
     <>
       {/* Hero — distinct warm sky/peach mix */}

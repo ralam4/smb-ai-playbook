@@ -1,12 +1,12 @@
-import freeGuides from './guides-free'
-import architectureFirmGuides from './pro/architecture-firm'
-import autoRepairGuides from './pro/auto-repair'
-import carWashGuides from './pro/car-wash'
-import coffeeShopGuides from './pro/coffee-shop'
-import medicalPracticeGuides from './pro/medical-practice'
-import pharmacyGuides from './pro/pharmacy'
-import photographerGuides from './pro/photographer'
-import rentalCarGuides from './pro/rental-car'
+import freeGuides from './guides-free.js'
+import architectureFirmGuides from './pro/architecture-firm.js'
+import autoRepairGuides from './pro/auto-repair.js'
+import carWashGuides from './pro/car-wash.js'
+import coffeeShopGuides from './pro/coffee-shop.js'
+import medicalPracticeGuides from './pro/medical-practice.js'
+import pharmacyGuides from './pro/pharmacy.js'
+import photographerGuides from './pro/photographer.js'
+import rentalCarGuides from './pro/rental-car.js'
 
 export const proGuides = [
   ...architectureFirmGuides,

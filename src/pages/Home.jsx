@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
+import useSEO from '../hooks/useSEO'
 import useScrollReveal from '../hooks/useScrollReveal'
 import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
 import architectImg from '../assets/mascots/architect.png'
+import { AGENTS_PRICE_DISPLAY } from '../config/agents'
 
 // Pastel chip treatment for the 4 problem categories: soft fill + deep-ink text.
 const problemPreviews = [
@@ -63,6 +65,12 @@ const Arrow = () => (
 )
 
 export default function Home() {
+  useSEO({
+    title: 'AI Playbook for Small Business',
+    description:
+      'Free, step-by-step AI guides for small business owners, plus $5 Pro playbooks and $29 AI agent blueprints for building an employee out of AI. Practical, honest, no hype.',
+    canonical: '/',
+  })
   const problemsRef = useScrollReveal()
 
   return (
@@ -184,6 +192,33 @@ export default function Home() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Agent Packs promo ── slim band, new premium tier */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
+          <Link
+            to="/agents"
+            className="group relative soft-card soft-card-hover no-underline overflow-hidden flex flex-col sm:flex-row items-center gap-6 p-7 sm:p-9 cursor-pointer"
+          >
+            <Blob variant={2} color="mint" className="absolute -left-14 -top-14 w-48 h-48 opacity-40 pointer-events-none" />
+            <div className="relative flex items-center gap-2.5 flex-shrink-0">
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full bg-mint-light text-ink">
+                <Doodle variant="sparkle" color="mint" className="w-3.5 h-3.5" />
+                New &middot; Agent Packs
+              </span>
+            </div>
+            <p className="relative flex-1 text-[15px] sm:text-lg text-ink leading-relaxed">
+              Not another chatbot subscription — blueprints to build an{' '}
+              <strong className="font-semibold">AI employee</strong> that runs one job in your business every
+              day. {AGENTS_PRICE_DISPLAY} per pack, 3 blueprints included.
+            </p>
+            <span className="relative flex-shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+              Explore Agent Packs
+              <Arrow />
+            </span>
+          </Link>
         </div>
       </section>
 
