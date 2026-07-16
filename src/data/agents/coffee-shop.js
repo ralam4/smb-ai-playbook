@@ -372,7 +372,7 @@ If you're ever unsure whether something is appropriate to post publicly, flag it
       'Turns your POS sales history and the next day\'s forecast into a specific prep list and reorder alert every evening, so opening never starts with a guess.',
     difficulty: 'Intermediate',
     buildTime: '~4 hours',
-    runningCost: '$20–40/month',
+    runningCost: '$29–40/month',
     timeSaved: '~3–4 hours/week',
     stack: ['Claude or ChatGPT', 'Google Sheets', 'Zapier or Make (paid tier)', 'a free weather API or forecast site'],
     whatItDoes:
@@ -553,7 +553,7 @@ export const pack = {
   ],
   seoTitle: 'AI Agents for Coffee Shops — Blueprints, Costs & Prompts',
   seoDescription:
-    'Build 3 AI agents for your coffee shop: review replies, social content, and morning prep. Complete system prompts, real costs, and setup steps — $29.',
+    'Build 3 AI agents for your coffee shop: review replies, social content, and morning prep. Complete system prompts, real costs, and setup steps for $29.',
 }
 
 export default coffeeShopAgents
