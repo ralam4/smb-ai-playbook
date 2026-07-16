@@ -20,7 +20,7 @@ export default function AgentPackPage() {
 
   useSEO({
     title: pack
-      ? truncate(pack.seoTitle || `AI Agents for ${industry.name} — SMB AI Playbook`, 60)
+      ? pack.seoTitle || `AI Agents for ${industry.name} — SMB AI Playbook`
       : industry
         ? `AI Agents for ${industry.name} — SMB AI Playbook`
         : 'Agent Pack Not Found — SMB AI Playbook',
