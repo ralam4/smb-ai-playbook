@@ -166,12 +166,12 @@ export default function AboutPage() {
               </p>
             </div>
             <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink leading-[1.08]">
-              From avionics to AI,{' '}
+              Enterprise AI experience, built for{' '}
               <span className="relative inline-block">
-                <em className="font-[--font-display] italic text-accent">translated</em>
+                <em className="font-[--font-display] italic text-accent">you</em>
                 <Doodle variant="squiggle-underline" color="accent" className="absolute left-0 -bottom-2 w-full h-3" />
-              </span>{' '}
-              for Main Street.
+              </span>
+              .
             </h2>
           </div>
           <div className="space-y-6">
