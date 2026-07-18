@@ -1,6 +1,19 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import Blob from './Blob'
 import Doodle from './Doodle'
 import BlobBadge from './BlobBadge'
+import AgentIcon from './AgentIcon'
+import { resultTypes } from '../data/archetype'
+
+function readLastResult() {
+  try {
+    const id = localStorage.getItem('smbai_archetype')
+    return id && resultTypes[id] ? resultTypes[id] : null
+  } catch {
+    return null
+  }
+}
 
 const whyItMatters = [
   {
@@ -20,14 +33,17 @@ const whyItMatters = [
   },
 ]
 
-const archetypePreviews = [
-  { name: 'The Architect', color: '#8B6914', bg: '#F5EDD6' },
-  { name: 'The Alchemist', color: '#5C4A7A', bg: '#EDE8F5' },
-  { name: 'The Conductor', color: '#2D6A4F', bg: '#E8F5EE' },
-  { name: 'The Oracle', color: '#1D3557', bg: '#E4EAF5' },
-]
+// Preview pills pull straight from the archetype data — Warm Studio pastels + glyphs.
+const PILL_WASH = {
+  butter: 'bg-butter-light',
+  peach: 'bg-peach-light',
+  mint: 'bg-mint-light',
+  sky: 'bg-sky-light',
+}
+const archetypePreviews = Object.values(resultTypes)
 
 export default function ArchetypeIntro({ onStart }) {
+  const [lastResult] = useState(readLastResult)
   return (
     <section className="relative overflow-hidden grain">
       {/* Multi-color blob composition — distinct playful hero */}
@@ -58,6 +74,21 @@ export default function ArchetypeIntro({ onStart }) {
           <p className="animate-fade-up delay-2 mt-6 sm:mt-8 text-base sm:text-lg text-ink-soft leading-relaxed max-w-xl mx-auto">
             Everyone says &ldquo;use AI.&rdquo; Nobody tells you <strong className="text-ink font-semibold">how it fits the way you already think and work.</strong> This 2-minute assessment changes that.
           </p>
+
+          {lastResult && (
+            <div className="animate-fade-up delay-3 mt-7 flex justify-center">
+              <Link
+                to={`/archetype/${lastResult.id}`}
+                className="group inline-flex items-center gap-2.5 rounded-full border border-border bg-surface px-4 py-2 text-sm text-ink-soft shadow-sm hover:border-accent hover:text-accent transition-colors no-underline"
+              >
+                <AgentIcon variant={lastResult.glyph} size={16} className="w-4 h-4 text-accent" />
+                Your last result: <span className="font-semibold text-ink group-hover:text-accent transition-colors">{lastResult.name}</span>
+                <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+          )}
         </div>
 
         {/* Why it matters — soft cards with BlobBadges */}
@@ -99,17 +130,10 @@ export default function ArchetypeIntro({ onStart }) {
               <div className="flex flex-wrap justify-center gap-3 mb-12">
                 {archetypePreviews.map((type) => (
                   <span
-                    key={type.name}
-                    className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium shadow-sm"
-                    style={{
-                      backgroundColor: type.bg,
-                      color: type.color,
-                    }}
+                    key={type.id}
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium text-ink shadow-sm ${PILL_WASH[type.pastel]}`}
                   >
-                    <span
-                      className="w-2 h-2 rounded-full"
-                      style={{ backgroundColor: type.color }}
-                    />
+                    <AgentIcon variant={type.glyph} size={16} className="w-4 h-4 text-ink" />
                     {type.name}
                   </span>
                 ))}

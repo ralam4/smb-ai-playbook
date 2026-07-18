@@ -17,6 +17,7 @@ import path from 'node:path'
 import guides from '../src/data/guides.js'
 import industries from '../src/data/industries.js'
 import { agents } from '../src/data/agents/index.js'
+import { resultTypes } from '../src/data/archetype.js'
 
 const SITE_URL = 'https://smbaiplaybook.xyz'
 
@@ -42,6 +43,7 @@ const guideRoutes = guides.map((g) => `/guide/${g.slug}`)
 const proIndustryRoutes = industries.map((i) => `/pro/${i.slug}`)
 const agentPackRoutes = industries.map((i) => `/agents/${i.slug}`)
 const agentRoutes = agents.map((a) => `/agents/${a.industry}/${a.slug}`)
+const archetypeRoutes = Object.keys(resultTypes).map((id) => `/archetype/${id}`)
 
 const urls = [
   ...staticRoutes,
@@ -49,6 +51,7 @@ const urls = [
   ...proIndustryRoutes,
   ...agentPackRoutes,
   ...agentRoutes,
+  ...archetypeRoutes,
 ]
 
 function escapeXml(str) {
@@ -80,4 +83,5 @@ console.log(`  guides:            ${guideRoutes.length}`)
 console.log(`  pro industries:    ${proIndustryRoutes.length}`)
 console.log(`  agent packs:       ${agentPackRoutes.length}`)
 console.log(`  agent blueprints:  ${agentRoutes.length}`)
+console.log(`  archetypes:        ${archetypeRoutes.length}`)
 console.log(`  total:             ${urls.length}`)

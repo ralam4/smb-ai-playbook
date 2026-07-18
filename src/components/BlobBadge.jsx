@@ -13,6 +13,7 @@ const STYLES = {
   peach: { variant: 1, rotate: '-8deg' },
   mint: { variant: 4, rotate: '7deg' },
   butter: { variant: 2, rotate: '-5deg' },
+  sky: { variant: 3, rotate: '6deg' },
 }
 
 export default function BlobBadge({ n, color = 'peach', size = 56, className = '' }) {

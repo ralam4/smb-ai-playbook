@@ -8,6 +8,7 @@ export default function ArchetypeQuestion({
   currentIndex,
   totalQuestions,
   onAnswer,
+  onBack,
 }) {
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -35,9 +36,23 @@ export default function ArchetypeQuestion({
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 pt-28 sm:pt-36 pb-16">
         {/* Progress bar — terracotta fill on sand track w/ a dot marker at the tip */}
         <div>
-          <p className="font-[--font-mono] text-xs text-ink-soft">
-            Question {currentIndex + 1} of {totalQuestions}
-          </p>
+          <div className="flex items-center justify-between">
+            <p className="font-[--font-mono] text-xs text-ink-soft">
+              Question {currentIndex + 1} of {totalQuestions}
+            </p>
+            {onBack && (
+              <button
+                type="button"
+                onClick={onBack}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-ink-soft hover:text-accent transition-colors cursor-pointer"
+              >
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                </svg>
+                Back
+              </button>
+            )}
+          </div>
           <div className="mt-3 relative h-2 w-full rounded-full bg-sand">
             <div
               className="h-full rounded-full bg-accent transition-all duration-500 ease-out"

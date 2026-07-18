@@ -214,6 +214,57 @@ const VARIANTS = {
       />
     </Icon>
   ),
+
+  // ── Archetype glyphs (quiz identity marks — same wobbly language) ──
+
+  // The Architect — drafting compass, legs slightly splayed mid-arc
+  compass: (props) => (
+    <Icon {...props}>
+      <path d="M12.1,3.1 C12.5,4 12.4,4.9 12.1,5.7" {...STROKE} strokeWidth={2.4} />
+      <path d="M11.9,5.9 C10.4,10.3 8.6,15.1 6.8,19.6" {...STROKE} />
+      <path d="M12.2,5.9 C13.9,10.3 15.7,15 17.5,19.4" {...STROKE} />
+      <path d="M8.2,15.7 C10.7,17 13.6,17 16.1,15.9" {...STROKE} strokeWidth={1.7} />
+    </Icon>
+  ),
+
+  // The Alchemist — flask with one rising bubble
+  flask: (props) => (
+    <Icon {...props}>
+      <path
+        d="M9.8,3.4 C10.1,5.7 10,7.6 9.6,9.3 C8.1,12 6.4,14.8 5.3,17.6 C4.7,19.3 5.6,20.7 7.4,20.8 C10.5,21 13.7,21 16.6,20.7 C18.4,20.5 19.2,19.1 18.5,17.4 C17.4,14.7 15.8,12 14.3,9.4 C13.9,7.6 13.9,5.7 14.1,3.5"
+        {...STROKE}
+      />
+      <path d="M8.3,3.3 C10.8,3 13.3,3 15.7,3.2" {...STROKE} />
+      <path d="M8.4,14.9 C10.9,14 13.3,14.1 15.6,15.1" {...STROKE} strokeWidth={1.7} />
+      <path d="M11.9,11.2 C12.3,11.5 12.3,12 11.9,12.2 C11.5,12 11.5,11.5 11.9,11.2 Z" {...STROKE} strokeWidth={1.5} />
+    </Icon>
+  ),
+
+  // The Conductor — three arrows converging on one point
+  converge: (props) => (
+    <Icon {...props}>
+      <path d="M3.6,4.2 C6.3,6.5 8.6,8.7 10.6,10.9" {...STROKE} />
+      <path d="M10.9,7.5 C10.9,8.8 10.8,10 10.7,11.1 C9.5,11.1 8.3,11 7.1,10.8" {...STROKE} strokeWidth={1.8} />
+      <path d="M20.6,4.5 C18.1,6.7 15.9,8.8 14,10.9" {...STROKE} />
+      <path d="M13.3,7.6 C13.4,8.8 13.5,10 13.6,11.1 C14.8,11.1 16,11 17.2,10.8" {...STROKE} strokeWidth={1.8} />
+      <path d="M12.2,20.9 C12.2,18.2 12.2,15.7 12.2,13.3" {...STROKE} />
+      <path d="M9.5,16.4 C10.4,15.3 11.3,14.2 12.2,13.2 C13.1,14.2 14,15.3 14.8,16.4" {...STROKE} strokeWidth={1.8} />
+    </Icon>
+  ),
+
+  // The Oracle — open eye with radiating dashes
+  eye: (props) => (
+    <Icon {...props}>
+      <path
+        d="M2.9,12.1 C5.6,8.3 8.7,6.4 12,6.4 C15.3,6.4 18.4,8.3 21.1,12.1 C18.4,15.8 15.3,17.7 12,17.7 C8.7,17.7 5.6,15.8 2.9,12.1 Z"
+        {...STROKE}
+      />
+      <path d="M12.1,9.6 C13.5,9.7 14.5,10.8 14.4,12.1 C14.3,13.4 13.2,14.4 11.9,14.4 C10.6,14.3 9.6,13.2 9.7,11.9 C9.8,10.6 10.8,9.6 12.1,9.6 Z" {...STROKE} strokeWidth={1.8} />
+      <path d="M12,3.2 C12,3.9 12,4.5 12,5.1" {...STROKE} strokeWidth={1.7} />
+      <path d="M5.4,4.9 C5.9,5.5 6.4,6.1 6.9,6.6" {...STROKE} strokeWidth={1.7} />
+      <path d="M18.7,5 C18.2,5.6 17.7,6.1 17.2,6.7" {...STROKE} strokeWidth={1.7} />
+    </Icon>
+  ),
 }
 
 export default function AgentIcon({ variant = 'sparkle', className = '', size = 24, title }) {
