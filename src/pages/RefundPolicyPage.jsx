@@ -6,7 +6,7 @@ export default function RefundPolicyPage() {
   useSEO({
     title: 'Refund Policy — SMB AI Playbook',
     description:
-      'How refunds work for Pro guides, Agent Packs, and consulting engagements purchased through the SMB AI Playbook at smbaiplaybook.xyz.',
+      'How refunds work for Pro guides and Agent Packs purchased through the SMB AI Playbook at smbaiplaybook.xyz.',
     canonical: '/refunds',
   })
   return (
@@ -34,7 +34,7 @@ export default function RefundPolicyPage() {
       <div className="prose prose-lg max-w-none text-ink text-base sm:text-lg leading-[1.7] space-y-6">
         <p>
           We want you to feel confident about your purchase. This policy
-          describes how refunds work for Pro guides and consulting engagements.
+          describes how refunds work for Pro guides and Agent Packs.
         </p>
 
         <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
@@ -48,11 +48,12 @@ export default function RefundPolicyPage() {
         </p>
 
         <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
-          2. Consulting engagements
+          2. Agent Packs
         </h2>
         <p>
-          Consulting work is scoped and quoted individually. Refund terms for
-          consulting are agreed in the engagement contract, not by this policy.
+          Same policy applies. If an Agent Pack doesn't deliver what was
+          promised, email us within 14 days of purchase and we'll issue a full
+          refund for the pack — no questions, no forms.
         </p>
 
         <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">
@@ -66,8 +67,8 @@ export default function RefundPolicyPage() {
           >
             ralam70@gmail.com
           </a>{' '}
-          with your purchase email and the guide name. Refunds are processed
-          through Stripe and typically arrive in 5–10 business days.
+          with your purchase email and the guide or pack name. Refunds are
+          processed through Stripe and typically arrive in 5–10 business days.
         </p>
       </div>
       </article>

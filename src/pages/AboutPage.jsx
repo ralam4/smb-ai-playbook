@@ -234,7 +234,7 @@ export default function AboutPage() {
             </figure>
 
             <p>
-              The Playbook is what I wish existed when I started having these conversations. The free guides are the philosophy — practical, problem-first, no hype. Consulting is the same philosophy delivered hands-on, when the problem is bigger than a guide can solve.
+              The Playbook is what I wish existed when I started having these conversations. Free guides, Pro playbooks, and Agent Packs are three depths of the same philosophy — practical, problem-first, no hype, no assumption that you have a technical team standing by.
             </p>
           </div>
         </div>
@@ -248,25 +248,33 @@ export default function AboutPage() {
           <div className="flex items-center justify-center gap-2.5 mb-6">
             <Doodle variant="sparkle" color="butter" className="w-6 h-6" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-butter">
-              Let&rsquo;s talk
+              What&rsquo;s next
             </p>
             <Doodle variant="sparkle" color="butter" className="w-6 h-6" />
           </div>
           <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-[#F4EDE1] mb-5 leading-[1.1]">
-            Have a problem worth talking about?
+            Take the quiz, or just say hi.
           </h2>
           <p className="text-base sm:text-lg text-[#C9D6CF] leading-[1.7] max-w-xl mx-auto mb-10">
-            Tell me what you&rsquo;re working on. I&rsquo;ll tell you whether I can help — you&rsquo;ll be talking to me, not a bot.
+            Not sure which guide fits your business? Take the 2-minute archetype quiz. Or if you&rsquo;ve got an idea, a request, or found something broken — I read every message.
           </p>
-          <Link
-            to="/contact"
-            className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-butter/50"
-          >
-            Work with me
-            <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              to="/archetype"
+              className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-butter/50"
+            >
+              Take the Quiz
+              <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </Link>
+            <Link
+              to="/contact"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-sm font-semibold border-2 border-[#F4EDE1]/30 text-[#F4EDE1] hover:border-[#F4EDE1] transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-butter/50"
+            >
+              Share an Idea
+            </Link>
+          </div>
         </div>
       </SectionBand>
     </>

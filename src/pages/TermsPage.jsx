@@ -52,9 +52,10 @@ export default function TermsPage() {
           2. Paid content
         </h2>
         <p>
-          Pro guides and consulting services are sold separately. Purchases are
+          Pro guides and Agent Packs are sold separately. Purchases are
           processed through Stripe. Access to paid content is granted on a
-          per-guide basis and is tied to your browser unless otherwise stated.
+          per-guide or per-pack basis and is tied to your browser unless
+          otherwise stated.
         </p>
 
         <h2 className="font-[--font-display] font-semibold text-2xl sm:text-3xl text-ink mt-10 mb-4">

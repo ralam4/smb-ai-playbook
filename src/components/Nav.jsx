@@ -70,12 +70,6 @@ export default function Nav() {
               {item.dot && AGENTS_DOT}
             </NavLink>
           ))}
-          <Link
-            to="/contact"
-            className="ml-1 sm:ml-2 inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap bg-accent text-white hover:bg-accent-hover transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40"
-          >
-            Work with me
-          </Link>
           {/* Mobile menu toggle — two bars that morph into an X */}
           <button
             type="button"
@@ -126,12 +120,6 @@ export default function Nav() {
               </NavLink>
             ))}
           </div>
-          <Link
-            to="/contact"
-            className="mt-2 flex items-center justify-center px-5 py-3 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accent-hover transition-colors"
-          >
-            Work with me
-          </Link>
         </div>
       </div>
     </nav>
