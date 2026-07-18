@@ -52,9 +52,9 @@ const threeWays = [
     body: 'Industry-specific playbooks — multi-step frameworks, prompts, and templates built for your business type. $5 per guide.',
   },
   {
-    n: 3, color: 'butter', to: '/contact', title: 'Work with Rafee', cta: 'Work with me',
-    tag: 'Consulting',
-    body: 'End-to-end AI consulting when the problem is bigger than a guide can solve. Scoping, implementation, ongoing support.',
+    n: 3, color: 'butter', to: '/agents', title: 'Agent Packs', cta: 'Explore packs',
+    tag: 'New',
+    body: `Blueprints to build an AI employee that runs one job in your business every day — system prompts, tool wiring, real costs. ${AGENTS_PRICE_DISPLAY} per pack, 3 blueprints included.`,
   },
 ]
 
@@ -102,7 +102,7 @@ export default function Home() {
           <p className="animate-fade-up delay-2 mt-9 sm:mt-11 text-lg sm:text-xl text-ink-soft leading-relaxed max-w-xl">
             Most AI advice is written for companies with engineering teams.
             This is built for the owner who has <strong className="text-ink font-semibold">real problems to solve</strong> —
-            free guides to start, and end-to-end consulting when the problem is bigger than a guide can solve.
+            free guides to start, deeper playbooks and AI agent blueprints when you&rsquo;re ready to go further.
           </p>
 
           {/* Hero CTAs */}
@@ -163,7 +163,7 @@ export default function Home() {
               Three ways to use this
             </p>
             <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink leading-[1.1] max-w-2xl mx-auto">
-              Free guides for everyone. Deeper help when you need it.
+              Free guides for everyone. Go deeper when you&rsquo;re ready.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -192,33 +192,6 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* ── Agent Packs promo ── slim band, new premium tier */}
-      <section className="relative overflow-hidden">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
-          <Link
-            to="/agents"
-            className="group relative soft-card soft-card-hover no-underline overflow-hidden flex flex-col sm:flex-row items-center gap-6 p-7 sm:p-9 cursor-pointer"
-          >
-            <Blob variant={2} color="mint" className="absolute -left-14 -top-14 w-48 h-48 opacity-40 pointer-events-none" />
-            <div className="relative flex items-center gap-2.5 flex-shrink-0">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-full bg-mint-light text-ink">
-                <Doodle variant="sparkle" color="mint" className="w-3.5 h-3.5" />
-                New &middot; Agent Packs
-              </span>
-            </div>
-            <p className="relative flex-1 text-[15px] sm:text-lg text-ink leading-relaxed">
-              Not another chatbot subscription — blueprints to build an{' '}
-              <strong className="font-semibold">AI employee</strong> that runs one job in your business every
-              day. {AGENTS_PRICE_DISPLAY} per pack, 3 blueprints included.
-            </p>
-            <span className="relative flex-shrink-0 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-              Explore Agent Packs
-              <Arrow />
-            </span>
-          </Link>
         </div>
       </section>
 

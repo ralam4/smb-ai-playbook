@@ -5,48 +5,48 @@ import SectionBand from '../components/SectionBand'
 import useSEO from '../hooks/useSEO'
 import rafeeImg from '../assets/rafee.png'
 
-const MAILTO = 'mailto:ralam70@gmail.com?subject=Let%27s%20talk%20about%20working%20together&body=Hi%20Rafee%2C%0A%0AA%20bit%20about%20my%20business%3A%0A%0AWhat%20I%27m%20trying%20to%20solve%3A%0A%0AThanks%2C'
+const MAILTO = 'mailto:ralam70@gmail.com?subject=Feedback%20for%20the%20AI%20Playbook&body=Hi%20Rafee%2C%0A%0AHere%27s%20what%27s%20on%20my%20mind%3A%0A%0A'
 
-const engagementCards = [
+const whatToShare = [
   {
     n: 1,
     color: 'peach',
-    label: 'Scoping',
-    title: 'Start with the real problem',
-    body: 'Most AI projects fail because they start with the tool, not the problem. We begin with a focused conversation about what your business actually needs — and whether AI is even the right answer.',
+    label: 'Found a bug',
+    title: 'Something broken or confusing',
+    body: 'A guide that doesn’t load, a prompt that doesn’t work, a purchase that didn’t unlock — tell me exactly what happened and I’ll fix it.',
   },
   {
     n: 2,
     color: 'mint',
-    label: 'Implementation',
-    title: 'Build something that ships',
-    body: 'Once we agree on the scope, I build it with you — prompts, workflows, integrations, whatever the job needs. You get working systems, not slide decks.',
+    label: 'Guide or agent idea',
+    title: 'A topic or industry to cover',
+    body: 'Don’t see your industry, or have a specific problem you wish a guide or Agent Pack solved? That’s exactly the kind of thing that shapes what gets built next.',
   },
   {
     n: 3,
     color: 'butter',
-    label: 'Ongoing Support',
-    title: 'Stay close as it scales',
-    body: 'AI projects need maintenance and iteration. I stay engaged after launch — refining what works, killing what doesn’t, and helping your team get fluent enough to run it themselves.',
+    label: 'General feedback',
+    title: 'What’s working, what’s not',
+    body: 'Used a guide and it actually helped? Used one and it fell flat? Either one is useful — I read every message and it directly shapes what I write next.',
   },
 ]
 
 const faqs = [
   {
-    q: 'Who do you work with?',
-    a: 'Small and mid-sized businesses across services, retail, and operations-heavy industries. If your team is between 5 and 200 people and you have a real problem AI could touch, we should talk.',
+    q: 'What kind of things can I reach out about?',
+    a: 'Bugs, guide or Agent Pack ideas, industries you wish were covered, or general feedback on anything in the Playbook. If it’s about improving the site or its content, it’s fair game.',
   },
   {
-    q: 'What does an engagement cost?',
-    a: 'It depends on scope. A focused scoping engagement runs in the low four figures; a full implementation is quoted after we agree on what we’re building. I’ll always tell you up front whether your problem is worth the spend.',
+    q: 'Do you offer paid consulting?',
+    a: 'Not at this time. Everything I have to offer lives here — free guides, Pro playbooks, and Agent Packs.',
   },
   {
-    q: 'How long do engagements run?',
-    a: 'Anywhere from a two-week scoping sprint to a multi-month build. I don’t do retainers for the sake of retainers.',
+    q: 'How fast will you respond?',
+    a: 'I read every message and try to reply within a few business days. If it’s a purchase or access issue, I’ll prioritize it.',
   },
   {
-    q: 'Do you sign NDAs?',
-    a: 'Yes, before we discuss anything sensitive. Send yours over or use mine.',
+    q: 'Can I suggest an industry or guide topic?',
+    a: 'Yes — that’s one of the most useful things you can send. Tell me the industry, the problem, and roughly how you’d solve it today without AI.',
   },
 ]
 
@@ -54,7 +54,7 @@ export default function ContactPage() {
   useSEO({
     title: 'Contact — SMB AI Playbook',
     description:
-      'End-to-end AI consulting for small and mid-sized businesses — scoping, implementation, and ongoing support. Email Rafee about the problem you need help solving.',
+      'Got an idea, found a bug, or want a guide for your industry? Reach out — every message goes to Rafee, and he reads all of them.',
     canonical: '/contact',
   })
   return (
@@ -68,37 +68,37 @@ export default function ContactPage() {
           <div className="flex items-center gap-2.5 mb-8">
             <Doodle variant="arrow-curve" color="accent" className="w-6 h-6" />
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent">
-              Work with Rafee
+              Get in touch
             </p>
           </div>
           <h1 className="font-[--font-display] font-semibold text-[2.75rem] sm:text-6xl md:text-7xl text-ink leading-[1.05] max-w-3xl">
-            End-to-end AI consulting for{' '}
+            Got an idea, a bug, or{' '}
             <span className="relative inline-block">
-              <em className="font-[--font-display] italic text-accent">small and mid-sized</em>
+              <em className="font-[--font-display] italic text-accent">something to say</em>
               <Doodle variant="squiggle-underline" color="accent" className="absolute left-0 -bottom-2 sm:-bottom-3 w-full h-3 sm:h-4" />
-            </span>{' '}
-            businesses.
+            </span>
+            ?
           </h1>
           <p className="mt-8 sm:mt-10 text-lg sm:text-xl text-ink-soft leading-relaxed max-w-2xl">
-            The Playbook is the philosophy. Consulting is the delivery — scoping, implementation, and ongoing support, sized to your business and your budget.
+            This Playbook gets better because people who actually run small businesses tell me what&rsquo;s missing, what&rsquo;s confusing, or what they wish existed. That&rsquo;s what this page is for.
           </p>
         </div>
       </section>
 
-      {/* Engagement model cards */}
+      {/* What to share cards */}
       <SectionBand tone="sand" wave className="overflow-hidden">
         <Blob variant={3} color="mint" className="absolute -right-24 top-10 w-72 h-72 opacity-25 pointer-events-none" />
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-20 sm:py-24">
           <div className="text-center mb-12 sm:mb-14">
             <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-accent mb-4">
-              How engagements work
+              What to send
             </p>
             <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink leading-[1.1] max-w-2xl mx-auto">
-              Three phases. One philosophy.
+              Any of this counts.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {engagementCards.map((card) => (
+            {whatToShare.map((card) => (
               <div
                 key={card.label}
                 className="soft-card soft-card-hover p-8 sm:p-10 flex flex-col"
@@ -132,10 +132,10 @@ export default function ContactPage() {
               <Doodle variant="sparkle" color="butter" className="w-5 h-5" />
             </div>
             <h2 className="font-[--font-display] font-semibold text-3xl sm:text-5xl text-ink mb-5 leading-[1.1]">
-              Tell me about your business.
+              What&rsquo;s on your mind?
             </h2>
             <p className="text-base sm:text-lg text-ink-soft leading-[1.7] max-w-xl mx-auto mb-8">
-              Email me with a bit about your business and what you&rsquo;re trying to solve. I&rsquo;ll reply within 2 business days to find a time to talk.
+              Found a bug, have an idea for a guide or Agent Pack, or just want to say hi? Send a note — I read every message and reply within a few business days.
             </p>
 
             {/* Human touch: small headshot on a peach blob */}
