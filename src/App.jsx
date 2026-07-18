@@ -44,7 +44,11 @@ export default function App() {
           <Route path="/agents/:industry" element={<AgentPackPage />} />
           <Route path="/agents/:industry/:slug" element={<AgentPage />} />
           <Route path="/success" element={<SuccessPage />} />
-          <Route path="/archetype" element={<ArchetypePage />} />
+          {/* Distinct keys force a fresh mount when hopping between quiz and
+              result modes — otherwise the router reuses the instance and stale
+              quiz state (e.g. Question 12) survives a "retake" navigation. */}
+          <Route path="/archetype" element={<ArchetypePage key="quiz" />} />
+          <Route path="/archetype/:result" element={<ArchetypePage key="result" />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/terms" element={<TermsPage />} />

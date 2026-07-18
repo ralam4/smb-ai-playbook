@@ -5,8 +5,16 @@ import Blob from '../components/Blob'
 import Doodle from '../components/Doodle'
 import BlobBadge from '../components/BlobBadge'
 import SectionBand from '../components/SectionBand'
-import architectImg from '../assets/mascots/architect.png'
+import AgentIcon from '../components/AgentIcon'
 import { AGENTS_PRICE_DISPLAY } from '../config/agents'
+
+// The four archetype glyphs on their pastels — the quiz teaser's visual.
+const archetypeGlyphs = [
+  { glyph: 'compass', color: 'butter', variant: 2, rotate: '-6deg' },
+  { glyph: 'flask', color: 'peach', variant: 1, rotate: '5deg' },
+  { glyph: 'converge', color: 'mint', variant: 4, rotate: '-4deg' },
+  { glyph: 'eye', color: 'sky', variant: 3, rotate: '7deg' },
+]
 
 // Pastel chip treatment for the 4 problem categories: soft fill + deep-ink text.
 const problemPreviews = [
@@ -272,17 +280,15 @@ export default function Home() {
                 <Arrow />
               </Link>
             </div>
-            <div className="relative flex-shrink-0">
-              <Blob variant={3} color="mint" className="absolute inset-0 w-full h-full scale-110 opacity-80 pointer-events-none" />
-              <img
-                src={architectImg}
-                alt=""
-                aria-hidden="true"
-                loading="lazy"
-                width={200}
-                height={200}
-                className="relative w-40 sm:w-48 h-auto drop-shadow-sm"
-              />
+            <div className="relative flex-shrink-0 grid grid-cols-2 gap-4 sm:gap-5" aria-hidden="true">
+              {archetypeGlyphs.map((g) => (
+                <span key={g.glyph} className="relative inline-flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24">
+                  <span className="absolute inset-0" style={{ transform: `rotate(${g.rotate})` }}>
+                    <Blob variant={g.variant} color={g.color} className="w-full h-full" />
+                  </span>
+                  <AgentIcon variant={g.glyph} size={36} className="relative text-ink w-9 h-9 sm:w-10 sm:h-10" />
+                </span>
+              ))}
             </div>
           </div>
         </div>

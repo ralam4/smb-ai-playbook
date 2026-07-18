@@ -121,6 +121,8 @@ export const questions = [
   },
 ]
 
+// Each archetype keys off an existing Warm Studio pastel token (blob/badge
+// tints, -light washes) and a hand-drawn AgentIcon glyph — no bespoke colors.
 export const resultTypes = {
   architect: {
     id: 'architect',
@@ -129,8 +131,10 @@ export const resultTypes = {
     description: 'You see a goal and you move. Where others deliberate, you scope, sequence, and ship. Your superpower is turning ambiguity into a plan and a plan into something real. AI in your hands becomes a force multiplier — compressing the distance between idea and done.',
     aiEdge: 'Output velocity',
     watchOut: 'Moving so fast you skip the thinking that would have saved you time',
-    colors: { primary: '#8B6914', wash: '#F5EDD6', anchor: '#4A3508', gradient: ['#F5EDD6', '#E8C97A'] },
-    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Architect. I build toward clear goals and AI's biggest value for me is as a force multiplier on execution. What's yours? smbaiplaybook.xyz/archetype",
+    pastel: 'butter',
+    glyph: 'compass',
+    agentsPitch: 'You want work shipping while you sleep. Agent blueprints give you a build plan you can execute this week — no waiting on anyone.',
+    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Architect. I build toward clear goals and AI's biggest value for me is as a force multiplier on execution. What's yours? smbaiplaybook.xyz/archetype/architect",
     recommendedGuides: ['project-profitability', 'build-recurring-revenue', 'autorepair-bay-efficiency'],
   },
   alchemist: {
@@ -140,8 +144,10 @@ export const resultTypes = {
     description: "You resist the obvious answer because you know there's usually a better one underneath. You explore before you commit, connect dots others walk past, and do your best work when you have space to think. AI for you isn't a shortcut — it's a sparring partner that pushes your thinking further than you could go alone.",
     aiEdge: 'Depth of thinking',
     watchOut: 'Exploring so long that the window to act closes',
-    colors: { primary: '#5C4A7A', wash: '#EDE8F5', anchor: '#2E2040', gradient: ['#EDE8F5', '#F5D6F0'] },
-    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Alchemist. I explore before I decide and AI works best for me as a thinking partner, not just an output machine. What's yours? smbaiplaybook.xyz/archetype",
+    pastel: 'peach',
+    glyph: 'flask',
+    agentsPitch: 'Hand the repetitive work to an agent so your thinking time stays protected. Every blueprint publishes its real costs — the kind of detail you check first.',
+    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Alchemist. I explore before I decide and AI works best for me as a thinking partner, not just an output machine. What's yours? smbaiplaybook.xyz/archetype/alchemist",
     recommendedGuides: ['fix-your-pricing', 'photographer-pricing', 'architecture-client-proposals'],
   },
   conductor: {
@@ -151,8 +157,10 @@ export const resultTypes = {
     description: "You have a rare ability: you can take a room full of noise and turn it into a direction everyone can follow. You synthesize, translate, and align. Your value isn't just what you know — it's how you make others feel oriented. AI handles the compression work so you can focus on the judgment that only you can make.",
     aiEdge: 'Clarity and alignment at scale',
     watchOut: 'Over-communicating when the moment calls for a decision',
-    colors: { primary: '#2D6A4F', wash: '#E8F5EE', anchor: '#1A3D2E', gradient: ['#E8F5EE', '#F5EDE8'] },
-    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Conductor. I synthesize complexity into clarity and AI handles the compression so I can focus on judgment. What's yours? smbaiplaybook.xyz/archetype",
+    pastel: 'mint',
+    glyph: 'converge',
+    agentsPitch: 'Agents are teammates that never need a status meeting. Blueprints for customer replies, updates, and follow-ups keep everyone aligned without you carrying it all.',
+    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Conductor. I synthesize complexity into clarity and AI handles the compression so I can focus on judgment. What's yours? smbaiplaybook.xyz/archetype/conductor",
     recommendedGuides: ['google-reviews', 'write-clear-quotes', 'medical-patient-communication'],
   },
   oracle: {
@@ -162,8 +170,10 @@ export const resultTypes = {
     description: "You've always operated a step ahead — reading signals, sensing patterns, acting on instinct that turns out to be right more often than it should. You move fast but you read wide. AI sharpens what you're already doing: feed it information, get back signal, act on it before the pattern becomes obvious to everyone else.",
     aiEdge: 'Pattern recognition at scale',
     watchOut: 'Trusting your read so much that you stop pressure-testing it',
-    colors: { primary: '#1D3557', wash: '#E4EAF5', anchor: '#0D1B2E', gradient: ['#E4EAF5', '#F5E4EE'] },
-    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Oracle. I act on instinct and AI sharpens the signal I'm already reading. What's yours? smbaiplaybook.xyz/archetype",
+    pastel: 'sky',
+    glyph: 'eye',
+    agentsPitch: 'Agents watch the signals for you — reviews, lapsing customers, patterns in the numbers — and surface them before they become obvious. That is your edge, automated.',
+    linkedinCopy: "I just found my AI Archetype on the SMB AI Playbook — I'm The Oracle. I act on instinct and AI sharpens the signal I'm already reading. What's yours? smbaiplaybook.xyz/archetype/oracle",
     recommendedGuides: ['find-dead-zones', 'cut-no-shows', 'carwash-capacity-leaks'],
   },
 }
@@ -171,8 +181,18 @@ export const resultTypes = {
 export function scoreArchetype(answers) {
   const counts = { architect: 0, alchemist: 0, conductor: 0, oracle: 0 }
   answers.forEach((type) => { counts[type]++ })
-  const priority = ['architect', 'conductor', 'oracle', 'alchemist']
-  return priority.reduce((best, type) =>
-    counts[type] > counts[best] ? type : best
-  , 'architect')
+  const max = Math.max(...Object.values(counts))
+  const tied = Object.keys(counts).filter((type) => counts[type] === max)
+  if (tied.length === 1) return tied[0]
+  // Tie-break with the final question — "what do you bring to the table?" is
+  // the self-identity answer, so if it's among the tied types, the user has
+  // already told us which one they are.
+  const identity = answers[answers.length - 1]
+  if (tied.includes(identity)) return identity
+  // Otherwise, the tied type the user chose most recently wins. Deterministic:
+  // the same answers always produce the same result.
+  for (let i = answers.length - 1; i >= 0; i--) {
+    if (tied.includes(answers[i])) return answers[i]
+  }
+  return tied[0]
 }
